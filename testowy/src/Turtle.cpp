@@ -3,6 +3,7 @@
 Turtle::Turtle(unsigned char iterations)
 {
     this->m_iterations=iterations;
+
 }
 
 Turtle::~Turtle()
@@ -21,13 +22,13 @@ Turtle& Turtle::operator=(const Turtle& rhs)
     //assignment operator
     return *this;
 }
-void Turtle::change()
+void Turtle::compute()
 {
     std::string temp;
     temp="";
     for(int i1=0; i1<m_iterations; i1++)
     {
-        std::cout<<"ITERATION :"<<i1<<std::endl;
+       // std::cout<<"ITERATION :"<<i1<<std::endl;
         int resultSize=m_result.length();
         for(int i=0; i<resultSize; i++)
         {
@@ -46,7 +47,7 @@ void Turtle::change()
                 if(it->get()->getFrom().compare(compareString) == 0)
                 {
                     temp+=it->get()->getTo();
-                    std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
+                    //std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
                     found=true;
 
                 }
@@ -55,7 +56,7 @@ void Turtle::change()
             }
             if(found==false)
             {
-                std::cout<<"NOT FOUND"<<std::endl;
+               // std::cout<<"NOT FOUND"<<std::endl;
                 temp+=compareString;
             }
 
@@ -65,8 +66,24 @@ void Turtle::change()
 
         m_result=temp;
         temp="";
-        std::cout<<"ENDED :"<<m_result<<std::endl;
-        std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~\n";
+       // std::cout<<"ENDED :"<<m_result<<std::endl;
+       // std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
     }
+}
+
+
+std::string Turtle::GetResult()
+{
+return m_result;
+}
+
+void Turtle::SetResult(std::string val)
+{
+this->m_result=val;
+}
+void Turtle::AddRule(SharedRule s)
+{
+
+    this->m_rules.push_back(s);
 }

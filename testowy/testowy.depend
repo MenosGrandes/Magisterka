@@ -402,3 +402,42 @@
 1436127060 source:c:\users\filip\desktop\magisterka\dwa\testowy\src\turtle.cpp
 	"Turtle.h"
 
+1436130236 source:c:\users\filip\documents\testowy2\testowy\main.cpp
+	<iostream>
+	<cstdlib>
+	<SFML/Graphics.hpp>
+	<Turtle.h>
+
+1436129900 c:\users\filip\documents\testowy2\testowy\include\turtle.h
+	<stack>
+	<string>
+	<list>
+	<iostream>
+	<Rule.h>
+
+1436123926 c:\users\filip\documents\testowy2\testowy\include\rule.h
+	<memory>
+	<string>
+	<sstream>
+	<algorithm>
+
+1436120731 source:c:\users\filip\documents\testowy2\testowy\src\rule.cpp
+	"Rule.h"
+
+1436130012 source:c:\users\filip\documents\testowy2\testowy\src\turtle.cpp
+	"Turtle.h"
+
+1436129566 c:\users\filip\documents\testowy2\testowy\include\turtledraw.h
+	<SFML/Graphics.hpp>
+	<memory>
+
+1436129312 source:c:\users\filip\documents\testowy2\testowy\src\turtledraw.cpp
+	"TurtleDraw.h"
+
+1436129486 source:c:\users\filip\documents\testowy2\testowy\src\turtleresule.cpp
+	"TurtleResule.h"
+
+1436129600 c:\users\filip\documents\testowy2\testowy\include\turtleresule.h
+	<string>
+	<memory>
+
