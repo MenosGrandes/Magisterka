@@ -1,13 +1,12 @@
 
 #include<iostream>
 #include<cstdlib>
-#include <SFML/Graphics.hpp>
-#include<Turtle.h>
+#include <TurtleDrawer.h>
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
 
-Turtle *t=new Turtle(3);
+Turtle *t=new Turtle(2);
 SharedRule a(new Rule("F","F+F-F-F+F"));
 //SharedRule b(new Rule("0","1[0]0"));
 t->SetResult("F");
@@ -17,6 +16,7 @@ t->AddRule(a);
 
 t->compute();
 std::cout<<t->GetResult()<<"\n";
+SharedTurtleDrawer td(new TurtleDrawer(t->GetResult()));
 /*
 DRAWING!
 */
@@ -30,6 +30,7 @@ DRAWING!
         }
 
         window.clear();
+        window.draw(*td);
         window.display();
     }
 

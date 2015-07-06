@@ -402,11 +402,10 @@
 1436127060 source:c:\users\filip\desktop\magisterka\dwa\testowy\src\turtle.cpp
 	"Turtle.h"
 
-1436130236 source:c:\users\filip\documents\testowy2\testowy\main.cpp
+1436204349 source:c:\users\filip\documents\testowy2\testowy\main.cpp
 	<iostream>
 	<cstdlib>
-	<SFML/Graphics.hpp>
-	<Turtle.h>
+	<TurtleDrawer.h>
 
 1436129900 c:\users\filip\documents\testowy2\testowy\include\turtle.h
 	<stack>
@@ -440,4 +439,11 @@
 1436129600 c:\users\filip\documents\testowy2\testowy\include\turtleresule.h
 	<string>
 	<memory>
+
+1436202878 c:\users\filip\documents\testowy2\testowy\include\turtledrawer.h
+	<SFML/Graphics.hpp>
+	<Turtle.h>
+
+1436204331 source:c:\users\filip\documents\testowy2\testowy\src\turtledrawer.cpp
+	"TurtleDrawer.h"
 
