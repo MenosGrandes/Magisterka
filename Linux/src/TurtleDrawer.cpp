@@ -2,6 +2,8 @@
 
 TurtleDrawer::TurtleDrawer(std::string initializer)
 {
+    std::stack<PosRot> posRotStack;
+
 
     sf::Vector2f currentPosition(100,100);
     sf::Vector2f direction(1,0);
@@ -43,19 +45,36 @@ TurtleDrawer::TurtleDrawer(std::string initializer)
         switch(letter)
         {
         case '+' :
-            this->rotate(direction,60);
+            this->rotate(direction,90);
             this->translate(currentPosition,direction,10);
             m_vertices[i].position=currentPosition;
 
             break;
         case '-' :
-            this->rotate(direction,-60);
+            this->rotate(direction,-90);
             this->translate(currentPosition,direction,10);
             m_vertices[i].position=currentPosition;
 
             break;
-        case 'A':
-        case 'B':
+        case '[':
+            std::cout<<"PUSH\n";
+            posRotStack.push( PosRot(currentPosition,direction));
+            std::cout<<currentPosition.x<<" "<<currentPosition.y<<"\n";
+            std::cout<<direction.x<<" "<<direction.y<<"\n";
+            break;
+        case ']':
+            std::cout<<"pop\n";
+            currentPosition=posRotStack.top().first;
+            direction=posRotStack.top().second;
+            posRotStack.pop();
+
+            std::cout<<currentPosition.x<<" "<<currentPosition.y<<"\n";
+            std::cout<<direction.x<<" "<<direction.y<<"\n";
+            break;
+        case '0':
+        case '1':
+        case 'F':
+
             m_vertices[i].position=currentPosition;
 
 

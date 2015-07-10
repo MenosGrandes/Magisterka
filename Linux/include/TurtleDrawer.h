@@ -2,6 +2,7 @@
 #define TURTLEDRAWER_H
 #include <SFML/Graphics.hpp>
 #include<Turtle.h>
+#include <stack>
 
 class TurtleDrawer :public sf::Drawable, public sf::Transformable
 {
@@ -31,5 +32,6 @@ private:
 
 };
 typedef std::shared_ptr<TurtleDrawer> SharedTurtleDrawer;
+typedef std::pair<sf::Vector2f,sf::Vector2f> PosRot;
 
 #endif // TURTLEDRAWER_H

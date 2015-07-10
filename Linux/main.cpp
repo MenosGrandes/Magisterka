@@ -5,12 +5,12 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-Turtle *t=new Turtle(10);
-SharedRule a(new Rule("A","B-A-B"));
-SharedRule b(new Rule("B","A+B+A"));
+Turtle *t=new Turtle(3);
+SharedRule a(new Rule("F","F+F-F-F+F"));
+SharedRule b(new Rule("0","1[0]0"));
 
 //SharedRule b(new Rule("0","1[0]0"));
-t->SetResult("A");
+t->SetResult("F");
 
 t->AddRule(a);
 t->AddRule(b);

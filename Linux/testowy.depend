@@ -447,16 +447,17 @@
 1436204331 source:c:\users\filip\documents\testowy2\testowy\src\turtledrawer.cpp
 	"TurtleDrawer.h"
 
-1436476243 source:/home/filip/Pulpit/Magisterka/Linux/main.cpp
+1436550791 source:/home/filip/Pulpit/Magisterka/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
 
-1436473818 /home/filip/Pulpit/Magisterka/Linux/include/TurtleDrawer.h
+1436550367 /home/filip/Pulpit/Magisterka/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
+	<stack>
 
-1436465847 /home/filip/Pulpit/Magisterka/Linux/include/Turtle.h
+1436544183 /home/filip/Pulpit/Magisterka/Linux/include/Turtle.h
 	<stack>
 	<string>
 	<list>
@@ -473,9 +474,9 @@
 1436376787 source:/home/filip/Pulpit/Magisterka/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1436476419 source:/home/filip/Pulpit/Magisterka/Linux/src/Turtle.cpp
+1436545676 source:/home/filip/Pulpit/Magisterka/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
-1436476000 source:/home/filip/Pulpit/Magisterka/Linux/src/TurtleDrawer.cpp
+1436549803 source:/home/filip/Pulpit/Magisterka/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
