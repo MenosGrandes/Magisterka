@@ -1,6 +1,6 @@
 #include "../include/TurtleDrawer.h"
 
-TurtleDrawer::TurtleDrawer(std::string initializer)
+TurtleDrawer::TurtleDrawer(std::string initializer,unsigned int length, float angle)
 {
     std::stack<PosRot> posRotStack;
 
@@ -13,28 +13,7 @@ TurtleDrawer::TurtleDrawer(std::string initializer)
 
 
     m_vertices[0].position=currentPosition;
-    this->translate(currentPosition,direction,10);
-
-
-    /*
-    this->translate(currentPosition,direction,10);
-    m_vertices[1].position=currentPosition;
-
-
-    m_vertices[2].position=currentPosition
-    ;
-    this->rotate(direction,45);
-    this->translate(currentPosition,direction,10);
-    m_vertices[3].position=currentPosition;
-
-
-    m_vertices[4].position=currentPosition;
-
-    this->rotate(direction,45);
-    this->translate(currentPosition,direction,10);
-    m_vertices[5].position=currentPosition;
-    //this->rotate(direction,90);
-    */
+    this->translate(currentPosition,direction,length);
 
     for(int i=1; i<initializer.size()-1; i++)
     {
@@ -45,16 +24,16 @@ TurtleDrawer::TurtleDrawer(std::string initializer)
         switch(letter)
         {
         case '+' :
-            this->rotate(direction,90);
-            this->translate(currentPosition,direction,10);
+            this->rotate(direction,angle);
+            this->translate(currentPosition,direction,length);
             m_vertices[i].position=currentPosition;
-
+            m_vertices[i].color=randomColor();
             break;
         case '-' :
-            this->rotate(direction,-90);
-            this->translate(currentPosition,direction,10);
+            this->rotate(direction,-angle);
+            this->translate(currentPosition,direction,length);
             m_vertices[i].position=currentPosition;
-
+            m_vertices[i].color=randomColor();
             break;
         case '[':
             std::cout<<"PUSH\n";
@@ -71,11 +50,12 @@ TurtleDrawer::TurtleDrawer(std::string initializer)
             std::cout<<currentPosition.x<<" "<<currentPosition.y<<"\n";
             std::cout<<direction.x<<" "<<direction.y<<"\n";
             break;
-        case '0':
-        case '1':
+        case 'A':
+        case 'B':
         case 'F':
 
             m_vertices[i].position=currentPosition;
+            m_vertices[i].color=randomColor();
 
 
             break;
@@ -111,4 +91,21 @@ float TurtleDrawer::radToDegree(float degree)
     return degree * M_PI / 180.0;
 }
 
+sf::Color TurtleDrawer::randomColor()
+{
 
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(0, std::nextafter(255, std::numeric_limits<double>::max()));
+
+
+    sf::Color color;
+    color.r=dist(mt);
+    color.g=dist(mt);
+    color.b=dist(mt);
+    return color;
+}
+unsigned int TurtleDrawer::size()
+{
+return m_vertices.getVertexCount();
+}

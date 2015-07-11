@@ -3,14 +3,17 @@
 #include <SFML/Graphics.hpp>
 #include<Turtle.h>
 #include <stack>
-
+#include <random>
 class TurtleDrawer :public sf::Drawable, public sf::Transformable
 {
 public:
     /** Default constructor */
-    TurtleDrawer(std::string initializer);
+TurtleDrawer(std::string initializer,unsigned int length, float angle);
     /** Default destructor */
     virtual ~TurtleDrawer();
+
+    unsigned int size();
+
 protected:
 private:
     sf::VertexArray m_vertices;
@@ -29,6 +32,7 @@ private:
     void rotate(sf::Vector2f &origin,float angleOfRotation);
     void translate(sf::Vector2f &origin,sf::Vector2f direction,float lenght);
     float radToDegree(float degree);
+    sf::Color randomColor();
 
 };
 typedef std::shared_ptr<TurtleDrawer> SharedTurtleDrawer;

@@ -28,8 +28,8 @@ void Turtle::compute()
     temp="";
     for(int i1=0; i1<m_iterations; i1++)
     {
-        std::cout<<"ITERATION :"<<i1<<std::endl;
-                std::cout<<"AXIOM :"<<m_result<<std::endl;
+//        std::cout<<"ITERATION :"<<i1<<std::endl;
+//                std::cout<<"AXIOM :"<<m_result<<std::endl;
 
         int resultSize=m_result.length();
         for(int i=0; i<resultSize; i++)
@@ -49,7 +49,7 @@ void Turtle::compute()
                 if(it->get()->getFrom().compare(compareString) == 0)
                 {
                     temp+=it->get()->getTo();
-                    std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
+//                    std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
                     found=true;
 
                 }
