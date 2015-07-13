@@ -589,3 +589,145 @@
 1436601222 /home/filip/Pulpit/Magisterka/Linux/include/rapidjson/internal/strfunc.h
 	"../rapidjson.h"
 
+1436820266 source:/home/filip/Pulpit/Magisterka/2d/Linux/main.cpp
+	<iostream>
+	<cstdlib>
+	<TurtleDrawer.h>
+	<GUI.h>
+
+1436818587 /home/filip/Pulpit/Magisterka/2d/Linux/include/TurtleDrawer.h
+	<SFML/Graphics.hpp>
+	<Turtle.h>
+	<stack>
+	<random>
+
+1436544183 /home/filip/Pulpit/Magisterka/2d/Linux/include/Turtle.h
+	<stack>
+	<string>
+	<list>
+	<iostream>
+	<Rule.h>
+	<cmath>
+
+1436376553 /home/filip/Pulpit/Magisterka/2d/Linux/include/Rule.h
+	<memory>
+	<string>
+	<sstream>
+	<algorithm>
+
+1436600896 /home/filip/Pulpit/Magisterka/2d/Linux/include/GUI.h
+	<memory>
+	<SFGUI/SFGUI.hpp>
+	<SFML/Graphics.hpp>
+	<SFGUI/Widgets.hpp>
+
+1436600824 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/GUI.cpp
+	"GUI.h"
+
+1436602365 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/JSONReader.cpp
+	"JSONReader.h"
+
+1436602236 /home/filip/Pulpit/Magisterka/2d/Linux/include/JSONReader.h
+	<string>
+	"rapidjson/filereadstream.h"
+	<rapidjson/document.h>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/filereadstream.h
+	"rapidjson.h"
+	<cstdio>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/rapidjson.h
+	<cstdlib>
+	<cstring>
+	"rapidjson/..."
+	"msinttypes/stdint.h"
+	"msinttypes/inttypes.h"
+	<stdint.h>
+	<inttypes.h>
+	<endian.h>
+	"rapidjson/..."
+	<cassert>
+	"allocators.h"
+	"encodings.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/msinttypes/stdint.h
+	<stdint.h>
+	<limits.h>
+	<wchar.h>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/msinttypes/inttypes.h
+	"stdint.h"
+	<inttypes.h>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/allocators.h
+	"rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/encodings.h
+	"rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/document.h
+	"reader.h"
+	"internal/meta.h"
+	"internal/strfunc.h"
+	<new>
+	<string>
+	<iterator>
+	<utility>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/reader.h
+	"rapidjson.h"
+	"encodings.h"
+	"internal/meta.h"
+	"internal/stack.h"
+	"internal/strtod.h"
+	<intrin.h>
+	<nmmintrin.h>
+	<emmintrin.h>
+	<stdexcept>
+	"rapidjson/error/error.h"
+	"rapidjson/reader.h"
+	"error/error.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/meta.h
+	"../rapidjson.h"
+	<type_traits>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/stack.h
+	"../rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/strtod.h
+	"../rapidjson.h"
+	"ieee754.h"
+	"biginteger.h"
+	"diyfp.h"
+	"pow10.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/ieee754.h
+	"../rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/biginteger.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/diyfp.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/pow10.h
+	"../rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/error/error.h
+	"../rapidjson.h"
+
+1436601222 /home/filip/Pulpit/Magisterka/2d/Linux/include/rapidjson/internal/strfunc.h
+	"../rapidjson.h"
+
+1436376787 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/Rule.cpp
+	"../include/Rule.h"
+
+1436594604 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/Turtle.cpp
+	"../include/Turtle.h"
+
+1436820299 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+	"../include/TurtleDrawer.h"
+
