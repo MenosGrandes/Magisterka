@@ -589,13 +589,13 @@
 1436601222 /home/filip/Pulpit/Magisterka/Linux/include/rapidjson/internal/strfunc.h
 	"../rapidjson.h"
 
-1436820266 source:/home/filip/Pulpit/Magisterka/2d/Linux/main.cpp
+1437068424 source:/home/filip/Pulpit/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
 	<GUI.h>
 
-1436818587 /home/filip/Pulpit/Magisterka/2d/Linux/include/TurtleDrawer.h
+1437069295 /home/filip/Pulpit/Magisterka/2d/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
 	<stack>
@@ -728,6 +728,6 @@
 1436594604 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
-1436820299 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+1437069214 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 

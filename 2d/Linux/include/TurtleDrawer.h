@@ -8,18 +8,19 @@ class TurtleDrawer :public sf::Drawable, public sf::Transformable
 {
 public:
     /** Default constructor */
-TurtleDrawer(std::string initializer,unsigned int length, float angle);
+    TurtleDrawer(std::string initializer,unsigned int length, float angle);
     /** Default destructor */
     virtual ~TurtleDrawer();
 
     unsigned int size();
-void show()
-{
+    void show()
+    {
 
-for(int i=0;i<m_vertices.getVertexCount();i++)
-{
-std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
-}}
+        for(int i=0; i<m_vertices.getVertexCount(); i++)
+        {
+            std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
+        }
+    }
 protected:
 private:
     sf::VertexArray m_vertices;
@@ -36,7 +37,7 @@ private:
     }
     // sf::Vector2f rotate(sf::Vector2f origin,float angleOfRotation);
     void rotate(sf::Vector2f &origin,float angleOfRotation);
-    void translate(sf::Vector2f &origin,sf::Vector2f direction,float lenght);
+    void translate(sf::Vector2f &origin,sf::Vector2f rotation,float lenght);
     float radToDegree(float degree);
     sf::Color randomColor();
 

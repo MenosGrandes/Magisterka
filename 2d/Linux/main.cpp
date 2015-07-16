@@ -11,12 +11,12 @@ int main()
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-    Turtle *t=new Turtle(2);
-    SharedRule a(new Rule("1","11"));
-    SharedRule b(new Rule("0","1[0]0"));
+    Turtle *t=new Turtle(5);
+    SharedRule a(new Rule("X","F-[[X]+X]+F[+FX]-X"));
+    SharedRule b(new Rule("F","FF"));
 
 //SharedRule b(new Rule("0","1[0]0"));
-    t->SetResult("0");
+    t->SetResult("X");
 
     t->AddRule(a);
     t->AddRule(b);
@@ -24,11 +24,11 @@ int main()
 //t->m_rules.push_back(b);
 
     t->compute();
-    t->SetResult("0000");
 
-    SharedTurtleDrawer td(new TurtleDrawer(t->GetResult(),100,45));
-td->show();
-        std::cout<<td->size()<<"\n";
+
+    SharedTurtleDrawer td(new TurtleDrawer(t->GetResult(),10,25));
+//td->show();
+//        std::cout<<t->GetResult()<<"\n";
 SharedGUI gui(new GUI());
 gui->Run();
     /*

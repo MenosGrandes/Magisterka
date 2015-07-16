@@ -2,82 +2,96 @@
 
 TurtleDrawer::TurtleDrawer(std::string initializer,unsigned int length, float angle)
 {
+    /**
+    Stack to get the PosRot values
+    */
     std::stack<PosRot> posRotStack;
+    /**
+    PosRot ofcurrent position and current rotation. Both set to default values
+    pos = sf::Vector2f(100,100);
+    rot = sf::Vector2f(0,1);
+    */
+    PosRot current;
+    current.first=sf::Vector2f(100,100);
+    current.second=sf::Vector2f(0,1);
 
 
-    sf::Vector2f currentPosition(100,100);
-    sf::Vector2f direction(1,0);
+    /**
+    Create a sf::VecrtexArray, container of sf::Vertex, to store the points in L-system.
+    */
+    m_vertices=sf::VertexArray(sf::PrimitiveType::Lines,1);
+    m_vertices.clear();
+    /**
+    Add first point. The start point.
+    */
+    sf::Vertex v(sf::Vector2f(current.first),randomColor());
+    m_vertices.append(v);
 
-    m_vertices.setPrimitiveType(sf::Lines);
-    m_vertices.resize(initializer.size());
 
-
-    m_vertices[0].position=currentPosition;
-    this->translate(currentPosition,direction,length);
-
-    for(int i=0; i<initializer.size(); i++)
+    /**
+    For every  char from initializer string check
+    */
+    for(int i=0; i!=initializer.size(); i++)
     {
+        /**
+        Get char from initializer.
+        */
         char letter;
         letter=initializer[i];
 
         switch(letter)
         {
-//        case '+' :
-//            this->rotate(direction,angle);
-//            this->translate(currentPosition,direction,length);
-//            m_vertices[i].position=currentPosition;
-//            m_vertices[i].color=randomColor();
-//            break;
-//        case '-' :
-//            this->rotate(direction,-angle);
-//            this->translate(currentPosition,direction,length);
-//            m_vertices[i].position=currentPosition;
-//            m_vertices[i].color=randomColor();
-//            break;
-        case '[':
-            m_vertices[i].position=currentPosition;
-            m_vertices[i].color=randomColor();
-            posRotStack.push( PosRot(currentPosition,direction));
-            this->rotate(direction,angle);
-
+        /**
+        If '+' rotate by angle.
+        */
+        case '+' :
+            this->rotate(current.second,angle);
 
             break;
-        case ']':
+        /** If '+' rotate by angle * -1 .*/
+        case '-' :
+            this->rotate(current.second,-angle);
 
-            currentPosition=posRotStack.top().first;
-            direction=posRotStack.top().second;
+            break;
+        case '[' :
+            /**
+            Add current PosRot to stack.
+            */
+            posRotStack.push(PosRot(current.first,current.second));
+
+            break;
+        case ']' :
+            /**
+            Get latest PosRot from stack and update the current PosRot
+            */
+            current.first=posRotStack.top().first;
+            current.second=posRotStack.top().second;
+            m_vertices.append(sf::Vertex(current.first,randomColor()));
             posRotStack.pop();
-            m_vertices[i].position=currentPosition;
-            m_vertices[i].color=randomColor();
-            this->rotate(direction,-angle);
-
-
-
             break;
-
-        case '0':
-
-            this->translate(currentPosition,direction,length);
-            m_vertices[i].position=currentPosition;
-            m_vertices[i].color=randomColor();
-            break;
-        case '1':
-            this->translate(currentPosition,direction,length);
-            m_vertices[i].position=currentPosition;
-            m_vertices[i].color=randomColor();
-            break;
-        case 'A':
-        case 'B':
         case 'F':
+            /**
+            Translate current point by length
+            */
+            this->translate(current.first,current.second,length);
+            sf::Vertex v(sf::Vector2f(current.first),randomColor());
+            m_vertices.append(v);
+            /**
+            In case if the next one in initializer isn't '[', so it appends another point to createthe strait line, without gaps.
 
-            m_vertices[i].position=currentPosition;
-            m_vertices[i].color=randomColor();
+            */
+            if(initializer[i+1]!=']')
+            {
+                sf::Vertex v(sf::Vector2f(current.first),randomColor());
+                m_vertices.append(v);
+            }
 
 
             break;
         }
 
     }
+
 }
 
 TurtleDrawer::~TurtleDrawer()
@@ -87,7 +101,9 @@ TurtleDrawer::~TurtleDrawer()
 
 
 /**
-http://www.inversereality.org/tutorials/graphics%20programming/2dtransformations.html*/
+http://www.inversereality.org/tutorials/graphics%20programming/2dtransformations.html
+Rotate sf::Vector2f origin .
+*/
 void TurtleDrawer::rotate(sf::Vector2f &origin,float angleOfRotation)
 {
     sf::Vector2f temp;
@@ -96,17 +112,25 @@ void TurtleDrawer::rotate(sf::Vector2f &origin,float angleOfRotation)
     temp.y=origin.x * std::sin(radToDegree(angleOfRotation)) + origin.y * std::cos(radToDegree(angleOfRotation));
     origin=temp;
 }
+/**
+Translate sf::Vector2f origin by lenght
+*/
 void TurtleDrawer::translate(sf::Vector2f &origin,sf::Vector2f direction,float lenght)
 {
     origin.x += lenght*direction.x;
     origin.y += lenght*direction.y;
 
 }
+/**
+Convert radians to degrees.
+*/
 float TurtleDrawer::radToDegree(float degree)
 {
     return degree * M_PI / 180.0;
 }
-
+/**
+Get random color. C++11 needed.
+*/
 sf::Color TurtleDrawer::randomColor()
 {
 
@@ -121,6 +145,9 @@ sf::Color TurtleDrawer::randomColor()
     color.b=dist(mt);
     return color;
 }
+/**
+Return the size of m_vertices
+*/
 unsigned int TurtleDrawer::size()
 {
     return m_vertices.getVertexCount();
