@@ -13,12 +13,22 @@ void GUI::OnRadioButtonClick()
 }
 void GUI::OnButtonClick()
 {
-std::cout<<"Clicked!";
+    std::cout<<"Clicked!";
 }
 void GUI::ButtonToggle()
 {
-std::cout<<"toogled!";
+    std::cout<<"toogled!";
 
+}
+void GUI::AngleChange() {
+	std::stringstream sstr;
+	sstr << m_scaleAngle->GetValue();
+	m_labelAngle->SetText( "Angle: " +sstr.str() );
+}
+void GUI::IterationChange() {
+	std::stringstream sstr;
+	sstr << m_scaleIterations->GetValue();
+	m_labelIterations->SetText( "Iterations: " +sstr.str() );
 }
 void GUI::Run()
 {
@@ -26,62 +36,97 @@ void GUI::Run()
 
 
     auto fixed = sfg::Fixed::Create();
-    auto m_button = sfg::Button::Create( "Start" );
+    auto m_button = sfg::Button::Create( "S" );
     m_button->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::OnButtonClick, this ) );
+/**
+Range for Angle
+*/
+auto scaleAngle = sfg::Scale::Create( sfg::Scale::Orientation::HORIZONTAL );
 
-// Create the label.
+	auto scrollbar = sfg::Scrollbar::Create( sfg::Scrollbar::Orientation::VERTICAL );
 
-    label = sfg::Label::Create( "Path Find Algorithms" );
-    pathLenth=sfg::Label::Create("Path Lenth ");
-    timeLast=sfg::Label::Create("Time[us] ");
-    openNodesCount=sfg::Label::Create("All nodes searched : ");
-    m_toggle_button=sfg::ToggleButton::Create("Tie Breaker");
+	m_scaleAngle = scrollbar->GetAdjustment();
+	scaleAngle->SetAdjustment( m_scaleAngle );
 
-    fixed->Put(m_toggle_button, sf::Vector2f(10,10));
+	m_scaleAngle->SetLower( 0.f );
+	m_scaleAngle->SetUpper( 360.f );
 
-// Create a simple button and connect the click signal.
+	m_scaleAngle->SetMinorStep( 1.f );
+
+	m_scaleAngle->SetMajorStep( 1.f );
+
+	m_scaleAngle->SetPageSize( 0.f );
+
+	m_scaleAngle->GetSignal( sfg::Adjustment::OnChange ).Connect( std::bind( &GUI::AngleChange, this ) );
+
+	scaleAngle->SetRequisition( sf::Vector2f( 80.f, 20.f ) );
+/**
+Range for iterations
+*/
+auto scaleIterations = sfg::Scale::Create( sfg::Scale::Orientation::HORIZONTAL );
+
+	auto scrollbar2 = sfg::Scrollbar::Create( sfg::Scrollbar::Orientation::VERTICAL );
+
+	m_scaleIterations = scrollbar2->GetAdjustment();
+	scaleIterations->SetAdjustment( m_scaleIterations );
+
+	m_scaleIterations->SetLower( 0.f );
+	m_scaleIterations->SetUpper( 10.f );
+
+	m_scaleIterations->SetMinorStep( 1.f );
+
+	m_scaleIterations->SetMajorStep( 1.f );
+
+	m_scaleIterations->SetPageSize( 0.f );
+
+	m_scaleIterations->GetSignal( sfg::Adjustment::OnChange ).Connect( std::bind( &GUI::IterationChange, this ) );
+
+	scaleIterations->SetRequisition( sf::Vector2f( 80.f, 20.f ) );
 
 
 
-    m_toggle_button->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::ButtonToggle, this ) );
-    sfg::RadioButton::Ptr button = sfg::RadioButton::Create( "Manhattan" );
-    button->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button);
-
-
-    sfg::RadioButton::Ptr button2 = sfg::RadioButton::Create( "Chebyszev",radioButtons[0]->GetGroup() );
-    button2->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button2);
-
-    sfg::RadioButton::Ptr button3 = sfg::RadioButton::Create( "Diagonal",radioButtons[0]->GetGroup() );
-    button3->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button3);
-
-    sfg::RadioButton::Ptr button4 = sfg::RadioButton::Create( "BFS",radioButtons[0]->GetGroup() );
-    button4->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button4);
-    sfg::RadioButton::Ptr button5 = sfg::RadioButton::Create( "DFS",radioButtons[0]->GetGroup() );
-    button5->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button5);
-    sfg::RadioButton::Ptr button6 = sfg::RadioButton::Create( "DIJKSTRA",radioButtons[0]->GetGroup() );
-    button6->GetSignal( sfg::ToggleButton::OnToggle ).Connect( std::bind( &GUI::OnRadioButtonClick, this ) );
-    radioButtons.push_back(button6);
-    radioButtons[0]->SetActive( true );
-// Create a vertical box layouter with 5 pixels spacing and add the label
-// and button to it.
     auto box = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
 
     box->Pack(m_button,false);
-    for(int i=0; i<radioButtons.size(); i++)
-    {
-        box->Pack( radioButtons[i], false );
-    }
+//Iterations
+    m_entryIterations = sfg::Entry::Create();
+    m_entryIterations->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
+
+    m_labelIterations = sfg::Label::Create();
+    m_labelIterations->SetText( "Iterations :0" );
+
+
+    m_entryAngle = sfg::Entry::Create();
+    m_entryAngle->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
+
+    m_labelAngle = sfg::Label::Create();
+    m_labelAngle->SetText( "Angle :0" );
+
+
+        m_entryAxiom = sfg::Entry::Create();
+    m_entryAxiom->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
+
+    m_labelAxiom = sfg::Label::Create();
+    m_labelAxiom->SetText( "Axiom :" );
+//    for(int i=0; i<radioButtons.size(); i++)
+//    {
+//        box->Pack( radioButtons[i], false );
+//    }
+
     box->Pack(fixed);
 
-    box->Pack( label );
-    box->Pack(pathLenth);
-    box->Pack(timeLast);
-    box->Pack(openNodesCount);
+
+    box->Pack( m_labelIterations );
+	box->Pack( scaleIterations, false, false );
+    box->Pack( m_labelAngle );
+	box->Pack( scaleAngle, false, false );
+
+
+    box->Pack( m_labelAxiom );
+    box->Pack( m_entryAxiom );
+
+
+
 
 
 
@@ -97,3 +142,5 @@ void GUI::Run()
 
 
 }
+
+

@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug" />
+	<ActiveTarget name="Release" />
 	<File name="src/JSONReader.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="216" topLine="5" />
 		</Cursor>
 	</File>
-	<File name="src/GUI.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/GUI.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="594" topLine="16" />
+			<Cursor1 position="650" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/JSONReader.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/TurtleDrawer.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="355" topLine="0" />
+			<Cursor1 position="588" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Turtle.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/TurtleDrawer.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1227" topLine="4" />
+			<Cursor1 position="2522" topLine="71" />
 		</Cursor>
 	</File>
-	<File name="include/Turtle.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Turtle.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="134" topLine="0" />
+			<Cursor1 position="1905" topLine="67" />
 		</Cursor>
 	</File>
-	<File name="include/GUI.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/GUI.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="255" topLine="0" />
+			<Cursor1 position="3227" topLine="114" />
 		</Cursor>
 	</File>
 	<File name="include/Rule.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,9 +36,14 @@
 			<Cursor1 position="348" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="include/JSONReader.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="355" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="283" topLine="9" />
+			<Cursor1 position="2481" topLine="73" />
 		</Cursor>
 	</File>
 	<File name="src/Rule.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -46,14 +51,9 @@
 			<Cursor1 position="21" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/TurtleDrawer.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Turtle.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="402" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="src/TurtleDrawer.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1756" topLine="43" />
+			<Cursor1 position="351" topLine="2" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

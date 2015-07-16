@@ -58,7 +58,7 @@ void Turtle::compute()
             }
             if(found==false)
             {
-               // std::cout<<"NOT FOUND"<<std::endl;
+                // std::cout<<"NOT FOUND"<<std::endl;
                 temp+=compareString;
             }
 
@@ -68,23 +68,32 @@ void Turtle::compute()
 
         m_result=temp;
         temp="";
-       // std::cout<<"ENDED :"<<m_result<<std::endl;
-       // std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        // std::cout<<"ENDED :"<<m_result<<std::endl;
+        // std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
 }
 
 
 std::string Turtle::GetResult()
 {
-return m_result;
+    return m_result;
 }
 
 void Turtle::SetResult(std::string val)
 {
-this->m_result=val;
+    this->m_result=val;
 }
 void Turtle::AddRule(SharedRule s)
 {
 
     this->m_rules.push_back(s);
+}
+void Turtle::addIterations(unsigned int iterations)
+{
+    m_iterations=iterations;
+}
+
+unsigned int Turtle::getIterations()
+{
+    return m_iterations;
 }

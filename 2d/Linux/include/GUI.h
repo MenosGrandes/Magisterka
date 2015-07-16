@@ -13,16 +13,18 @@ public:
     sfg::Desktop desktop;
 
     void Run();
-    sfg::Label::Ptr pathLenth,timeLast,openNodesCount;
 
 private:
     std::vector<sfg::RadioButton::Ptr> radioButtons;
     sfg::Window::Ptr window;
-    sfg::ToggleButton::Ptr m_toggle_button;
-
+	sfg::Entry::Ptr m_entryIterations,m_entryAngle,m_entryAxiom;
+	    sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelAxiom;
+	sfg::Adjustment::Ptr m_scaleAngle,m_scaleIterations;
     void OnButtonClick();
     void ButtonToggle();
     void OnRadioButtonClick();
+    void AngleChange();
+    void IterationChange();
 
 };
 typedef std::shared_ptr<GUI> SharedGUI;

@@ -1,10 +1,20 @@
 #include "../include/TurtleDrawer.h"
 
-TurtleDrawer::TurtleDrawer(std::string initializer,unsigned int length, float angle)
+TurtleDrawer::TurtleDrawer()
+{
+
+
+}
+
+TurtleDrawer::~TurtleDrawer()
+{
+    //dtor
+}
+void TurtleDrawer::compute(std::string initializer,unsigned int length, float angle)
 {
     /**
-    Stack to get the PosRot values
-    */
+       Stack to get the PosRot values
+       */
     std::stack<PosRot> posRotStack;
     /**
     PosRot ofcurrent position and current rotation. Both set to default values
@@ -13,7 +23,7 @@ TurtleDrawer::TurtleDrawer(std::string initializer,unsigned int length, float an
     */
     PosRot current;
     current.first=sf::Vector2f(100,100);
-    current.second=sf::Vector2f(0,1);
+    current.second=sf::Vector2f(1,1);
 
 
     /**
@@ -91,14 +101,7 @@ TurtleDrawer::TurtleDrawer(std::string initializer,unsigned int length, float an
         }
 
     }
-
 }
-
-TurtleDrawer::~TurtleDrawer()
-{
-    //dtor
-}
-
 
 /**
 http://www.inversereality.org/tutorials/graphics%20programming/2dtransformations.html
