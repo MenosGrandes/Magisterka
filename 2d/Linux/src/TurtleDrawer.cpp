@@ -10,7 +10,7 @@ TurtleDrawer::~TurtleDrawer()
 {
     //dtor
 }
-void TurtleDrawer::compute(std::string initializer,unsigned int length, float angle)
+void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)
 {
     /**
        Stack to get the PosRot values
@@ -37,6 +37,7 @@ void TurtleDrawer::compute(std::string initializer,unsigned int length, float an
     sf::Vertex v(sf::Vector2f(current.first),randomColor());
     m_vertices.append(v);
 
+    std::cout<<"\nSTART COMPUTING\n";
 
     /**
     For every  char from initializer string check
@@ -99,8 +100,10 @@ void TurtleDrawer::compute(std::string initializer,unsigned int length, float an
 
             break;
         }
+        std::cout<<".";
 
     }
+    std::cout<<"\nEND COMPUTING\n";
 }
 
 /**
