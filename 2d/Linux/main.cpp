@@ -11,7 +11,7 @@ int main()
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-    /**
+    /*
     SharedTurtle, aka std::shared_ptr<Turtle>, is used to calculate the string of the L-System.
     Turtle calculates the string from SharedRule, aka std::shared_ptr<Rule>. SharedRule contains 2 strings, from and to.
 
@@ -20,20 +20,20 @@ int main()
     SharedTurtle t(new Turtle(1));
 
 
-/**
+/*
 SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines from string calculated in Turtle.
 */
     SharedTurtleDrawer td(new TurtleDrawer());
-    /**
+    /*
     Ther is an bug in sfgui, when program won't draw any content the letters in gui are really weird.
     So compute the draw.
     */
     td->computeDraw();
-    /**
+    /*
     Create gui and pass an SharedTurtleDrawer and SharedTurtle, to recalculate the whole Rules and Axioms, if they were added at GUI side.
     */
     SharedGUI gui(new GUI(t,td));
-    /**
+    /*
     Add all gui widgets
     */
     gui->Run();
@@ -88,10 +88,7 @@ SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines fro
             break;
             /**Temporary workround*/
             case sf::Event::KeyPressed:
-                if(event.key.code == sf::Keyboard::A)
-                {
-                    gui->ReRun();
-                }
+
                 break;
             }
 
@@ -101,11 +98,11 @@ SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines fro
 
         window.clear();
         window.setView(view2);
-        /**
+        /*
         Draw the calculated L-system
         */
         window.draw(*td);
-        /**
+        /*
         Draw GUI
         */
         gui->m_sfgui.Display( window);

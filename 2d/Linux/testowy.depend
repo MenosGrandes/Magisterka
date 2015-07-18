@@ -731,7 +731,7 @@
 1437071015 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1437169583 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1437217283 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
@@ -743,7 +743,7 @@
 	<stack>
 	<random>
 
-1437164844 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1437216627 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<stack>
 	<string>
 	<list>
@@ -758,14 +758,14 @@
 	<algorithm>
 	<vector>
 
-1437169750 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
+1437216140 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<memory>
 	<SFGUI/SFGUI.hpp>
 	<SFML/Graphics.hpp>
 	<SFGUI/Widgets.hpp>
 	<TurtleDrawer.h>
 
-1437168675 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1437217200 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
 1437106090 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
@@ -869,9 +869,9 @@
 1437106090 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1437106090 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1437216663 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
-1437169448 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+1437213014 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 

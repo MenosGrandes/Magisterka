@@ -76,7 +76,7 @@ void Turtle::compute()
 
 std::string Turtle::GetResult()
 {
-    return m_result;
+    return this->m_result;
 }
 
 void Turtle::SetResult(std::string val)
@@ -88,12 +88,16 @@ void Turtle::AddRule(SharedRule s)
 
     this->m_rules.push_back(s);
 }
-void Turtle::addIterations(unsigned int iterations)
+void Turtle::AddIterations(unsigned int iterations)
 {
-    m_iterations=iterations;
+    this->m_iterations=iterations;
 }
 
-unsigned int Turtle::getIterations()
+unsigned int Turtle::GetIterations()
 {
-    return m_iterations;
+    return this->m_iterations;
+}
+void Turtle::Reset()
+{
+this->m_rules.clear();
 }

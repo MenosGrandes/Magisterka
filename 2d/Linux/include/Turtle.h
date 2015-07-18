@@ -20,8 +20,9 @@ public:
     std::string GetResult();
     void SetResult(std::string val);
     void AddRule(SharedRule s);
-    void addIterations(unsigned int iterations);
-    unsigned int getIterations();
+    void AddIterations(unsigned int iterations);
+    unsigned int GetIterations();
+    void Reset();
 
 protected:
 private:

@@ -21,35 +21,59 @@ public:
     void ReRun();
 
 private:
+
+    struct SliderPreferences
+    {
+        float lower=0.0f;
+        float upper=10.0f;
+        float minor_step=0.1f;
+        float major_step=1.0f;
+        float pageSize=0.0f;
+        sf::Vector2f requistion =sf::Vector2f( 80.f, 20.f );
+        std::string label="";
+    };
+
+
+
     sfg::Window::Ptr window;
-    sfg::Entry::Ptr m_entryIterations,m_entryAngle,m_entryAxiom;
-    sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelAxiom;
-    sfg::Adjustment::Ptr m_scaleAngle,m_scaleIterations;
+    sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelStartAxiom ;
+    sfg::Adjustment::Ptr m_scaleIterations;
+    sfg::Entry::Ptr m_entryStart,m_entryAngle;
+
     SharedTurtle m_t;
     SharedTurtleDrawer m_td;
     void OnButtonClick();
 
     void AngleChange();
     void IterationChange();
-/**
-Class that contains 2 sfg::Entry::Ptr :
-rule  -> to contain the rule.
-axiom -> to contain the axiom.
-and 2 sfg::Label::Ptr for those entry.
-*/
+    void CreateSliders(SliderPreferences sp,sfg::Box::Ptr box);
+    void CreateEntry(sfg::Box::Ptr box);
+    /**
+    Class that contains 2 sfg::Entry::Ptr :
+    rule  -> to contain the rule.
+    axiom -> to contain the axiom.
+    and 2 sfg::Label::Ptr for those entry.
+    */
     class RuleAxiom
     {
     public :
         sfg::Entry::Ptr entryAxiom,entryRule;
         sfg::Label::Ptr labelRule,labelAxiom;
-        void Add(std::string labelA,std::string labelR,sfg::Box::Ptr box)
+        void Add(std::string labelA,std::string labelR,int number,sfg::Box::Ptr box)
         {
+            std::stringstream ss;
+            std::string numberString;
+            ss << number;
+            ss >> numberString;
+
+            auto separator = sfg::Separator::Create( sfg::Separator::Orientation::HORIZONTAL );
+            box->Pack( separator, false, true );
+            auto alignment_box = sfg::Box::Create( sfg::Box::Orientation::HORIZONTAL );
+
             entryAxiom = sfg::Entry::Create();
             entryAxiom->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
             labelAxiom=sfg::Label::Create();
             labelAxiom->SetText( labelA );
-            box->Pack( labelAxiom );
-            box->Pack( entryAxiom );
 
 
             entryRule = sfg::Entry::Create();
@@ -58,9 +82,15 @@ and 2 sfg::Label::Ptr for those entry.
             labelRule=sfg::Label::Create();
             labelRule->SetText( labelR );
 
-            box->Pack( labelRule );
-            box->Pack( entryRule );
 
+            alignment_box->Pack(labelAxiom);
+            alignment_box->Pack(entryAxiom);
+            alignment_box->Pack(labelRule);
+            alignment_box->Pack(entryRule);
+            auto frame = sfg::Frame::Create( "Rule "+numberString );
+            frame->SetAlignment( sf::Vector2f( .3f, .3f ) );
+            frame->Add( alignment_box );
+            box->Pack( frame, true, true );
 
 
         }
@@ -70,6 +100,7 @@ and 2 sfg::Label::Ptr for those entry.
     typedef std::shared_ptr<RuleAxiom> SharedRuleAxiom;
     typedef std::list<SharedRuleAxiom> SharedRuleAxiomList;
     SharedRuleAxiomList ruleList;
+
 
 };
 
