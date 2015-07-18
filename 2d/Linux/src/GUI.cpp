@@ -20,7 +20,12 @@ void GUI::OnButtonClick()
 #endif // DEBUG
     ReRun();
 }
-void GUI::Run()
+void GUI::RunAddListFractals()
+{
+
+
+}
+void GUI::RunAddFractals()
 {
 
 
@@ -41,7 +46,7 @@ void GUI::Run()
     SliderPreferences spIterations,spAngle;
     spIterations.label="Iterations :0";
     spIterations.lower=0.f;
-    spIterations.upper=5.0f;
+    spIterations.upper=20.0f;
     spIterations.minor_step=1.0f;
     spIterations.minor_step=1.0f;
     spIterations.pageSize=0.0f;
@@ -64,15 +69,17 @@ void GUI::Run()
     SharedRuleAxiom ra2(new RuleAxiom());
     ra2->Add("Axiom2","Rule2",2,box);
     ruleList.push_back(ra2);
-
+    SharedRuleAxiom ra3(new RuleAxiom());
+    ra2->Add("Axiom2","Rule2",3,box);
+    ruleList.push_back(ra3);
 
     box->Pack(m_button,false);
 
 // Create a window and add the box layouter to it. Also set the window's title.
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );
-    window->Add( box );
-
+//    window->Add( box );
+AddNotebook(box);
 // Create a desktop and add the window to it.
 
     desktop.Add( window );
@@ -160,4 +167,10 @@ void GUI::CreateEntry(sfg::Box::Ptr box)
 
     box->Pack(m_entryAngle);
 }
-
+void GUI::AddNotebook(sfg::Box::Ptr box)
+{
+m_notebook=sfg::Notebook::Create();
+m_notebook->AppendPage( box, sfg::Label::Create( "Add new Fractal" ) );
+//	m_notebook->AppendPage( box2, sfg::Label::Create( "L-system List" ) );
+window->Add( m_notebook );
+}

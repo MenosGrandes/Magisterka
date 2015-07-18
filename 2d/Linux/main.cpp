@@ -36,7 +36,7 @@ SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines fro
     /*
     Add all gui widgets
     */
-    gui->Run();
+    gui->RunAddFractals();
     /*
     DRAWING!
     */

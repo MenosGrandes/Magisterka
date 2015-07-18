@@ -17,7 +17,9 @@ public:
     sfg::Label::Ptr label;
     sfg::Desktop desktop;
     GUI(SharedTurtle t,SharedTurtleDrawer td);
-    void Run();
+    void RunAddFractals();
+    void RunAddListFractals();
+
     void ReRun();
 
 private:
@@ -39,7 +41,7 @@ private:
     sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelStartAxiom ;
     sfg::Adjustment::Ptr m_scaleIterations;
     sfg::Entry::Ptr m_entryStart,m_entryAngle;
-
+    sfg::Notebook::Ptr m_notebook;
     SharedTurtle m_t;
     SharedTurtleDrawer m_td;
     void OnButtonClick();
@@ -48,6 +50,7 @@ private:
     void IterationChange();
     void CreateSliders(SliderPreferences sp,sfg::Box::Ptr box);
     void CreateEntry(sfg::Box::Ptr box);
+    void AddNotebook(sfg::Box::Ptr box);
     /**
     Class that contains 2 sfg::Entry::Ptr :
     rule  -> to contain the rule.

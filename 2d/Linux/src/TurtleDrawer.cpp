@@ -100,7 +100,7 @@ void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, floa
 
             break;
         }
-        std::cout<<".";
+//        std::cout<<".";
 
     }
     std::cout<<"\nEND COMPUTING\n";
