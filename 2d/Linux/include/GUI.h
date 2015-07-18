@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFGUI/Widgets.hpp>
 #include <TurtleDrawer.h>
+#include <JSONReader.h>
 
 typedef std::vector<sfg::Entry::Ptr> EntryVector;
 typedef std::vector<sfg::Label::Ptr> LabelVector;
@@ -42,15 +43,16 @@ private:
     sfg::Adjustment::Ptr m_scaleIterations;
     sfg::Entry::Ptr m_entryStart,m_entryAngle;
     sfg::Notebook::Ptr m_notebook;
+    sfg::Box::Ptr m_boxAddFractals,m_boxAddListFractals;
     SharedTurtle m_t;
     SharedTurtleDrawer m_td;
     void OnButtonClick();
 
     void AngleChange();
     void IterationChange();
-    void CreateSliders(SliderPreferences sp,sfg::Box::Ptr box);
-    void CreateEntry(sfg::Box::Ptr box);
-    void AddNotebook(sfg::Box::Ptr box);
+    void CreateSliders(SliderPreferences sp);
+    void CreateEntry();
+    void AddNotebook();
     /**
     Class that contains 2 sfg::Entry::Ptr :
     rule  -> to contain the rule.

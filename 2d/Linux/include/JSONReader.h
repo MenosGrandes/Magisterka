@@ -1,8 +1,12 @@
 #ifndef JSONREADER_H
 #define JSONREADER_H
 #include <string>
-#include "rapidjson/filereadstream.h"
+#include <memory>
+#include <iostream>
+#include <rapidjson/filereadstream.h>
 #include <rapidjson/document.h>
+#include <sstream>
+#include <fstream>
 using namespace rapidjson;
 
 class JSONReader
@@ -10,12 +14,14 @@ class JSONReader
     public:
         JSONReader();
         virtual ~JSONReader();
-        void openJSON(std::string fileName);
+        void openJSON(const std::string& filename);
         void readJSON();
         void saveJSON(std::string fileName);
+        Document doc;
     protected:
     private:
-    Document m_d;
+
 };
+typedef std::shared_ptr<JSONReader> SharedJSONReader;
 
 #endif // JSONREADER_H

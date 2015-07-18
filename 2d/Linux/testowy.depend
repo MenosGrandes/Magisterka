@@ -758,23 +758,28 @@
 	<algorithm>
 	<vector>
 
-1437218824 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
+1437223971 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<memory>
 	<SFGUI/SFGUI.hpp>
 	<SFML/Graphics.hpp>
 	<SFGUI/Widgets.hpp>
 	<TurtleDrawer.h>
+	<JSONReader.h>
 
-1437218840 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1437227644 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
-1437106090 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
+1437229712 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
 	"JSONReader.h"
 
-1437106090 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
+1437224471 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
 	<string>
-	"rapidjson/filereadstream.h"
+	<memory>
+	<iostream>
+	<rapidjson/filereadstream.h>
 	<rapidjson/document.h>
+	<sstream>
+	<fstream>
 
 1437106090 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/filereadstream.h
 	"rapidjson.h"

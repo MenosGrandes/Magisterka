@@ -1,0 +1,23 @@
+{
+"list":
+[
+    {
+    "name": "DragonCurve",
+    "angle":90,
+     "rules":
+        {
+        "rulee":[{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
+        }
+    },
+    {
+    "name": "DragonCurve2",
+    "angle":90,
+     "rules":
+        {
+        "rulee":[{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
+        }
+    }
+]
+
+
+}

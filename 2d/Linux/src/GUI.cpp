@@ -19,11 +19,16 @@ void GUI::OnButtonClick()
     std::cout<<"CLICKED!\n";
 #endif // DEBUG
     ReRun();
+
+
 }
 void GUI::RunAddListFractals()
 {
 
-
+m_boxAddListFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+SharedJSONReader json(new JSONReader());
+json->openJSON("db.json");
+json->readJSON();
 }
 void GUI::RunAddFractals()
 {
@@ -35,12 +40,11 @@ void GUI::RunAddFractals()
     m_button->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::ReRun, this ) );
 
 
-    auto box = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+     m_boxAddFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
 
 
     /*Entry*/
-    CreateEntry(box);
-
+    CreateEntry();
 
     /*Sliders and Labels to Sliders*/
     SliderPreferences spIterations,spAngle;
@@ -52,34 +56,27 @@ void GUI::RunAddFractals()
     spIterations.pageSize=0.0f;
     spIterations.requistion=sf::Vector2f( 80.f, 20.f );
 
-    CreateSliders(spIterations,box);
-
-
-
-
-
-
-
-
-
-
+    CreateSliders(spIterations);
+/*RuleAxiom*/
     SharedRuleAxiom ra(new RuleAxiom());
-    ra->Add("Axiom","Rule",1,box);
+    ra->Add("Axiom","Rule",1,m_boxAddFractals);
     ruleList.push_back(ra);
     SharedRuleAxiom ra2(new RuleAxiom());
-    ra2->Add("Axiom2","Rule2",2,box);
+    ra2->Add("Axiom2","Rule2",2,m_boxAddFractals);
     ruleList.push_back(ra2);
     SharedRuleAxiom ra3(new RuleAxiom());
-    ra2->Add("Axiom2","Rule2",3,box);
+    ra2->Add("Axiom2","Rule2",3,m_boxAddFractals);
     ruleList.push_back(ra3);
 
-    box->Pack(m_button,false);
-
+    m_boxAddFractals->Pack(m_button,false);
+/* Add List*/
+RunAddListFractals();
+std::cout<<"!!!";
 // Create a window and add the box layouter to it. Also set the window's title.
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );
 //    window->Add( box );
-AddNotebook(box);
+AddNotebook();
 // Create a desktop and add the window to it.
 
     desktop.Add( window );
@@ -112,7 +109,7 @@ void GUI::ReRun()
 
 
 }
-void GUI::CreateSliders(SliderPreferences sp,sfg::Box::Ptr box)
+void GUI::CreateSliders(SliderPreferences sp)
 {
     /*Iterations*/
     auto scaleIterations = sfg::Scale::Create( sfg::Scale::Orientation::HORIZONTAL );
@@ -139,13 +136,13 @@ void GUI::CreateSliders(SliderPreferences sp,sfg::Box::Ptr box)
     m_labelIterations = sfg::Label::Create();
     m_labelIterations->SetText( sp.label );
 
-    box->Pack( m_labelIterations );
-    box->Pack( scaleIterations, false, false );
+    m_boxAddFractals->Pack( m_labelIterations );
+    m_boxAddFractals->Pack( scaleIterations, false, false );
 
 
 }
 
-void GUI::CreateEntry(sfg::Box::Ptr box)
+void GUI::CreateEntry()
 {
     m_entryStart = sfg::Entry::Create();
     m_entryAngle =sfg::Entry::Create();
@@ -159,18 +156,18 @@ void GUI::CreateEntry(sfg::Box::Ptr box)
     sfg::Label::Ptr labelAngle = sfg::Label::Create();
     labelAngle->SetText("Angle");
 
-    box->Pack( labelEntryStart );
-    box->Pack(m_entryStart);
+    m_boxAddFractals->Pack( labelEntryStart );
+    m_boxAddFractals->Pack(m_entryStart);
 
-    box->Pack( labelAngle );
+    m_boxAddFractals->Pack( labelAngle );
 
 
-    box->Pack(m_entryAngle);
+    m_boxAddFractals->Pack(m_entryAngle);
 }
-void GUI::AddNotebook(sfg::Box::Ptr box)
+void GUI::AddNotebook()
 {
 m_notebook=sfg::Notebook::Create();
-m_notebook->AppendPage( box, sfg::Label::Create( "Add new Fractal" ) );
-//	m_notebook->AppendPage( box2, sfg::Label::Create( "L-system List" ) );
+m_notebook->AppendPage( m_boxAddFractals, sfg::Label::Create( "Add new Fractal" ) );
+	m_notebook->AppendPage( m_boxAddListFractals, sfg::Label::Create( "L-system List" ) );
 window->Add( m_notebook );
 }
