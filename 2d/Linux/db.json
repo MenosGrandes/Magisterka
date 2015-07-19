@@ -5,7 +5,7 @@
     "name": "DragonCurve",
        "iterations":10,
     "angle":90,
-
+    "start":"FX",
      "rules":
         [{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
     },
@@ -13,10 +13,27 @@
     "name": "Koch Curve",
        "iterations":5,
     "angle":90,
-
+    "start":"F",
      "rules":
-        [{"from":"X","to":"F+F-F-F+F"}  ]
+        [{"from":"F","to":"F+F-F-F+F"}  ]
+    },
+    {
+    "name": "Sierpinski triangle",
+       "iterations":6,
+    "angle":120,
+    "start":"F-G-G",
+     "rules":
+        [{"from":"F","to":"F-G+F+G-F"},{"from":"G","to":"GG"}  ]
+    },
+        {
+    "name": "Fractal plant",
+       "iterations":6,
+    "angle":25,
+    "start":"X",
+     "rules":
+        [{"from":"F","to":"FF"},{"from":"X","to":"F-[[X]+X]+F[+FX]-X"}  ]
     }
+
 
 ]
 

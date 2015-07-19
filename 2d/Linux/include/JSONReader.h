@@ -16,12 +16,9 @@ class JSONReader
         JSONReader();
         virtual ~JSONReader();
         void openJSON(const std::string& filename);
-        SystemData2DList readJSON();
+        SharedSystemData2DList readJSON();
         void saveJSON(std::string fileName);
         Document doc;
-
-
-
     protected:
     private:
 

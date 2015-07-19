@@ -80,6 +80,7 @@ void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, floa
             m_vertices.append(sf::Vertex(current.first,randomColor()));
             posRotStack.pop();
             break;
+        case 'G' :
         case 'F':
             /*
             Translate current point by length

@@ -22,19 +22,38 @@ void GUI::OnButtonClick()
 
 
 }
-void GUI::RunAddListFractals()
+void GUI::DrawFractalFromList(SharedSystemData2D data)
 {
 
+    m_t->Reset();
+    m_t->AddIterations(data->iterations);
+    SharedRuleList::iterator it;
+    for (it= data->ruleList.begin(); it != data->ruleList.end(); it++)
+    {
+        SharedRule a(new Rule((*it)->getFrom(),(*it)->getTo()));
+        m_t->AddRule(a);
+    }
+    m_t->SetResult(data->start);
+    m_t->compute();
+
+
+    m_td->computeDraw(m_t->GetResult(),10,data->angle);
+}
+void GUI::RunAddListFractals()
+{
+    using namespace std::placeholders;
     m_boxAddListFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
     SharedJSONReader json(new JSONReader());
     json->openJSON("db.json");
-    SystemData2DList list2dData;
+    SharedSystemData2DList list2dData;
     list2dData=json->readJSON();
-    SystemData2DList::iterator it;
+    SharedSystemData2DList::iterator it;
     for (it= list2dData.begin(); it != list2dData.end(); it++)
     {
-            auto m_button = sfg::Button::Create( (*it).name);
-        m_boxAddListFractals->Pack(m_button);
+            auto btn = sfg::Button::Create( (*it)->name);
+            btn->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::DrawFractalFromList, this,(*it) ) );
+
+        m_boxAddListFractals->Pack(btn);
     }
 
 

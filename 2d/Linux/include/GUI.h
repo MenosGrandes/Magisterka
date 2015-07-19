@@ -49,6 +49,8 @@ private:
     void CreateSliders(SliderPreferences sp);
     void CreateEntry();
     void AddNotebook();
+    void DrawFractalFromList(SharedSystemData2D data);
+
     SharedRuleAxiomList ruleList;
 
 

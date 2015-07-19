@@ -27,15 +27,37 @@ typedef std::list<SharedRule> SharedRuleList;
 
 
 /*Struct that contains the values readed from JSON*/
-    struct SystemData2D
+class SystemData2D
+{
+public :
+    SystemData2D(
+        std::string name,
+        std::string start,
+        int iterations,
+        float angle,
+        SharedRuleList ruleList
+    )
     {
-        std::string name;
-        int iterations;
-        float angle;
-        SharedRuleList ruleList;
+    this->name=name;
+    this->start=start;
+    this->iterations=iterations;
+    this->angle=angle;
+    this->ruleList=ruleList;
+    }
+    SystemData2D(const SystemData2D& data) : name(data.name),start(data.start),iterations(data.iterations),angle(data.angle),ruleList(data.ruleList)
+    { }
+    SystemData2D()
+    {}
+    std::string name;
+    std::string start;
+    int iterations;
+    float angle;
+    SharedRuleList ruleList;
 
-    };
-    typedef std::list<SystemData2D> SystemData2DList;
+};
+typedef std::shared_ptr<SystemData2D>SharedSystemData2D;
+typedef std::list<SharedSystemData2D> SharedSystemData2DList;
+
 
 #endif // RULE_H
 
