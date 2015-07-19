@@ -1,14 +1,9 @@
 #ifndef GUI_H
 #define GUI_H
-#include <memory>
-#include <SFGUI/SFGUI.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFGUI/Widgets.hpp>
 #include <TurtleDrawer.h>
 #include <JSONReader.h>
-
-typedef std::vector<sfg::Entry::Ptr> EntryVector;
-typedef std::vector<sfg::Label::Ptr> LabelVector;
+#include <RuleAxiom.h>
 
 class GUI
 {
@@ -24,7 +19,7 @@ public:
     void ReRun();
 
 private:
-
+    /*Struct that contains the preferences for sliders*/
     struct SliderPreferences
     {
         float lower=0.0f;
@@ -35,6 +30,7 @@ private:
         sf::Vector2f requistion =sf::Vector2f( 80.f, 20.f );
         std::string label="";
     };
+
 
 
 
@@ -53,57 +49,6 @@ private:
     void CreateSliders(SliderPreferences sp);
     void CreateEntry();
     void AddNotebook();
-    /**
-    Class that contains 2 sfg::Entry::Ptr :
-    rule  -> to contain the rule.
-    axiom -> to contain the axiom.
-    and 2 sfg::Label::Ptr for those entry.
-    */
-    class RuleAxiom
-    {
-    public :
-        sfg::Entry::Ptr entryAxiom,entryRule;
-        sfg::Label::Ptr labelRule,labelAxiom;
-        void Add(std::string labelA,std::string labelR,int number,sfg::Box::Ptr box)
-        {
-            std::stringstream ss;
-            std::string numberString;
-            ss << number;
-            ss >> numberString;
-
-            auto separator = sfg::Separator::Create( sfg::Separator::Orientation::HORIZONTAL );
-            box->Pack( separator, false, true );
-            auto alignment_box = sfg::Box::Create( sfg::Box::Orientation::HORIZONTAL );
-
-            entryAxiom = sfg::Entry::Create();
-            entryAxiom->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
-            labelAxiom=sfg::Label::Create();
-            labelAxiom->SetText( labelA );
-
-
-            entryRule = sfg::Entry::Create();
-            entryRule->SetRequisition( sf::Vector2f( 80.f, 0.f ) );
-
-            labelRule=sfg::Label::Create();
-            labelRule->SetText( labelR );
-
-
-            alignment_box->Pack(labelAxiom);
-            alignment_box->Pack(entryAxiom);
-            alignment_box->Pack(labelRule);
-            alignment_box->Pack(entryRule);
-            auto frame = sfg::Frame::Create( "Rule "+numberString );
-            frame->SetAlignment( sf::Vector2f( .3f, .3f ) );
-            frame->Add( alignment_box );
-            box->Pack( frame, true, true );
-
-
-        }
-
-
-    };
-    typedef std::shared_ptr<RuleAxiom> SharedRuleAxiom;
-    typedef std::list<SharedRuleAxiom> SharedRuleAxiomList;
     SharedRuleAxiomList ruleList;
 
 

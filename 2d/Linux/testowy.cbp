@@ -44,9 +44,11 @@
 		<Linker>
 			<Add library="libsfgui" />
 		</Linker>
+		<Unit filename="db.json" />
 		<Unit filename="include/GUI.h" />
 		<Unit filename="include/JSONReader.h" />
 		<Unit filename="include/Rule.h" />
+		<Unit filename="include/RuleAxiom.h" />
 		<Unit filename="include/Turtle.h" />
 		<Unit filename="include/TurtleDrawer.h" />
 		<Unit filename="include/rapidjson/allocators.h" />
@@ -81,6 +83,7 @@
 		<Unit filename="src/GUI.cpp" />
 		<Unit filename="src/JSONReader.cpp" />
 		<Unit filename="src/Rule.cpp" />
+		<Unit filename="src/RuleAxiom.cpp" />
 		<Unit filename="src/Turtle.cpp" />
 		<Unit filename="src/TurtleDrawer.cpp" />
 		<Extensions>

@@ -25,10 +25,19 @@ void GUI::OnButtonClick()
 void GUI::RunAddListFractals()
 {
 
-m_boxAddListFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
-SharedJSONReader json(new JSONReader());
-json->openJSON("db.json");
-json->readJSON();
+    m_boxAddListFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+    SharedJSONReader json(new JSONReader());
+    json->openJSON("db.json");
+    SystemData2DList list2dData;
+    list2dData=json->readJSON();
+    SystemData2DList::iterator it;
+    for (it= list2dData.begin(); it != list2dData.end(); it++)
+    {
+            auto m_button = sfg::Button::Create( (*it).name);
+        m_boxAddListFractals->Pack(m_button);
+    }
+
+
 }
 void GUI::RunAddFractals()
 {
@@ -40,7 +49,7 @@ void GUI::RunAddFractals()
     m_button->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::ReRun, this ) );
 
 
-     m_boxAddFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+    m_boxAddFractals = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
 
 
     /*Entry*/
@@ -57,7 +66,7 @@ void GUI::RunAddFractals()
     spIterations.requistion=sf::Vector2f( 80.f, 20.f );
 
     CreateSliders(spIterations);
-/*RuleAxiom*/
+    /*RuleAxiom*/
     SharedRuleAxiom ra(new RuleAxiom());
     ra->Add("Axiom","Rule",1,m_boxAddFractals);
     ruleList.push_back(ra);
@@ -69,14 +78,14 @@ void GUI::RunAddFractals()
     ruleList.push_back(ra3);
 
     m_boxAddFractals->Pack(m_button,false);
-/* Add List*/
-RunAddListFractals();
-std::cout<<"!!!";
+    /* Add List*/
+    RunAddListFractals();
+    std::cout<<"!!!";
 // Create a window and add the box layouter to it. Also set the window's title.
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );
 //    window->Add( box );
-AddNotebook();
+    AddNotebook();
 // Create a desktop and add the window to it.
 
     desktop.Add( window );
@@ -166,8 +175,8 @@ void GUI::CreateEntry()
 }
 void GUI::AddNotebook()
 {
-m_notebook=sfg::Notebook::Create();
-m_notebook->AppendPage( m_boxAddFractals, sfg::Label::Create( "Add new Fractal" ) );
-	m_notebook->AppendPage( m_boxAddListFractals, sfg::Label::Create( "L-system List" ) );
-window->Add( m_notebook );
+    m_notebook=sfg::Notebook::Create();
+    m_notebook->AppendPage( m_boxAddFractals, sfg::Label::Create( "Add new Fractal" ) );
+    m_notebook->AppendPage( m_boxAddListFractals, sfg::Label::Create( "L-system List" ) );
+    window->Add( m_notebook );
 }

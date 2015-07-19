@@ -737,42 +737,38 @@
 	<TurtleDrawer.h>
 	<GUI.h>
 
-1437169448 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
+1437299942 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
-	<stack>
-	<random>
 
-1437216627 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
-	<stack>
-	<string>
-	<list>
-	<iostream>
+1437299931 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
-	<cmath>
 
-1437164890 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1437300159 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
 	<algorithm>
 	<vector>
+	<list>
+	<stack>
+	<cmath>
+	<random>
+	<iostream>
 
-1437223971 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
-	<memory>
-	<SFGUI/SFGUI.hpp>
+1437300152 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<SFML/Graphics.hpp>
-	<SFGUI/Widgets.hpp>
 	<TurtleDrawer.h>
 	<JSONReader.h>
+	<RuleAxiom.h>
 
-1437227644 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1437300879 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
-1437229712 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
+1437300601 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
 	"JSONReader.h"
 
-1437224471 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
+1437300118 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
 	<string>
 	<memory>
 	<iostream>
@@ -780,6 +776,7 @@
 	<rapidjson/document.h>
 	<sstream>
 	<fstream>
+	<GUI.h>
 
 1437106090 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/filereadstream.h
 	"rapidjson.h"
@@ -879,4 +876,14 @@
 
 1437218082 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
+
+1437299160 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiom.h
+	<SFGUI/SFGUI.hpp>
+	<SFGUI/Widgets.hpp>
+	<sstream>
+	<string>
+	<memory>
+
+1437299160 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/RuleAxiom.cpp
+	<RuleAxiom.h>
 

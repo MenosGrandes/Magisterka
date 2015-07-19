@@ -2,8 +2,6 @@
 #define TURTLEDRAWER_H
 #include <SFML/Graphics.hpp>
 #include<Turtle.h>
-#include <stack>
-#include <random>
 class TurtleDrawer :public sf::Drawable, public sf::Transformable
 {
 public:

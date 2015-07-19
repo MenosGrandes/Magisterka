@@ -3,20 +3,21 @@
 [
     {
     "name": "DragonCurve",
+       "iterations":10,
     "angle":90,
+
      "rules":
-        {
-        "rulee":[{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
-        }
+        [{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
     },
     {
-    "name": "DragonCurve2",
+    "name": "Koch Curve",
+       "iterations":5,
     "angle":90,
+
      "rules":
-        {
-        "rulee":[{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
-        }
+        [{"from":"X","to":"F+F-F-F+F"}  ]
     }
+
 ]
 
 

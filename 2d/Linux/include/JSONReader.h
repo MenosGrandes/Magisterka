@@ -7,6 +7,7 @@
 #include <rapidjson/document.h>
 #include <sstream>
 #include <fstream>
+#include <GUI.h>
 using namespace rapidjson;
 
 class JSONReader
@@ -15,9 +16,12 @@ class JSONReader
         JSONReader();
         virtual ~JSONReader();
         void openJSON(const std::string& filename);
-        void readJSON();
+        SystemData2DList readJSON();
         void saveJSON(std::string fileName);
         Document doc;
+
+
+
     protected:
     private:
 

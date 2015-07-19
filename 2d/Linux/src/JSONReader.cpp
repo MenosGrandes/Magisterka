@@ -15,57 +15,60 @@ void JSONReader::openJSON(const std::string& fileName)
     char readBuffer[65536];
     FileReadStream is(fp, readBuffer, sizeof(readBuffer));
 
-doc.ParseStream<0>(is);    fclose(fp);
+    doc.ParseStream<0>(is);
+    fclose(fp);
 
 
 }
-void JSONReader::readJSON()
+SystemData2DList JSONReader::readJSON()
 {
-//for (SizeType i = 0; i < doc["l-system"].Size(); i++){
-////    printf("{x=%f, y=%s}", doc["l-system"][i]["angle"].GetDouble(), doc["l-system"][i]["name"].GetString());
-//  std::cout << doc["l-system"][i]["rules"].GetString() << std::endl;
-//}
+/*Container of Data2D*/
+    SystemData2DList dataList;
 
-
-
+    /*Get main name from JSON*/
     const Value& main = doc["list"];
 
-
+    /* Its an Array so iterate through it*/
     for (rapidjson::SizeType i = 0; i < main.Size(); i++)
     {
-            const Value& l_system = main[i];
 
-        printf("%s \n",l_system["name"].GetString());
-                printf("%f \n",l_system["angle"].GetDouble());
 
+
+
+        /*Get every object from array*/
+        const Value& l_system = main[i];
+
+            SystemData2D data;
+    data.name=l_system["name"].GetString();
+    data.iterations=static_cast<int>(l_system["iterations"].GetDouble());
+    data.angle=l_system["angle"].GetDouble();
+//        /*Get it's name*/
+//        printf("name :%s \n",l_system["name"].GetString());
+//        /*Get it's angle*/
+//        printf("angle :%f \n",l_system["angle"].GetDouble());
+//        /*Get it's iterations*/
+//        printf("iter :%f \n",l_system["iterations"].GetDouble());
+        /*Get another array inside the main array.*/
         const Value& listOfAxioms=l_system["rules"];
-//            for (rapidjson::SizeType i = 0; i < listOfAxioms.Size(); i++)
-//            {
-//                    const Value& fromTo = listOfAxioms[i];
-//
-//        printf("%s \n",fromTo["from"].GetString());
-//        printf("%s \n",fromTo["to"].GetString());
-//            }
+
+        SharedRuleList ruleList;
+
+        /*Iterate through the second array(array in array)*/
+        for (rapidjson::SizeType i = 0; i < listOfAxioms.Size(); i++)
+        {
+
+            /*Get object from the array*/
+            const Value& fromTo = listOfAxioms[i];
+            /*Get "from" and "to" axioms*/
+//            printf("%s \n",fromTo["from"].GetString());
+//            printf("%s \n",fromTo["to"].GetString());
+            SharedRule rule(new Rule(fromTo["from"].GetString(),fromTo["to"].GetString()));
+            ruleList.push_back(rule);
+        }
+        data.ruleList=ruleList;
+        dataList.push_back(data);
     }
-
-
-//    const Value& rules = main["rules"];
-//        const Value& rulee = main["rulee"];
-
-
-//    // rapidjson uses SizeType instead of size_t.
-//    for (rapidjson::SizeType i = 0; i < rulee.Size(); i++)
-//    {
-//        const Value& fromTo = rulee[i];
-//
-//        printf("%s \n",fromTo["from"].GetString());
-//        printf("%s \n",fromTo["to"].GetString());
-//
-//    }
-//        printf("%s \n",main["name"].GetString());
-
-
-
+return dataList;
 
 }
 

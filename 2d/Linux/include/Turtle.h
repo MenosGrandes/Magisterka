@@ -1,12 +1,7 @@
 #ifndef TURTLE_H
 #define TURTLE_H
 
-#include <stack>
-#include <string>
-#include <list>
-#include <iostream>
 #include <Rule.h>
-#include <cmath>
 
 class Turtle
 {
