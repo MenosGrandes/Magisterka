@@ -99,7 +99,6 @@ void GUI::RunAddFractals()
     m_boxAddFractals->Pack(m_button,false);
     /* Add List*/
     RunAddListFractals();
-    std::cout<<"!!!";
 // Create a window and add the box layouter to it. Also set the window's title.
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );

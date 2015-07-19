@@ -25,6 +25,7 @@ private:
     unsigned char m_iterations;
     std::list<SharedRule> m_rules;
 
+
 };
 typedef std::shared_ptr<Turtle> SharedTurtle;
 

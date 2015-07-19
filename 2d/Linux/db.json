@@ -1,41 +1,148 @@
 {
-"list":
-[
+  "list": [
     {
-    "name": "DragonCurve",
-       "iterations":10,
-    "angle":90,
-    "start":"FX",
-     "rules":
-        [{"from":"X","to":"X+YF+"},{"from":"Y","to":"-FX-Y"}  ]
-    },
-    {
-    "name": "Koch Curve",
-       "iterations":5,
-    "angle":90,
-    "start":"F",
-     "rules":
-        [{"from":"F","to":"F+F-F-F+F"}  ]
-    },
-    {
-    "name": "Sierpinski triangle",
-       "iterations":6,
-    "angle":120,
-    "start":"F-G-G",
-     "rules":
-        [{"from":"F","to":"F-G+F+G-F"},{"from":"G","to":"GG"}  ]
-    },
+      "name": "DragonCurve",
+      "iterations": 10,
+      "angle": 90,
+      "start": "FX",
+      "rules": [
         {
-    "name": "Fractal plant",
-       "iterations":6,
-    "angle":25,
-    "start":"X",
-     "rules":
-        [{"from":"F","to":"FF"},{"from":"X","to":"F-[[X]+X]+F[+FX]-X"}  ]
+          "from": "X",
+          "to": "X+YF+"
+        },
+        {
+          "from": "Y",
+          "to": "-FX-Y"
+        }
+      ]
+    },
+    {
+      "name": "Koch Curve",
+      "iterations": 5,
+      "angle": 90,
+      "start": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F+F-F-F+F"
+        }
+      ]
+    },
+    {
+      "name": "Sierpinski triangle",
+      "iterations": 6,
+      "angle": 120,
+      "start": "F-G-G",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F-G+F+G-F"
+        },
+        {
+          "from": "G",
+          "to": "GG"
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant",
+      "iterations": 6,
+      "angle": 25,
+      "start": "X",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF"
+        },
+        {
+          "from": "X",
+          "to": "F-[[X]+X]+F[+FX]-X"
+        }
+      ]
+    },
+    {
+      "name": "Quadratic Koch island",
+      "iterations": 2,
+      "angle": 90,
+      "start": "F-F-F-F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant 2",
+      "iterations": 5,
+      "angle": 20,
+      "start": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F[+F]F[-F][F]"
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant 3",
+      "iterations": 4,
+      "angle": 22.5,
+      "start": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF-[-F+F+F]+[+F-F-F]"
+        }
+      ]
+    },
+    {
+      "name": "!!Fractal plant 4",
+      "iterations": 7,
+      "angle": 20,
+      "start": "X",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF"
+        },
+        {
+          "from": "X",
+          "to": "F[+X]F[-X]+X"
+        }
+      ]
+    },
+    {
+      "name": "! Hexagonal Gosper curve 2",
+      "iterations": 4,
+      "angle": 60,
+      "start": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F-X--X+F++FF+X-"
+        },
+        {
+          "from": "X",
+          "to": "+F-XX--X-F++F+X"
+        }
+      ]
+    },
+    {
+      "name": "Koch snowflake",
+      "iterations": 4,
+      "angle": 60,
+      "start": "F++F++F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F-F++F-F"
+        },
+        {
+          "from": "X",
+          "to": "FF"
+        }
+      ]
     }
-
-
-]
-
-
+  ]
 }

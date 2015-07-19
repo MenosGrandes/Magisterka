@@ -24,8 +24,15 @@ Turtle& Turtle::operator=(const Turtle& rhs)
 }
 void Turtle::compute()
 {
+
     std::string temp;
     temp="";
+#ifdef DEBUG
+    sf::Clock clock; // starts the clock
+    sf::Time elapsed1 = clock.getElapsedTime();
+    std::cout << elapsed1.asMilliseconds() << std::endl;
+    clock.restart();
+#endif // DEBUG
     for(int i1=0; i1<m_iterations; i1++)
     {
 //        std::cout<<"ITERATION :"<<i1<<std::endl;
@@ -71,6 +78,11 @@ void Turtle::compute()
         // std::cout<<"ENDED :"<<m_result<<std::endl;
         // std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
+    #ifdef DEBUG
+    sf::Time elapsed2 = clock.getElapsedTime();
+    std::cout << elapsed2.asMilliseconds() << std::endl;
+    #endif // DEBUG
+
 }
 
 
@@ -99,5 +111,5 @@ unsigned int Turtle::GetIterations()
 }
 void Turtle::Reset()
 {
-this->m_rules.clear();
+    this->m_rules.clear();
 }

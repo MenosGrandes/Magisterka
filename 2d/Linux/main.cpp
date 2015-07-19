@@ -10,7 +10,7 @@ int main()
 
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!",sf::Style::Fullscreen);
     /*
     SharedTurtle, aka std::shared_ptr<Turtle>, is used to calculate the string of the L-System.
     Turtle calculates the string from SharedRule, aka std::shared_ptr<Rule>. SharedRule contains 2 strings, from and to.

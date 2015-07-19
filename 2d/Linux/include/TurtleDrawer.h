@@ -14,10 +14,10 @@ public:
     void show()
     {
         std::cout<<m_vertices.getVertexCount()<<"\n";
-//        for(int i=0; i<m_vertices.getVertexCount(); i++)
-//        {
-//            std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
-//        }
+        for(int i=0; i<m_vertices.getVertexCount(); i++)
+        {
+            std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
+        }
     }
 void computeDraw(std::string initializer="",unsigned int length=10, float angle=0);
 
@@ -40,6 +40,7 @@ private:
     void translate(sf::Vector2f &origin,sf::Vector2f rotation,float lenght);
     float radToDegree(float degree);
     sf::Color randomColor();
+    void computeInThread(std::string initializer="",unsigned int length=10, float angle=0);
 
 };
 typedef std::shared_ptr<TurtleDrawer> SharedTurtleDrawer;

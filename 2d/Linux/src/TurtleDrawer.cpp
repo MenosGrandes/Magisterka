@@ -10,8 +10,22 @@ TurtleDrawer::~TurtleDrawer()
 {
     //dtor
 }
+void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, float angle)
+{
+
+}
 void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)
 {
+#ifdef DEBUG
+    std::cout<<"\nSTART COMPUTING\n";
+sf::Clock clock; // starts the clock
+
+sf::Time elapsed1 = clock.getElapsedTime();
+std::cout << elapsed1.asMilliseconds() << std::endl;
+clock.restart();
+#endif // DEBUG
+
+
     /*
        Stack to get the PosRot values
        */
@@ -37,7 +51,6 @@ void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, floa
     sf::Vertex v(sf::Vector2f(current.first),randomColor());
     m_vertices.append(v);
 
-    std::cout<<"\nSTART COMPUTING\n";
 
     /*
     For every  char from initializer string check
@@ -104,7 +117,12 @@ void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, floa
 //        std::cout<<".";
 
     }
+    #ifdef DEBUG
+    sf::Time elapsed2 = clock.getElapsedTime();
+std::cout << elapsed2.asMilliseconds() << std::endl;
     std::cout<<"\nEND COMPUTING\n";
+    #endif // DEBUG
+
 }
 
 /*

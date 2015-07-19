@@ -10,6 +10,8 @@
 #include <cmath>
 #include <random>
 #include <iostream>
+#include <thread>
+#include <SFML/System.hpp>
 class Rule
 {
 public:
