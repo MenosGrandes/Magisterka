@@ -12,10 +12,6 @@ TurtleDrawer::~TurtleDrawer()
 }
 void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, float angle)
 {
-
-}
-void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)
-{
 #ifdef DEBUG
     std::cout<<"\nSTART COMPUTING\n";
 sf::Clock clock; // starts the clock
@@ -24,9 +20,7 @@ sf::Time elapsed1 = clock.getElapsedTime();
 std::cout << elapsed1.asMilliseconds() << std::endl;
 clock.restart();
 #endif // DEBUG
-
-
-    /*
+ /*
        Stack to get the PosRot values
        */
     std::stack<PosRot> posRotStack;
@@ -122,6 +116,13 @@ clock.restart();
 std::cout << elapsed2.asMilliseconds() << std::endl;
     std::cout<<"\nEND COMPUTING\n";
     #endif // DEBUG
+
+}
+void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)
+{
+
+std::thread drawInThread(&TurtleDrawer::computeInThread,this,initializer,length,angle);
+drawInThread.detach();
 
 }
 

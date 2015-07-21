@@ -737,20 +737,20 @@
 1437326160 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1437218609 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1437498807 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
 	<GUI.h>
 
-1437299942 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
+1437499394 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
 
-1437299931 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1437420541 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
 
-1437314441 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1437420541 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -761,6 +761,8 @@
 	<cmath>
 	<random>
 	<iostream>
+	<thread>
+	<SFML/System.hpp>
 
 1437312791 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<SFML/Graphics.hpp>
@@ -768,7 +770,7 @@
 	<JSONReader.h>
 	<RuleAxiom.h>
 
-1437313674 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1437420541 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
 1437314526 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
@@ -877,10 +879,10 @@
 1437106090 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1437216663 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1437420541 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
-1437315043 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+1437420541 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
 1437299160 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiom.h
@@ -902,4 +904,29 @@
 
 1437321755 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/RuleAxiom.cpp
 	<RuleAxiom.h>
+
+1437421187 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/AnimatedSprite.cpp
+	"AnimatedSprite.h"
+	"AnimatedSprite.h"
+
+1437421179 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/AnimatedSprite.h
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/System/Vector2.hpp>
+	"Animation.h"
+
+1437421131 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Animation.h
+	<vector>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1437420967 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Animation.cpp
+	"Animation.hpp"
+
+1437421113 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Animation.hpp
+	<vector>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Texture.hpp>
 

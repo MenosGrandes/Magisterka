@@ -11,6 +11,7 @@ public:
     virtual ~TurtleDrawer();
 
     unsigned int size();
+#ifdef DEBUG
     void show()
     {
         std::cout<<m_vertices.getVertexCount()<<"\n";
@@ -19,6 +20,7 @@ public:
             std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
         }
     }
+    #endif // DEBUG
 void computeDraw(std::string initializer="",unsigned int length=10, float angle=0);
 
 protected:
@@ -26,16 +28,9 @@ private:
     sf::VertexArray m_vertices;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        // apply the transform
         states.transform *= getTransform();
-
-        // apply the tileset texture
-
-
-        // draw the vertex array
         target.draw(m_vertices, states);
     }
-    // sf::Vector2f rotate(sf::Vector2f origin,float angleOfRotation);
     void rotate(sf::Vector2f &origin,float angleOfRotation);
     void translate(sf::Vector2f &origin,sf::Vector2f rotation,float lenght);
     float radToDegree(float degree);

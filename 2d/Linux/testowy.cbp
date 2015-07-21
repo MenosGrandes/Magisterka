@@ -45,6 +45,8 @@
 			<Add library="libsfgui" />
 		</Linker>
 		<Unit filename="db.json" />
+		<Unit filename="include/AnimatedSprite.h" />
+		<Unit filename="include/Animation.h" />
 		<Unit filename="include/GUI.h" />
 		<Unit filename="include/JSONReader.h" />
 		<Unit filename="include/Rule.h" />
@@ -80,6 +82,8 @@
 		<Unit filename="include/rapidjson/stringbuffer.h" />
 		<Unit filename="include/rapidjson/writer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/AnimatedSprite.cpp" />
+		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/GUI.cpp" />
 		<Unit filename="src/JSONReader.cpp" />
 		<Unit filename="src/Rule.cpp" />
