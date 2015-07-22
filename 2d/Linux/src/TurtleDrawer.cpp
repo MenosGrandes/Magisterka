@@ -12,6 +12,9 @@ TurtleDrawer::~TurtleDrawer()
 }
 void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, float angle)
 {
+
+
+std::lock_guard<std::mutex>lock(drawningMutex);
 #ifdef DEBUG
     std::cout<<"\nSTART COMPUTING\n";
 sf::Clock clock; // starts the clock

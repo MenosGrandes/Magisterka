@@ -33,10 +33,7 @@ SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines fro
     Create gui and pass an SharedTurtleDrawer and SharedTurtle, to recalculate the whole Rules and Axioms, if they were added at GUI side.
     */
     SharedGUI gui(new GUI(t,td));
-    /*
-    Add all gui widgets
-    */
-    gui->RunAddFractals();
+
     /*
     DRAWING!
     */

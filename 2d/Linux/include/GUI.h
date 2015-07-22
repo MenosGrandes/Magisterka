@@ -4,19 +4,21 @@
 #include <TurtleDrawer.h>
 #include <JSONReader.h>
 #include <RuleAxiom.h>
+#include <mutex>
 
 class GUI
 {
 public:
 // Our button click handler.
+/*M_SFGUI is needed to create main actions witch gui*/
     sfg::SFGUI m_sfgui;
-    sfg::Label::Ptr label;
-    sfg::Desktop desktop;
-    GUI(SharedTurtle t,SharedTurtleDrawer td);
-    void RunAddFractals();
-    void RunAddListFractals();
 
-    void ReRun();
+/*SFGUI Desktop used to create a desktop*/
+    sfg::Desktop desktop;
+/*Constructor using SharedTurtle and SharedTurtleDrawer to compute turtle graphics*/
+    GUI(SharedTurtle t,SharedTurtleDrawer td);
+    /* */
+
 
 private:
     /*Struct that contains the preferences for sliders*/
@@ -30,10 +32,6 @@ private:
         sf::Vector2f requistion =sf::Vector2f( 80.f, 20.f );
         std::string label="";
     };
-
-
-
-
     sfg::Window::Ptr window;
     sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelStartAxiom ;
     sfg::Adjustment::Ptr m_scaleIterations;
@@ -50,7 +48,10 @@ private:
     void CreateEntry();
     void AddNotebook();
     void DrawFractalFromList(SharedSystemData2D data);
+    void RunAddFractals();
+    void RunAddListFractals();
 
+    void ReRun();
     SharedRuleAxiomList ruleList;
 
 

@@ -56,7 +56,9 @@ void Turtle::compute()
                 if(it->get()->getFrom().compare(compareString) == 0)
                 {
                     temp+=it->get()->getTo();
-//                    std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
+                    #ifdef DEBUG
+                    std::cout<<"CHANGED FROM "<<it->get()->getFrom()<<" TO "<<it->get()->getTo()<<std::endl;
+                    #endif // DEBUG
                     found=true;
 
                 }

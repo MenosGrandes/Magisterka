@@ -2,6 +2,7 @@
 #define TURTLEDRAWER_H
 #include <SFML/Graphics.hpp>
 #include<Turtle.h>
+#include <mutex>
 class TurtleDrawer :public sf::Drawable, public sf::Transformable
 {
 public:
@@ -36,6 +37,7 @@ private:
     float radToDegree(float degree);
     sf::Color randomColor();
     void computeInThread(std::string initializer="",unsigned int length=10, float angle=0);
+    std::mutex drawningMutex;
 
 };
 typedef std::shared_ptr<TurtleDrawer> SharedTurtleDrawer;
