@@ -9,7 +9,7 @@ int main()
     sf::Vector2f prev;
 
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
-
+    view2.setRotation(90);
     sf::RenderWindow window(sf::VideoMode(1366, 768), "SFML works!",sf::Style::Default);
     /*
     SharedTurtle, aka std::shared_ptr<Turtle>, is used to calculate the string of the L-System.

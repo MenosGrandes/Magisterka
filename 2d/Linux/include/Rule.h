@@ -33,7 +33,7 @@ class SystemData2D
 {
 public :
     SystemData2D(
-        std::string name,
+   std::string name,
         std::string start,
         int iterations,
         float angle,

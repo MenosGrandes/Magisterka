@@ -60,18 +60,7 @@
         }
       ]
     },
-    {
-      "name": "Quadratic Koch island",
-      "iterations": 2,
-      "angle": 90,
-      "start": "F-F-F-F",
-      "rules": [
-        {
-          "from": "F",
-          "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"
-        }
-      ]
-    },
+
     {
       "name": "Fractal plant 2",
       "iterations": 5,
@@ -97,7 +86,7 @@
       ]
     },
     {
-      "name": "!!Fractal plant 4",
+      "name": "Fractal plant 4",
       "iterations": 7,
       "angle": 20,
       "start": "X",
@@ -113,7 +102,35 @@
       ]
     },
     {
-      "name": "! Hexagonal Gosper curve 2",
+      "name": "Fractal plant 5",
+      "iterations": 5,
+      "angle": 25.7,
+      "start": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F[+F]F[-F]F"
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant 6",
+      "iterations": 7,
+      "angle": 25.7,
+      "start": "X",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF"
+        },
+        {
+          "from": "X",
+          "to": "F[+X][-X]FX"
+        }
+      ]
+    },
+    {
+      "name": "Hexagonal Gosper curve 2",
       "iterations": 4,
       "angle": 60,
       "start": "F",
@@ -141,6 +158,18 @@
         {
           "from": "X",
           "to": "FF"
+        }
+      ]
+    },
+    {
+      "name": "Quadratic Koch island",
+      "iterations": 2,
+      "angle": 90,
+      "start": "F-F-F-F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"
         }
       ]
     }

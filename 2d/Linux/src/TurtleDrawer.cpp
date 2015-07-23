@@ -14,18 +14,18 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
 {
 
 
-std::lock_guard<std::mutex>lock(drawningMutex);
+    std::lock_guard<std::mutex>lock(drawningMutex);
 #ifdef DEBUG
     std::cout<<"\nSTART COMPUTING\n";
-sf::Clock clock; // starts the clock
+    sf::Clock clock; // starts the clock
 
-sf::Time elapsed1 = clock.getElapsedTime();
-std::cout << elapsed1.asMilliseconds() << std::endl;
-clock.restart();
+    sf::Time elapsed1 = clock.getElapsedTime();
+    std::cout << elapsed1.asMilliseconds() << std::endl;
+    clock.restart();
 #endif // DEBUG
- /*
-       Stack to get the PosRot values
-       */
+    /*
+          Stack to get the PosRot values
+          */
     std::stack<PosRot> posRotStack;
     /*
     PosRot ofcurrent position and current rotation. Both set to default values
@@ -34,7 +34,7 @@ clock.restart();
     */
     PosRot current;
     current.first=sf::Vector2f(100,100);
-    current.second=sf::Vector2f(1,1);
+    current.second=sf::Vector2f(1,0);
 
 
     /*
@@ -91,6 +91,7 @@ clock.restart();
             posRotStack.pop();
             break;
         case 'G' :
+        case 'X':
         case 'F':
             /*
             Translate current point by length
@@ -114,18 +115,18 @@ clock.restart();
 //        std::cout<<".";
 
     }
-    #ifdef DEBUG
+#ifdef DEBUG
     sf::Time elapsed2 = clock.getElapsedTime();
-std::cout << elapsed2.asMilliseconds() << std::endl;
+    std::cout << elapsed2.asMilliseconds() << std::endl;
     std::cout<<"\nEND COMPUTING\n";
-    #endif // DEBUG
+#endif // DEBUG
 
 }
 void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)
 {
 
-std::thread drawInThread(&TurtleDrawer::computeInThread,this,initializer,length,angle);
-drawInThread.detach();
+    std::thread drawInThread(&TurtleDrawer::computeInThread,this,initializer,length,angle);
+    drawInThread.detach();
 
 }
 
