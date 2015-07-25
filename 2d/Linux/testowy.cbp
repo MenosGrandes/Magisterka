@@ -53,7 +53,7 @@
 		<Unit filename="db.json">
 			<Option virtualFolder="JSON/" />
 		</Unit>
-		<Unit filename="include/Context.h">
+		<Unit filename="include/ContextAxiom.h">
 			<Option virtualFolder="Rules/" />
 		</Unit>
 		<Unit filename="include/GUI.h">

@@ -40,13 +40,15 @@ void GUI::DrawFractalFromList(SharedSystemData2D data)
     SharedRuleList::iterator it;
     for (it= data->ruleList.begin(); it != data->ruleList.end(); it++)
     {
-        SharedProbabilityAxiomSet axiomSet=(*it)->getAxiomSet();
-        SharedProbabilityAxiomSet::iterator iter;
-        for(iter=axiomSet.begin();iter!=axiomSet.end();iter++)
-        {
-        std::cout<<(*iter)->get_m_to()<<"\n";
-        }
-SharedRule rule(new Rule((*it)->getFrom(),axiomSet));
+//        SharedProbabilityAxiomSet axiomSet=(*it)->getAxioms().probabilitySet;
+//        SharedContextProbabilityAxiomSet axiomSet;
+//        axiomSet.context=
+//        SharedProbabilityAxiomSet::iterator iter;
+//        for(iter=axiomSet.begin();iter!=axiomSet.end();iter++)
+//        {
+//        std::cout<<(*iter)->get_m_to()<<"\n";
+//        }
+        SharedRule rule(new Rule((*it)->getFrom(),(*it)->getAxiomSet()));
 
         /*Add SharedRule to the SharedTurtle rule list.*/
         m_t->AddRule(rule);

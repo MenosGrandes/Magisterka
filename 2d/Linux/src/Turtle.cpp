@@ -57,13 +57,13 @@ void Turtle::compute()
             for (it= m_rules.begin(); it != m_rules.end(); it++)
             {
                 /*If there is only one axiom*/
-                if(it->get()->getAxiomSet().size()==1)
+                if(it->get()->getAxiomSet()->probabilitySet.size()==1)
                 {
 
                     if(it->get()->getFrom().compare(compareString) == 0)
                     {
-                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet();
-
+//                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet();
+                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet()->probabilitySet;
                         temp+=(*axiomSet.begin())->get_m_to();
 #ifdef DEBUG
                    std::cout<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_m_to()<<std::endl;
@@ -89,7 +89,7 @@ void Turtle::compute()
                         auto rando = std::bind(std::uniform_int_distribution<int>(0,100),
                                                std::mt19937(seed));
                         /*Get AxiomSET*/
-                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet();
+                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet()->probabilitySet;
                         /*Create iterator for axiomSet*/
                         SharedProbabilityAxiomSet::iterator iterat;
                         /*Get random number*/

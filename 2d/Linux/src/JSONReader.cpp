@@ -58,7 +58,8 @@ SharedSystemData2DList JSONReader::readJSON()
         for (rapidjson::SizeType i = 0; i < listOfAxioms.Size(); i++)
         {
 
-            SharedProbabilityAxiomSet axiomSet;
+            SharedProbabilityAxiomSet probabilityAxiomSet;
+            SharedContextAxiomSet contextAxiomSet;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
 #ifdef DEBUG
@@ -66,21 +67,32 @@ SharedSystemData2DList JSONReader::readJSON()
             std::cout<<"FROM: "<<from["from"].GetString()<<"\n";
 #endif // DEBUG
 
-            const Value& axioms = from["list"];
-            for (rapidjson::SizeType i = 0; i < axioms.Size(); i++)
+            const Value& axiomsProbability = from["listProbability"];
+            for (rapidjson::SizeType i = 0; i < axiomsProbability.Size(); i++)
             {
-                const Value& axiom = axioms[i];
+                const Value& axiom = axiomsProbability[i];
                 SharedProbabilityAxiom probabilityAxiom(new ProbabilityAxiom(axiom["to"].GetString(),axiom["probability"].GetDouble()));
 #ifdef DEBUG
                 std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
                 std::cout<<"PROBABILITY: "<<axiom["probability"].GetDouble()<<"\n";
 #endif // DEBUG
-                axiomSet.insert(probabilityAxiom);
+                probabilityAxiomSet.insert(probabilityAxiom);
             }
 #ifdef DEBUG
             std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
 #endif // DEBUG
-            SharedRule rule(new Rule(from["from"].GetString(),axiomSet));
+
+            const Value& axiomsContext = from["listContext"];
+            for (rapidjson::SizeType i = 0; i < axiomsContext.Size(); i++)
+            {
+                const Value& axiom = axiomsContext[i];
+
+                SharedContextAxiom contextAxiom(new ContextAxiom (axiom["preceded"].GetString(),axiom["fallowed"].GetString()));
+                contextAxiomSet.insert(contextAxiom);
+            }
+SharedContextProbabilityAxiomSet axioms(new ContextProbabilityAxiomSet(contextAxiomSet,probabilityAxiomSet));
+
+            SharedRule rule(new Rule(from["from"].GetString(),axioms));
             ruleList.push_back(rule);
 
         }

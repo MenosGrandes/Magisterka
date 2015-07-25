@@ -3,16 +3,19 @@
 #include <memory>
 #include <string>
 class ContextAxiom
+{public :
+ContextAxiom(std::string preceded,std::string fallowed)
 {
-void set_m_preceded(std::string preceded){this->m_preceded=preceded};
-void set_m_fallowed(std::string fallowed){this->m_fallowed=fallowed};
-void set_m_current(std::string current){this->m_current=current};
+this->m_preceded=preceded;
+this->m_fallowed=fallowed;
+};
+void set_m_preceded(std::string preceded){this->m_preceded=preceded;}
+void set_m_fallowed(std::string fallowed){this->m_fallowed=fallowed;}
 private :
 std::string m_preceded;
 std::string m_fallowed;
-std::string m_current;
 };
 typedef std::shared_ptr<ContextAxiom> SharedContextAxiom;
-typedef std::list<SharedContextAxiom>SharedContextAxiomList;
+typedef std::set<SharedContextAxiom>SharedContextAxiomSet;
 
 #endif // CONTEXT_H

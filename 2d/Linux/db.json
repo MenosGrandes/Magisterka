@@ -8,7 +8,7 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "F[+F]F[-F]F",
               "probability": 33
@@ -21,7 +21,7 @@
               "to": "F[-F]F",
               "probability": 33
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -33,12 +33,12 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "F[+F]F[-F][F]",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -50,12 +50,12 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "FF-[-F+F+F]+[+F-F-F]",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -67,21 +67,21 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "FF",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "F[+X]F[-X]+X",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -93,21 +93,21 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "FF",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "F[+X][-X]FX",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -119,21 +119,21 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "FF",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "F-[[X]+X]+F[+FX]-X",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -145,21 +145,21 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "F-X--X+F++FF+X-",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "+F-XX--X-F++F+X",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -171,21 +171,21 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "F-F++F-F",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "FF",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -197,12 +197,12 @@
       "rules": [
         {
           "from": "F",
-          "list": [
+          "listProbability": [
             {
               "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     },
@@ -214,21 +214,21 @@
       "rules": [
         {
           "from": "X",
-          "list": [
+          "listProbability": [
             {
               "to": "X+YF+",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         },
         {
           "from": "Y",
-          "list": [
+          "listProbability": [
             {
               "to": "-FX-Y",
               "probability": 100
             }
-          ]
+          ],"listContext": []
         }
       ]
     }

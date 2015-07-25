@@ -13,19 +13,32 @@
 #include <thread>
 #include <SFML/System.hpp>
 #include <ProbabilityAxiom.h>
+#include <ContextAxiom.h>
 
+/*ContextProbabilityAxiomSet*/
+class ContextProbabilityAxiomSet
+{public :
+ContextProbabilityAxiomSet(SharedContextAxiomSet context,SharedProbabilityAxiomSet probabilitySet)
+{
+this->context=context;
+this->probabilitySet=probabilitySet;
+}
+SharedContextAxiomSet context;
+SharedProbabilityAxiomSet probabilitySet;
+};
+typedef std::shared_ptr<ContextProbabilityAxiomSet>SharedContextProbabilityAxiomSet;
 /* RULE */
 class Rule
 {
 public:
-    Rule(std::string from,SharedProbabilityAxiomSet axiomSet);
+    Rule(std::string from,SharedContextProbabilityAxiomSet axiomSet);
     virtual ~Rule();
     std::string getFrom();
-    SharedProbabilityAxiomSet getAxiomSet();
-    void setAxiomSet(SharedProbabilityAxiomSet axiom);
+    SharedContextProbabilityAxiomSet getAxiomSet();
+    void setAxiomSet(SharedContextProbabilityAxiomSet axioms);
 private:
     std::string m_from;
-    SharedProbabilityAxiomSet axiomSet;
+    SharedContextProbabilityAxiomSet m_axioms;
 };
 typedef std::shared_ptr<Rule> SharedRule;
 typedef std::list<SharedRule> SharedRuleList;
