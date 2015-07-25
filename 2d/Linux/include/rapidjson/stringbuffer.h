@@ -1,5 +1,5 @@
 // Tencent is pleased to support the open source community by making RapidJSON available.
-// 
+//
 // Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
 //
 // Licensed under the MIT License (the "License"); you may not use this file except
@@ -7,9 +7,9 @@
 //
 // http://opensource.org/licenses/MIT
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
 #ifndef RAPIDJSON_STRINGBUFFER_H_
@@ -32,7 +32,8 @@ RAPIDJSON_NAMESPACE_BEGIN
     \note implements Stream concept
 */
 template <typename Encoding, typename Allocator = CrtAllocator>
-class GenericStringBuffer {
+class GenericStringBuffer
+{
 public:
     typedef typename Encoding::Ch Ch;
 
@@ -40,27 +41,42 @@ public:
 
 #if RAPIDJSON_HAS_CXX11_RVALUE_REFS
     GenericStringBuffer(GenericStringBuffer&& rhs) : stack_(std::move(rhs.stack_)) {}
-    GenericStringBuffer& operator=(GenericStringBuffer&& rhs) {
+    GenericStringBuffer& operator=(GenericStringBuffer&& rhs)
+    {
         if (&rhs != this)
             stack_ = std::move(rhs.stack_);
         return *this;
     }
 #endif
 
-    void Put(Ch c) { *stack_.template Push<Ch>() = c; }
+    void Put(Ch c)
+    {
+        *stack_.template Push<Ch>() = c;
+    }
     void Flush() {}
 
-    void Clear() { stack_.Clear(); }
-    void ShrinkToFit() {
+    void Clear()
+    {
+        stack_.Clear();
+    }
+    void ShrinkToFit()
+    {
         // Push and pop a null terminator. This is safe.
         *stack_.template Push<Ch>() = '\0';
         stack_.ShrinkToFit();
         stack_.template Pop<Ch>(1);
     }
-    Ch* Push(size_t count) { return stack_.template Push<Ch>(count); }
-    void Pop(size_t count) { stack_.template Pop<Ch>(count); }
+    Ch* Push(size_t count)
+    {
+        return stack_.template Push<Ch>(count);
+    }
+    void Pop(size_t count)
+    {
+        stack_.template Pop<Ch>(count);
+    }
 
-    const Ch* GetString() const {
+    const Ch* GetString() const
+    {
         // Push and pop a null terminator. This is safe.
         *stack_.template Push<Ch>() = '\0';
         stack_.template Pop<Ch>(1);
@@ -68,7 +84,10 @@ public:
         return stack_.template Bottom<Ch>();
     }
 
-    size_t GetSize() const { return stack_.GetSize(); }
+    size_t GetSize() const
+    {
+        return stack_.GetSize();
+    }
 
     static const size_t kDefaultCapacity = 256;
     mutable internal::Stack<Allocator> stack_;
@@ -84,7 +103,8 @@ typedef GenericStringBuffer<UTF8<> > StringBuffer;
 
 //! Implement specialized version of PutN() with memset() for better performance.
 template<>
-inline void PutN(GenericStringBuffer<UTF8<> >& stream, char c, size_t n) {
+inline void PutN(GenericStringBuffer<UTF8<> >& stream, char c, size_t n)
+{
     std::memset(stream.stack_.Push<char>(n), c, n * sizeof(c));
 }
 

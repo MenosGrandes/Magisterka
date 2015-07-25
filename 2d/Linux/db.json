@@ -38,7 +38,13 @@
               "to": "F[+F]F[-F][F]",
               "probability": 100
             }
-          ],"listContext": []
+          ],"listContext": [
+          {
+          "preceded":"[+F]",
+          "fallowed":"[-F]",
+          "to":"F[+F]F[-F][F]"
+          }
+          ]
         }
       ]
     },
@@ -79,7 +85,15 @@
           "listProbability": [
             {
               "to": "F[+X]F[-X]+X",
-              "probability": 100
+              "probability": 33
+            },
+            {
+            "to": "F[-X]F[+X]+X",
+              "probability": 33
+            },
+            {
+               "to": "F[-X]F[-X]-X",
+              "probability": 34
             }
           ],"listContext": []
         }

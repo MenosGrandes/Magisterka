@@ -59,7 +59,7 @@ SharedSystemData2DList JSONReader::readJSON()
         {
 
             SharedProbabilityAxiomSet probabilityAxiomSet;
-            SharedContextAxiomSet contextAxiomSet;
+            SharedContextAxiomSet2L contextAxiomSet;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
 #ifdef DEBUG
@@ -87,10 +87,14 @@ SharedSystemData2DList JSONReader::readJSON()
             {
                 const Value& axiom = axiomsContext[i];
 
-                SharedContextAxiom contextAxiom(new ContextAxiom (axiom["preceded"].GetString(),axiom["fallowed"].GetString()));
+                SharedContextAxiom2L contextAxiom(new ContextAxiom2L (axiom["preceded"].GetString(),axiom["fallowed"].GetString(),axiom["to"].GetString()));
                 contextAxiomSet.insert(contextAxiom);
+                #ifdef DEBUG
+                std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
+                std::cout<<"CONTEXT: "<<axiom["preceded"].GetString()<<" "<<axiom["fallowed"].GetString()<<"\n";
+#endif // DEBUG
             }
-SharedContextProbabilityAxiomSet axioms(new ContextProbabilityAxiomSet(contextAxiomSet,probabilityAxiomSet));
+            SharedContextProbabilityAxiomSet axioms(new ContextProbabilityAxiomSet(contextAxiomSet,probabilityAxiomSet));
 
             SharedRule rule(new Rule(from["from"].GetString(),axioms));
             ruleList.push_back(rule);

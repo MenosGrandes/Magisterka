@@ -1,5 +1,5 @@
 // Tencent is pleased to support the open source community by making RapidJSON available.
-// 
+//
 // Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
 //
 // Licensed under the MIT License (the "License"); you may not use this file except
@@ -7,9 +7,9 @@
 //
 // http://opensource.org/licenses/MIT
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
 // This is a C++ header-only implementation of Grisu2 algorithm from the publication:
@@ -24,23 +24,27 @@
 #include "ieee754.h"
 
 RAPIDJSON_NAMESPACE_BEGIN
-namespace internal {
+namespace internal
+{
 
 #ifdef __GNUC__
 RAPIDJSON_DIAG_PUSH
 RAPIDJSON_DIAG_OFF(effc++)
 #endif
 
-inline void GrisuRound(char* buffer, int len, uint64_t delta, uint64_t rest, uint64_t ten_kappa, uint64_t wp_w) {
+inline void GrisuRound(char* buffer, int len, uint64_t delta, uint64_t rest, uint64_t ten_kappa, uint64_t wp_w)
+{
     while (rest < wp_w && delta - rest >= ten_kappa &&
-           (rest + ten_kappa < wp_w ||  /// closer
-            wp_w - rest > rest + ten_kappa - wp_w)) {
+            (rest + ten_kappa < wp_w ||  /// closer
+             wp_w - rest > rest + ten_kappa - wp_w))
+    {
         buffer[len - 1]--;
         rest += ten_kappa;
     }
 }
 
-inline unsigned CountDecimalDigit32(uint32_t n) {
+inline unsigned CountDecimalDigit32(uint32_t n)
+{
     // Simple pure C++ implementation was faster than __builtin_clz version in this situation.
     if (n < 10) return 1;
     if (n < 100) return 2;
@@ -56,7 +60,8 @@ inline unsigned CountDecimalDigit32(uint32_t n) {
     return 9;
 }
 
-inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buffer, int* len, int* K) {
+inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buffer, int* len, int* K)
+{
     static const uint32_t kPow10[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
     const DiyFp one(uint64_t(1) << -Mp.e, Mp.e);
     const DiyFp wp_w = Mp - W;
@@ -65,25 +70,56 @@ inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buff
     int kappa = CountDecimalDigit32(p1); // kappa in [0, 9]
     *len = 0;
 
-    while (kappa > 0) {
+    while (kappa > 0)
+    {
         uint32_t d = 0;
-        switch (kappa) {
-            case  9: d = p1 /  100000000; p1 %=  100000000; break;
-            case  8: d = p1 /   10000000; p1 %=   10000000; break;
-            case  7: d = p1 /    1000000; p1 %=    1000000; break;
-            case  6: d = p1 /     100000; p1 %=     100000; break;
-            case  5: d = p1 /      10000; p1 %=      10000; break;
-            case  4: d = p1 /       1000; p1 %=       1000; break;
-            case  3: d = p1 /        100; p1 %=        100; break;
-            case  2: d = p1 /         10; p1 %=         10; break;
-            case  1: d = p1;              p1 =           0; break;
-            default:;
+        switch (kappa)
+        {
+        case  9:
+            d = p1 /  100000000;
+            p1 %=  100000000;
+            break;
+        case  8:
+            d = p1 /   10000000;
+            p1 %=   10000000;
+            break;
+        case  7:
+            d = p1 /    1000000;
+            p1 %=    1000000;
+            break;
+        case  6:
+            d = p1 /     100000;
+            p1 %=     100000;
+            break;
+        case  5:
+            d = p1 /      10000;
+            p1 %=      10000;
+            break;
+        case  4:
+            d = p1 /       1000;
+            p1 %=       1000;
+            break;
+        case  3:
+            d = p1 /        100;
+            p1 %=        100;
+            break;
+        case  2:
+            d = p1 /         10;
+            p1 %=         10;
+            break;
+        case  1:
+            d = p1;
+            p1 =           0;
+            break;
+        default:
+            ;
         }
         if (d || *len)
             buffer[(*len)++] = static_cast<char>('0' + static_cast<char>(d));
         kappa--;
         uint64_t tmp = (static_cast<uint64_t>(p1) << -one.e) + p2;
-        if (tmp <= delta) {
+        if (tmp <= delta)
+        {
             *K += kappa;
             GrisuRound(buffer, *len, delta, tmp, static_cast<uint64_t>(kPow10[kappa]) << -one.e, wp_w.f);
             return;
@@ -91,7 +127,8 @@ inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buff
     }
 
     // kappa = 0
-    for (;;) {
+    for (;;)
+    {
         p2 *= 10;
         delta *= 10;
         char d = static_cast<char>(p2 >> -one.e);
@@ -99,7 +136,8 @@ inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buff
             buffer[(*len)++] = static_cast<char>('0' + d);
         p2 &= one.f - 1;
         kappa--;
-        if (p2 < delta) {
+        if (p2 < delta)
+        {
             *K += kappa;
             GrisuRound(buffer, *len, delta, p2, one.f, wp_w.f * kPow10[-kappa]);
             return;
@@ -107,7 +145,8 @@ inline void DigitGen(const DiyFp& W, const DiyFp& Mp, uint64_t delta, char* buff
     }
 }
 
-inline void Grisu2(double value, char* buffer, int* length, int* K) {
+inline void Grisu2(double value, char* buffer, int* length, int* K)
+{
     const DiyFp v(value);
     DiyFp w_m, w_p;
     v.NormalizedBoundaries(&w_m, &w_p);
@@ -121,20 +160,24 @@ inline void Grisu2(double value, char* buffer, int* length, int* K) {
     DigitGen(W, Wp, Wp.f - Wm.f, buffer, length, K);
 }
 
-inline char* WriteExponent(int K, char* buffer) {
-    if (K < 0) {
+inline char* WriteExponent(int K, char* buffer)
+{
+    if (K < 0)
+    {
         *buffer++ = '-';
         K = -K;
     }
 
-    if (K >= 100) {
+    if (K >= 100)
+    {
         *buffer++ = static_cast<char>('0' + static_cast<char>(K / 100));
         K %= 100;
         const char* d = GetDigitsLut() + K * 2;
         *buffer++ = d[0];
         *buffer++ = d[1];
     }
-    else if (K >= 10) {
+    else if (K >= 10)
+    {
         const char* d = GetDigitsLut() + K * 2;
         *buffer++ = d[0];
         *buffer++ = d[1];
@@ -145,10 +188,12 @@ inline char* WriteExponent(int K, char* buffer) {
     return buffer;
 }
 
-inline char* Prettify(char* buffer, int length, int k) {
+inline char* Prettify(char* buffer, int length, int k)
+{
     const int kk = length + k;  // 10^(kk-1) <= v < 10^kk
 
-    if (length <= kk && kk <= 21) {
+    if (length <= kk && kk <= 21)
+    {
         // 1234e7 -> 12340000000
         for (int i = length; i < kk; i++)
             buffer[i] = '0';
@@ -156,13 +201,15 @@ inline char* Prettify(char* buffer, int length, int k) {
         buffer[kk + 1] = '0';
         return &buffer[kk + 2];
     }
-    else if (0 < kk && kk <= 21) {
+    else if (0 < kk && kk <= 21)
+    {
         // 1234e-2 -> 12.34
         std::memmove(&buffer[kk + 1], &buffer[kk], length - kk);
         buffer[kk] = '.';
         return &buffer[length + 1];
     }
-    else if (-6 < kk && kk <= 0) {
+    else if (-6 < kk && kk <= 0)
+    {
         // 1234e-6 -> 0.001234
         const int offset = 2 - kk;
         std::memmove(&buffer[offset], &buffer[0], length);
@@ -172,12 +219,14 @@ inline char* Prettify(char* buffer, int length, int k) {
             buffer[i] = '0';
         return &buffer[length + offset];
     }
-    else if (length == 1) {
+    else if (length == 1)
+    {
         // 1e30
         buffer[1] = 'e';
         return WriteExponent(kk - 1, &buffer[2]);
     }
-    else {
+    else
+    {
         // 1234e30 -> 1.234e33
         std::memmove(&buffer[2], &buffer[1], length - 1);
         buffer[1] = '.';
@@ -186,9 +235,11 @@ inline char* Prettify(char* buffer, int length, int k) {
     }
 }
 
-inline char* dtoa(double value, char* buffer) {
+inline char* dtoa(double value, char* buffer)
+{
     Double d(value);
-    if (d.IsZero()) {
+    if (d.IsZero())
+    {
         if (d.Sign())
             *buffer++ = '-';     // -0.0, Issue #289
         buffer[0] = '0';
@@ -196,8 +247,10 @@ inline char* dtoa(double value, char* buffer) {
         buffer[2] = '0';
         return &buffer[3];
     }
-    else {
-        if (value < 0) {
+    else
+    {
+        if (value < 0)
+        {
             *buffer++ = '-';
             value = -value;
         }

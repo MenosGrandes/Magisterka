@@ -7,11 +7,11 @@
 class ProbabilityAxiom
 {
 public:
-ProbabilityAxiom(std::string to,float prob)
-{
-this->m_to=to;
-this->m_probability=prob;
-}
+    ProbabilityAxiom(std::string to,float prob)
+    {
+        this->m_to=to;
+        this->m_probability=prob;
+    }
     std::string get_m_to()
     {
         return this->m_to;

@@ -10,12 +10,12 @@ class GUI
 {
 public:
 // Our button click handler.
-/*M_SFGUI is needed to create main actions witch gui*/
+    /*M_SFGUI is needed to create main actions witch gui*/
     sfg::SFGUI m_sfgui;
 
-/*SFGUI Desktop used to create a desktop*/
+    /*SFGUI Desktop used to create a desktop*/
     sfg::Desktop desktop;
-/*Constructor using SharedTurtle and SharedTurtleDrawer to compute turtle graphics*/
+    /*Constructor using SharedTurtle and SharedTurtleDrawer to compute turtle graphics*/
     GUI(SharedTurtle t,SharedTurtleDrawer td);
 
 

@@ -1,5 +1,5 @@
 // Tencent is pleased to support the open source community by making RapidJSON available.
-// 
+//
 // Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
 //
 // Licensed under the MIT License (the "License"); you may not use this file except
@@ -7,9 +7,9 @@
 //
 // http://opensource.org/licenses/MIT
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
 #ifndef RAPIDJSON_RAPIDJSON_H_
@@ -17,7 +17,7 @@
 
 /*!\file rapidjson.h
     \brief common definitions and configuration
-    
+
     \see RAPIDJSON_CONFIG
  */
 
@@ -214,7 +214,7 @@
 #  elif defined(RAPIDJSON_DOXYGEN_RUNNING)
 #    define RAPIDJSON_ENDIAN
 #  else
-#    error Unknown machine endianess detected. User needs to define RAPIDJSON_ENDIAN.   
+#    error Unknown machine endianess detected. User needs to define RAPIDJSON_ENDIAN.
 #  endif
 #endif // RAPIDJSON_ENDIAN
 
@@ -352,7 +352,10 @@ RAPIDJSON_NAMESPACE_END
 //!@cond RAPIDJSON_HIDDEN_FROM_DOXYGEN
 RAPIDJSON_NAMESPACE_BEGIN
 template <bool x> struct STATIC_ASSERTION_FAILURE;
-template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };
+template <> struct STATIC_ASSERTION_FAILURE<true>
+{
+    enum { value = 1 };
+};
 template<int x> struct StaticAssertTest {};
 RAPIDJSON_NAMESPACE_END
 
@@ -363,7 +366,7 @@ RAPIDJSON_NAMESPACE_END
 #if defined(__GNUC__)
 #define RAPIDJSON_STATIC_ASSERT_UNUSED_ATTRIBUTE __attribute__((unused))
 #else
-#define RAPIDJSON_STATIC_ASSERT_UNUSED_ATTRIBUTE 
+#define RAPIDJSON_STATIC_ASSERT_UNUSED_ATTRIBUTE
 #endif
 //!@endcond
 
@@ -383,7 +386,7 @@ RAPIDJSON_NAMESPACE_END
 
 //!@cond RAPIDJSON_HIDDEN_FROM_DOXYGEN
 
-#define RAPIDJSON_MULTILINEMACRO_BEGIN do {  
+#define RAPIDJSON_MULTILINEMACRO_BEGIN do {
 #define RAPIDJSON_MULTILINEMACRO_END \
 } while((void)0, 0)
 
@@ -545,7 +548,8 @@ concept Stream {
     See TEST(Reader, CustomStringStream) in readertest.cpp for example.
 */
 template<typename Stream>
-struct StreamTraits {
+struct StreamTraits
+{
     //! Whether to make local copy of stream for optimization during parsing.
     /*!
         By default, for safety, streams do not use local copy optimization.
@@ -556,7 +560,8 @@ struct StreamTraits {
 
 //! Put N copies of a character to a stream.
 template<typename Stream, typename Ch>
-inline void PutN(Stream& stream, Ch c, size_t n) {
+inline void PutN(Stream& stream, Ch c, size_t n)
+{
     for (size_t i = 0; i < n; i++)
         stream.Put(c);
 }
@@ -568,26 +573,51 @@ inline void PutN(Stream& stream, Ch c, size_t n) {
 /*! \note implements Stream concept
 */
 template <typename Encoding>
-struct GenericStringStream {
+struct GenericStringStream
+{
     typedef typename Encoding::Ch Ch;
 
     GenericStringStream(const Ch *src) : src_(src), head_(src) {}
 
-    Ch Peek() const { return *src_; }
-    Ch Take() { return *src_++; }
-    size_t Tell() const { return static_cast<size_t>(src_ - head_); }
+    Ch Peek() const
+    {
+        return *src_;
+    }
+    Ch Take()
+    {
+        return *src_++;
+    }
+    size_t Tell() const
+    {
+        return static_cast<size_t>(src_ - head_);
+    }
 
-    Ch* PutBegin() { RAPIDJSON_ASSERT(false); return 0; }
-    void Put(Ch) { RAPIDJSON_ASSERT(false); }
-    void Flush() { RAPIDJSON_ASSERT(false); }
-    size_t PutEnd(Ch*) { RAPIDJSON_ASSERT(false); return 0; }
+    Ch* PutBegin()
+    {
+        RAPIDJSON_ASSERT(false);
+        return 0;
+    }
+    void Put(Ch)
+    {
+        RAPIDJSON_ASSERT(false);
+    }
+    void Flush()
+    {
+        RAPIDJSON_ASSERT(false);
+    }
+    size_t PutEnd(Ch*)
+    {
+        RAPIDJSON_ASSERT(false);
+        return 0;
+    }
 
     const Ch* src_;     //!< Current read position.
     const Ch* head_;    //!< Original head of the string.
 };
 
 template <typename Encoding>
-struct StreamTraits<GenericStringStream<Encoding> > {
+struct StreamTraits<GenericStringStream<Encoding> >
+{
     enum { copyOptimization = 1 };
 };
 
@@ -602,25 +632,53 @@ typedef GenericStringStream<UTF8<> > StringStream;
     \note implements Stream concept
 */
 template <typename Encoding>
-struct GenericInsituStringStream {
+struct GenericInsituStringStream
+{
     typedef typename Encoding::Ch Ch;
 
     GenericInsituStringStream(Ch *src) : src_(src), dst_(0), head_(src) {}
 
     // Read
-    Ch Peek() { return *src_; }
-    Ch Take() { return *src_++; }
-    size_t Tell() { return static_cast<size_t>(src_ - head_); }
+    Ch Peek()
+    {
+        return *src_;
+    }
+    Ch Take()
+    {
+        return *src_++;
+    }
+    size_t Tell()
+    {
+        return static_cast<size_t>(src_ - head_);
+    }
 
     // Write
-    void Put(Ch c) { RAPIDJSON_ASSERT(dst_ != 0); *dst_++ = c; }
+    void Put(Ch c)
+    {
+        RAPIDJSON_ASSERT(dst_ != 0);
+        *dst_++ = c;
+    }
 
-    Ch* PutBegin() { return dst_ = src_; }
-    size_t PutEnd(Ch* begin) { return static_cast<size_t>(dst_ - begin); }
+    Ch* PutBegin()
+    {
+        return dst_ = src_;
+    }
+    size_t PutEnd(Ch* begin)
+    {
+        return static_cast<size_t>(dst_ - begin);
+    }
     void Flush() {}
 
-    Ch* Push(size_t count) { Ch* begin = dst_; dst_ += count; return begin; }
-    void Pop(size_t count) { dst_ -= count; }
+    Ch* Push(size_t count)
+    {
+        Ch* begin = dst_;
+        dst_ += count;
+        return begin;
+    }
+    void Pop(size_t count)
+    {
+        dst_ -= count;
+    }
 
     Ch* src_;
     Ch* dst_;
@@ -628,7 +686,8 @@ struct GenericInsituStringStream {
 };
 
 template <typename Encoding>
-struct StreamTraits<GenericInsituStringStream<Encoding> > {
+struct StreamTraits<GenericInsituStringStream<Encoding> >
+{
     enum { copyOptimization = 1 };
 };
 
@@ -639,12 +698,13 @@ typedef GenericInsituStringStream<UTF8<> > InsituStringStream;
 // Type
 
 //! Type of JSON value
-enum Type {
+enum Type
+{
     kNullType = 0,      //!< null
     kFalseType = 1,     //!< false
     kTrueType = 2,      //!< true
     kObjectType = 3,    //!< object
-    kArrayType = 4,     //!< array 
+    kArrayType = 4,     //!< array
     kStringType = 5,    //!< string
     kNumberType = 6     //!< number
 };

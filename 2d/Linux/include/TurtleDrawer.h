@@ -21,8 +21,8 @@ public:
             std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
         }
     }
-    #endif // DEBUG
-void computeDraw(std::string initializer="",unsigned int length=10, float angle=0);
+#endif // DEBUG
+    void computeDraw(std::string initializer="",unsigned int length=10, float angle=0);
 
 protected:
 private:

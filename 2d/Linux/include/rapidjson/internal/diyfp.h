@@ -1,5 +1,5 @@
 // Tencent is pleased to support the open source community by making RapidJSON available.
-// 
+//
 // Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
 //
 // Licensed under the MIT License (the "License"); you may not use this file except
@@ -7,9 +7,9 @@
 //
 // http://opensource.org/licenses/MIT
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
 // This is a C++ header-only implementation of Grisu2 algorithm from the publication:
@@ -28,41 +28,49 @@
 #endif
 
 RAPIDJSON_NAMESPACE_BEGIN
-namespace internal {
+namespace internal
+{
 
 #ifdef __GNUC__
 RAPIDJSON_DIAG_PUSH
 RAPIDJSON_DIAG_OFF(effc++)
 #endif
 
-struct DiyFp {
+struct DiyFp
+{
     DiyFp() {}
 
     DiyFp(uint64_t fp, int exp) : f(fp), e(exp) {}
 
-    explicit DiyFp(double d) {
-        union {
+    explicit DiyFp(double d)
+    {
+        union
+        {
             double d;
             uint64_t u64;
         } u = { d };
 
         int biased_e = static_cast<int>((u.u64 & kDpExponentMask) >> kDpSignificandSize);
         uint64_t significand = (u.u64 & kDpSignificandMask);
-        if (biased_e != 0) {
+        if (biased_e != 0)
+        {
             f = significand + kDpHiddenBit;
             e = biased_e - kDpExponentBias;
-        } 
-        else {
+        }
+        else
+        {
             f = significand;
             e = kDpMinExponent + 1;
         }
     }
 
-    DiyFp operator-(const DiyFp& rhs) const {
+    DiyFp operator-(const DiyFp& rhs) const
+    {
         return DiyFp(f - rhs.f, e);
     }
 
-    DiyFp operator*(const DiyFp& rhs) const {
+    DiyFp operator*(const DiyFp& rhs) const
+    {
 #if defined(_MSC_VER) && defined(_M_AMD64)
         uint64_t h;
         uint64_t l = _umul128(f, rhs.f, &h);
@@ -93,7 +101,8 @@ struct DiyFp {
 #endif
     }
 
-    DiyFp Normalize() const {
+    DiyFp Normalize() const
+    {
 #if defined(_MSC_VER) && defined(_M_AMD64)
         unsigned long index;
         _BitScanReverse64(&index, f);
@@ -103,7 +112,8 @@ struct DiyFp {
         return DiyFp(f << s, e - s);
 #else
         DiyFp res = *this;
-        while (!(res.f & (static_cast<uint64_t>(1) << 63))) {
+        while (!(res.f & (static_cast<uint64_t>(1) << 63)))
+        {
             res.f <<= 1;
             res.e--;
         }
@@ -111,9 +121,11 @@ struct DiyFp {
 #endif
     }
 
-    DiyFp NormalizeBoundary() const {
+    DiyFp NormalizeBoundary() const
+    {
         DiyFp res = *this;
-        while (!(res.f & (kDpHiddenBit << 1))) {
+        while (!(res.f & (kDpHiddenBit << 1)))
+        {
             res.f <<= 1;
             res.e--;
         }
@@ -122,7 +134,8 @@ struct DiyFp {
         return res;
     }
 
-    void NormalizedBoundaries(DiyFp* minus, DiyFp* plus) const {
+    void NormalizedBoundaries(DiyFp* minus, DiyFp* plus) const
+    {
         DiyFp pl = DiyFp((f << 1) + 1, e - 1).NormalizeBoundary();
         DiyFp mi = (f == kDpHiddenBit) ? DiyFp((f << 2) - 1, e - 2) : DiyFp((f << 1) - 1, e - 1);
         mi.f <<= mi.e - pl.e;
@@ -131,13 +144,15 @@ struct DiyFp {
         *minus = mi;
     }
 
-    double ToDouble() const {
-        union {
+    double ToDouble() const
+    {
+        union
+        {
             double d;
             uint64_t u64;
-        }u;
-        const uint64_t be = (e == kDpDenormalExponent && (f & kDpHiddenBit) == 0) ? 0 : 
-            static_cast<uint64_t>(e + kDpExponentBias);
+        } u;
+        const uint64_t be = (e == kDpDenormalExponent && (f & kDpHiddenBit) == 0) ? 0 :
+                            static_cast<uint64_t>(e + kDpExponentBias);
         u.u64 = (f & kDpSignificandMask) | (be << kDpSignificandSize);
         return u.d;
     }
@@ -156,9 +171,11 @@ struct DiyFp {
     int e;
 };
 
-inline DiyFp GetCachedPowerByIndex(size_t index) {
+inline DiyFp GetCachedPowerByIndex(size_t index)
+{
     // 10^-348, 10^-340, ..., 10^340
-    static const uint64_t kCachedPowers_F[] = {
+    static const uint64_t kCachedPowers_F[] =
+    {
         RAPIDJSON_UINT64_C2(0xfa8fd5a0, 0x081c0288), RAPIDJSON_UINT64_C2(0xbaaee17f, 0xa23ebf76),
         RAPIDJSON_UINT64_C2(0x8b16fb20, 0x3055ac76), RAPIDJSON_UINT64_C2(0xcf42894a, 0x5dce35ea),
         RAPIDJSON_UINT64_C2(0x9a6bb0aa, 0x55653b2d), RAPIDJSON_UINT64_C2(0xe61acf03, 0x3d1a45df),
@@ -204,7 +221,8 @@ inline DiyFp GetCachedPowerByIndex(size_t index) {
         RAPIDJSON_UINT64_C2(0x9e19db92, 0xb4e31ba9), RAPIDJSON_UINT64_C2(0xeb96bf6e, 0xbadf77d9),
         RAPIDJSON_UINT64_C2(0xaf87023b, 0x9bf0ee6b)
     };
-    static const int16_t kCachedPowers_E[] = {
+    static const int16_t kCachedPowers_E[] =
+    {
         -1220, -1193, -1166, -1140, -1113, -1087, -1060, -1034, -1007,  -980,
         -954,  -927,  -901,  -874,  -847,  -821,  -794,  -768,  -741,  -715,
         -688,  -661,  -635,  -608,  -582,  -555,  -529,  -502,  -475,  -449,
@@ -217,8 +235,9 @@ inline DiyFp GetCachedPowerByIndex(size_t index) {
     };
     return DiyFp(kCachedPowers_F[index], kCachedPowers_E[index]);
 }
-    
-inline DiyFp GetCachedPower(int e, int* K) {
+
+inline DiyFp GetCachedPower(int e, int* K)
+{
 
     //int k = static_cast<int>(ceil((-61 - e) * 0.30102999566398114)) + 374;
     double dk = (-61 - e) * 0.30102999566398114 + 347;  // dk must be positive, so can do ceiling in positive
@@ -232,11 +251,12 @@ inline DiyFp GetCachedPower(int e, int* K) {
     return GetCachedPowerByIndex(index);
 }
 
-inline DiyFp GetCachedPower10(int exp, int *outExp) {
-     unsigned index = (exp + 348) / 8;
-     *outExp = -348 + index * 8;
-     return GetCachedPowerByIndex(index);
- }
+inline DiyFp GetCachedPower10(int exp, int *outExp)
+{
+    unsigned index = (exp + 348) / 8;
+    *outExp = -348 + index * 8;
+    return GetCachedPowerByIndex(index);
+}
 
 #ifdef __GNUC__
 RAPIDJSON_DIAG_POP

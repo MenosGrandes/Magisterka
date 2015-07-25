@@ -12,15 +12,15 @@ using namespace rapidjson;
 
 class JSONReader
 {
-    public:
-        JSONReader();
-        virtual ~JSONReader();
-        void openJSON(const std::string& filename);
-        SharedSystemData2DList readJSON();
-        void saveJSON(std::string fileName);
-        Document doc;
-    protected:
-    private:
+public:
+    JSONReader();
+    virtual ~JSONReader();
+    void openJSON(const std::string& filename);
+    SharedSystemData2DList readJSON();
+    void saveJSON(std::string fileName);
+    Document doc;
+protected:
+private:
 
 };
 typedef std::shared_ptr<JSONReader> SharedJSONReader;
