@@ -1,4 +1,4 @@
-#include <RuleAxiom.h>
+#include <RuleAxiomGUI.h>
 void RuleAxiomGUI::Add(std::string labelA,std::string labelR,int number,sfg::Box::Ptr box)
 {
     std::stringstream ss;

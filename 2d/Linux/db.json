@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "Fractal plant 6",
+      "name": "Fractal plant 5",
       "iterations": 7,
       "angle": 25.7,
       "start": "X",
@@ -105,6 +105,32 @@
           "list": [
             {
               "to": "F[+X][-X]FX",
+              "probability": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant 6",
+      "iterations": 5,
+      "angle": 22.5,
+      "start": "X",
+      "rules": [
+        {
+          "from": "F",
+          "list": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ]
+        },
+        {
+          "from": "X",
+          "list": [
+            {
+              "to": "F-[[X]+X]+F[+FX]-X",
               "probability": 100
             }
           ]

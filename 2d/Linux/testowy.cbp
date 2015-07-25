@@ -5,6 +5,7 @@
 		<Option title="testowy" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="GUI/;JSON/;Turtle/;Rules/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/testowy" prefix_auto="1" extension_auto="1" />
@@ -49,13 +50,33 @@
 		<Linker>
 			<Add library="libsfgui" />
 		</Linker>
-		<Unit filename="db.json" />
-		<Unit filename="include/GUI.h" />
-		<Unit filename="include/JSONReader.h" />
-		<Unit filename="include/Rule.h" />
-		<Unit filename="include/RuleAxiom.h" />
-		<Unit filename="include/Turtle.h" />
-		<Unit filename="include/TurtleDrawer.h" />
+		<Unit filename="db.json">
+			<Option virtualFolder="JSON/" />
+		</Unit>
+		<Unit filename="include/Context.h">
+			<Option virtualFolder="Rules/" />
+		</Unit>
+		<Unit filename="include/GUI.h">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/JSONReader.h">
+			<Option virtualFolder="JSON/" />
+		</Unit>
+		<Unit filename="include/ProbabilityAxiom.h">
+			<Option virtualFolder="Rules/" />
+		</Unit>
+		<Unit filename="include/Rule.h">
+			<Option virtualFolder="Rules/" />
+		</Unit>
+		<Unit filename="include/RuleAxiomGUI.h">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="include/Turtle.h">
+			<Option virtualFolder="Turtle/" />
+		</Unit>
+		<Unit filename="include/TurtleDrawer.h">
+			<Option virtualFolder="Turtle/" />
+		</Unit>
 		<Unit filename="include/rapidjson/allocators.h" />
 		<Unit filename="include/rapidjson/document.h" />
 		<Unit filename="include/rapidjson/encodedstream.h" />
@@ -85,12 +106,24 @@
 		<Unit filename="include/rapidjson/stringbuffer.h" />
 		<Unit filename="include/rapidjson/writer.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/GUI.cpp" />
-		<Unit filename="src/JSONReader.cpp" />
-		<Unit filename="src/Rule.cpp" />
-		<Unit filename="src/RuleAxiom.cpp" />
-		<Unit filename="src/Turtle.cpp" />
-		<Unit filename="src/TurtleDrawer.cpp" />
+		<Unit filename="src/GUI.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/JSONReader.cpp">
+			<Option virtualFolder="JSON/" />
+		</Unit>
+		<Unit filename="src/Rule.cpp">
+			<Option virtualFolder="Rules/" />
+		</Unit>
+		<Unit filename="src/RuleAxiomGUI.cpp">
+			<Option virtualFolder="GUI/" />
+		</Unit>
+		<Unit filename="src/Turtle.cpp">
+			<Option virtualFolder="Turtle/" />
+		</Unit>
+		<Unit filename="src/TurtleDrawer.cpp">
+			<Option virtualFolder="Turtle/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

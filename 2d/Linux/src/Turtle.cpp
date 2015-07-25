@@ -127,7 +127,7 @@ void Turtle::compute()
 
                         }/*Now the values must be chacked, so form what range the probability have hit*/
                         Range::iterator rangeIterator;
-                        /**/
+
                         int iteratorForSet=0;
                         for(rangeIterator=range.begin(); rangeIterator!=range.end(); rangeIterator++)
                         {

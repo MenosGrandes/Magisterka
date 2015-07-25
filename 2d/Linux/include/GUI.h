@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <TurtleDrawer.h>
 #include <JSONReader.h>
-#include <RuleAxiom.h>
+#include <RuleAxiomGUI.h>
 #include <mutex>
 
 class GUI
@@ -17,7 +17,6 @@ public:
     sfg::Desktop desktop;
 /*Constructor using SharedTurtle and SharedTurtleDrawer to compute turtle graphics*/
     GUI(SharedTurtle t,SharedTurtleDrawer td);
-    /* */
 
 
 private:

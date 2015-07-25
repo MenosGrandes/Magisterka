@@ -13,10 +13,7 @@
 #include <thread>
 #include <SFML/System.hpp>
 #include <ProbabilityAxiom.h>
-/*ProbabilityAxiom*/
 
-
-/*END ProbabilityAxiom*/
 /* RULE */
 class Rule
 {
