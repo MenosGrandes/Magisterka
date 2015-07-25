@@ -1,66 +1,30 @@
 {
   "list": [
     {
-      "name": "DragonCurve",
-      "iterations": 10,
-      "angle": 90,
-      "start": "FX",
-      "rules": [
-        {
-          "from": "X",
-          "to": "X+YF+"
-        },
-        {
-          "from": "Y",
-          "to": "-FX-Y"
-        }
-      ]
-    },
-    {
-      "name": "Koch Curve",
+      "name": "Fractal plant 1",
       "iterations": 5,
-      "angle": 90,
+      "angle": 25.7,
       "start": "F",
       "rules": [
         {
           "from": "F",
-          "to": "F+F-F-F+F"
+          "list": [
+            {
+              "to": "F[+F]F[-F]F",
+              "probability": 33
+            },
+            {
+              "to": "F[+F]F",
+              "probability": 34
+            },
+            {
+              "to": "F[-F]F",
+              "probability": 33
+            }
+          ]
         }
       ]
     },
-    {
-      "name": "Sierpinski triangle",
-      "iterations": 6,
-      "angle": 120,
-      "start": "F-G-G",
-      "rules": [
-        {
-          "from": "F",
-          "to": "F-G+F+G-F"
-        },
-        {
-          "from": "G",
-          "to": "GG"
-        }
-      ]
-    },
-    {
-      "name": "Fractal plant",
-      "iterations": 6,
-      "angle": 25,
-      "start": "X",
-      "rules": [
-        {
-          "from": "F",
-          "to": "FF"
-        },
-        {
-          "from": "X",
-          "to": "F-[[X]+X]+F[+FX]-X"
-        }
-      ]
-    },
-
     {
       "name": "Fractal plant 2",
       "iterations": 5,
@@ -69,7 +33,12 @@
       "rules": [
         {
           "from": "F",
-          "to": "F[+F]F[-F][F]"
+          "list": [
+            {
+              "to": "F[+F]F[-F][F]",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
@@ -81,7 +50,12 @@
       "rules": [
         {
           "from": "F",
-          "to": "FF-[-F+F+F]+[+F-F-F]"
+          "list": [
+            {
+              "to": "FF-[-F+F+F]+[+F-F-F]",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
@@ -93,23 +67,21 @@
       "rules": [
         {
           "from": "F",
-          "to": "FF"
+          "list": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ]
         },
         {
           "from": "X",
-          "to": "F[+X]F[-X]+X"
-        }
-      ]
-    },
-    {
-      "name": "Fractal plant 5",
-      "iterations": 5,
-      "angle": 25.7,
-      "start": "F",
-      "rules": [
-        {
-          "from": "F",
-          "to": "F[+F]F[-F]F"
+          "list": [
+            {
+              "to": "F[+X]F[-X]+X",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
@@ -121,27 +93,47 @@
       "rules": [
         {
           "from": "F",
-          "to": "FF"
+          "list": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ]
         },
         {
           "from": "X",
-          "to": "F[+X][-X]FX"
+          "list": [
+            {
+              "to": "F[+X][-X]FX",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Hexagonal Gosper curve 2",
+      "name": "Hexagonal Gosper curve",
       "iterations": 4,
       "angle": 60,
       "start": "F",
       "rules": [
         {
           "from": "F",
-          "to": "F-X--X+F++FF+X-"
+          "list": [
+            {
+              "to": "F-X--X+F++FF+X-",
+              "probability": 100
+            }
+          ]
         },
         {
           "from": "X",
-          "to": "+F-XX--X-F++F+X"
+          "list": [
+            {
+              "to": "+F-XX--X-F++F+X",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
@@ -153,11 +145,21 @@
       "rules": [
         {
           "from": "F",
-          "to": "F-F++F-F"
+          "list": [
+            {
+              "to": "F-F++F-F",
+              "probability": 100
+            }
+          ]
         },
         {
           "from": "X",
-          "to": "FF"
+          "list": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ]
         }
       ]
     },
@@ -169,7 +171,38 @@
       "rules": [
         {
           "from": "F",
-          "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"
+          "list": [
+            {
+              "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F",
+              "probability": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DragonCurve",
+      "iterations": 10,
+      "angle": 90,
+      "start": "FX",
+      "rules": [
+        {
+          "from": "X",
+          "list": [
+            {
+              "to": "X+YF+",
+              "probability": 100
+            }
+          ]
+        },
+        {
+          "from": "Y",
+          "list": [
+            {
+              "to": "-FX-Y",
+              "probability": 100
+            }
+          ]
         }
       ]
     }

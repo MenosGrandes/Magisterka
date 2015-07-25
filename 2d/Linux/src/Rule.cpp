@@ -1,10 +1,6 @@
 #include "../include/Rule.h"
 
-Rule::Rule(std::string from,std::string to)
-{
-    this->m_from=from;
-    this->m_to=to;
-}
+
 
 Rule::~Rule()
 {
@@ -14,8 +10,19 @@ std::string Rule::getFrom()
 {
     return this->m_from;
 }
-std::string Rule::getTo()
+
+SharedProbabilityAxiomSet Rule::getAxiomSet()
 {
-    return this->m_to;
+return axiomSet;
+}
+Rule::Rule(std::string from, SharedProbabilityAxiomSet axiomSet)
+{
+        this->m_from=from;
+this->axiomSet=axiomSet;
+}
+
+void Rule::setAxiomSet(SharedProbabilityAxiomSet axiom)
+{
+    this->axiomSet=axiom;
 }
 

@@ -9,7 +9,6 @@ int main()
     sf::Vector2f prev;
 
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
-    view2.setRotation(90);
     sf::RenderWindow window(sf::VideoMode(1366, 768), "SFML works!",sf::Style::Default);
     /*
     SharedTurtle, aka std::shared_ptr<Turtle>, is used to calculate the string of the L-System.
@@ -20,9 +19,9 @@ int main()
     SharedTurtle t(new Turtle(1));
 
 
-/*
-SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines from string calculated in Turtle.
-*/
+    /*
+    SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines from string calculated in Turtle.
+    */
     SharedTurtleDrawer td(new TurtleDrawer());
     /*
     Ther is an bug in sfgui, when program won't draw any content the letters in gui are really weird.
@@ -85,7 +84,11 @@ SharedTurtleDrawer, aka std::shared_ptr<TurtleDrawer>, is used to draw lines fro
             break;
             /**Temporary workround*/
             case sf::Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::Escape)
+                {
+                    window.close();
 
+                }
                 break;
             }
 

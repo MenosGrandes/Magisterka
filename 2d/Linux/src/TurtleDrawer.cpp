@@ -40,12 +40,14 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
     /*
     Create a sf::VecrtexArray, container of sf::Vertex, to store the points in L-system.
     */
-    m_vertices=sf::VertexArray(sf::PrimitiveType::Lines,1);
+    m_vertices=sf::VertexArray(sf::PrimitiveType::Lines,3);
     m_vertices.clear();
     /*
     Add first point. The start point.
     */
     sf::Vertex v(sf::Vector2f(current.first),randomColor());
+    this->rotate(current.second,-90);
+
     m_vertices.append(v);
 
 

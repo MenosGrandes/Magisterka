@@ -35,7 +35,7 @@ SharedSystemData2DList JSONReader::readJSON()
         /*Get every object from array*/
         const Value& l_system = main[i];
         /*struct to contain data from json*/
-       SystemData2D data;
+        SystemData2D data;
         /*Get it's name*/
         data.name=l_system["name"].GetString();
 
@@ -58,16 +58,40 @@ SharedSystemData2DList JSONReader::readJSON()
         for (rapidjson::SizeType i = 0; i < listOfAxioms.Size(); i++)
         {
 
+            SharedProbabilityAxiomSet axiomSet;
             /*Get object from the array*/
-            const Value& fromTo = listOfAxioms[i];
-            /*Get "from" and "to" axioms*/
-            SharedRule rule(new Rule(fromTo["from"].GetString(),fromTo["to"].GetString()));
+            const Value& from = listOfAxioms[i];
+#ifdef DEBUG
+            std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
+            std::cout<<"FROM: "<<from["from"].GetString()<<"\n";
+#endif // DEBUG
+
+            const Value& axioms = from["list"];
+            for (rapidjson::SizeType i = 0; i < axioms.Size(); i++)
+            {
+                const Value& axiom = axioms[i];
+                SharedProbabilityAxiom probabilityAxiom(new ProbabilityAxiom(axiom["to"].GetString(),axiom["probability"].GetDouble()));
+#ifdef DEBUG
+                std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
+                std::cout<<"PROBABILITY: "<<axiom["probability"].GetDouble()<<"\n";
+#endif // DEBUG
+                axiomSet.insert(probabilityAxiom);
+            }
+#ifdef DEBUG
+            std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
+#endif // DEBUG
+            SharedRule rule(new Rule(from["from"].GetString(),axiomSet));
             ruleList.push_back(rule);
+
         }
         data.ruleList=ruleList;
         SharedSystemData2D dataShared=std::make_shared<SystemData2D>(data);
         dataList.push_back(dataShared);
-        std::cout<<data.name<<" "<<data.angle<<" "<<data.start<<" "<<data.iterations<<"\n";
+#ifdef DEBUG
+
+        std::cout<<"NAME: "<<data.name<<"\nANGLE: "<<data.angle<<"\nSTART: "<<data.start<<"\nITER: "<<data.iterations<<"\n@@@@@@@@@@@@@@@@@@\n";
+#endif // DEBUG
+
     }
 
     return dataList;

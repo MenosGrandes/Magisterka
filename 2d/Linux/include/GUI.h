@@ -22,16 +22,7 @@ public:
 
 private:
     /*Struct that contains the preferences for sliders*/
-    struct SliderPreferences
-    {
-        float lower=0.0f;
-        float upper=10.0f;
-        float minor_step=0.1f;
-        float major_step=1.0f;
-        float pageSize=0.0f;
-        sf::Vector2f requistion =sf::Vector2f( 80.f, 20.f );
-        std::string label="";
-    };
+
     sfg::Window::Ptr window;
     sfg::Label::Ptr m_labelIterations,m_labelAngle,m_labelStartAxiom ;
     sfg::Adjustment::Ptr m_scaleIterations;
@@ -52,7 +43,7 @@ private:
     void RunAddListFractals();
 
     void ReRun();
-    SharedRuleAxiomList ruleList;
+    SharedRuleAxiomListGUI ruleList;
 
 
 };

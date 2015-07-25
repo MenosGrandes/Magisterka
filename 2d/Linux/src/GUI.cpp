@@ -40,9 +40,16 @@ void GUI::DrawFractalFromList(SharedSystemData2D data)
     SharedRuleList::iterator it;
     for (it= data->ruleList.begin(); it != data->ruleList.end(); it++)
     {
+        SharedProbabilityAxiomSet axiomSet=(*it)->getAxiomSet();
+        SharedProbabilityAxiomSet::iterator iter;
+        for(iter=axiomSet.begin();iter!=axiomSet.end();iter++)
+        {
+        std::cout<<(*iter)->get_m_to()<<"\n";
+        }
+SharedRule rule(new Rule((*it)->getFrom(),axiomSet));
+
         /*Add SharedRule to the SharedTurtle rule list.*/
-        SharedRule a(new Rule((*it)->getFrom(),(*it)->getTo()));
-        m_t->AddRule(a);
+        m_t->AddRule(rule);
     }
     /*Set the start string for calculate the l-system.*/
     m_t->SetResult(data->start);
@@ -85,9 +92,6 @@ void GUI::RunAddListFractals()
 /*Create GUI correspondent to manual creator of l-system.*/
 void GUI::RunAddFractals()
 {
-
-
-
     auto fixed = sfg::Fixed::Create();
     /*Create button to START the calculations*/
     auto m_button = sfg::Button::Create( "START" );
@@ -108,13 +112,13 @@ void GUI::RunAddFractals()
 
     CreateSliders(spIterations);
     /*RuleAxiom*/
-    SharedRuleAxiom ra(new RuleAxiom());
+    SharedRuleAxiomGUI ra(new RuleAxiomGUI());
     ra->Add("Axiom","Rule",1,m_boxAddFractals);
     ruleList.push_back(ra);
-    SharedRuleAxiom ra2(new RuleAxiom());
+    SharedRuleAxiomGUI ra2(new RuleAxiomGUI());
     ra2->Add("Axiom2","Rule2",2,m_boxAddFractals);
     ruleList.push_back(ra2);
-    SharedRuleAxiom ra3(new RuleAxiom());
+    SharedRuleAxiomGUI ra3(new RuleAxiomGUI());
     ra3->Add("Axiom2","Rule2",3,m_boxAddFractals);
     ruleList.push_back(ra3);
     /*Add START button.*/
@@ -134,32 +138,32 @@ Rerun the calculations of Turtle and TurtleDrawer
 */
 void GUI::ReRun()
 {
-#ifdef DEBUG
-    std::cout<<ruleList.size()<<" rule list size\n";
-#endif // DEBUG
-    m_t->Reset();
-    m_t->AddIterations(m_scaleIterations->GetValue());
-    SharedRuleAxiomList::iterator it;
-    for (it= ruleList.begin(); it != ruleList.end(); it++)
-    {
-        SharedRule a(new Rule((*it)->entryAxiom->GetText(),(*it)->entryRule->GetText()));
-#ifdef DEBUG
-        std::cout<<a->getFrom()<<" to "<<a->getTo()<<"\n";
-#endif // DEBUG
-        m_t->AddRule(a);
-    }
-    m_t->SetResult(m_entryStart->GetText());
-    m_t->compute();
-
-
-    std::string num = m_entryAngle->GetText();
-#ifdef DEBUG
-    std::cout<<(std::string)m_t->GetResult()<<" string \n";
-#endif // DEBUG
-    float angle = ::atof(num.c_str());
-
-    m_td->computeDraw(m_t->GetResult(),10,angle);
-
+//#ifdef DEBUG
+//    std::cout<<ruleList.size()<<" rule list size\n";
+//#endif // DEBUG
+//    m_t->Reset();
+//    m_t->AddIterations(m_scaleIterations->GetValue());
+//    SharedRuleAxiomListGUI::iterator it;
+//    for (it= ruleList.begin(); it != ruleList.end(); it++)
+//    {
+//        SharedRule a(new Rule((*it)->entryAxiom->GetText(),(*it)->entryRule->GetText(),100));
+//#ifdef DEBUG
+//        std::cout<<a->getFrom()<<" to "<<a->getTo()<<" "<<a->getProbability();
+//#endif // DEBUG
+//        m_t->AddRule(a);
+//    }
+//    m_t->SetResult(m_entryStart->GetText());
+//    m_t->compute();
+//
+//
+//    std::string num = m_entryAngle->GetText();
+//#ifdef DEBUG
+//    std::cout<<(std::string)m_t->GetResult()<<" string \n";
+//#endif // DEBUG
+//    float angle = ::atof(num.c_str());
+//
+//    m_td->computeDraw(m_t->GetResult(),10,angle);
+//
 
 }
 void GUI::CreateSliders(SliderPreferences sp)

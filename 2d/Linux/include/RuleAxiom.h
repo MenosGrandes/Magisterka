@@ -11,16 +11,19 @@ rule  -> to contain the rule.
 axiom -> to contain the axiom.
 and 2 sfg::Label::Ptr for those entry.
 */
-class RuleAxiom
+class RuleAxiomGUI
 {
 public :
     sfg::Entry::Ptr entryAxiom,entryRule;
-    sfg::Label::Ptr labelRule,labelAxiom;
+    sfg::Label::Ptr labelRule,labelAxiom,labelProbabilityOfAxiom;
+    sfg::Adjustment::Ptr probabilityOfAxiom;
+
     void Add(std::string labelA,std::string labelR,int number,sfg::Box::Ptr box);
+    void ProbabilityChange();
 
 };
-typedef std::shared_ptr<RuleAxiom> SharedRuleAxiom;
-typedef std::list<SharedRuleAxiom> SharedRuleAxiomList;
+typedef std::shared_ptr<RuleAxiomGUI> SharedRuleAxiomGUI;
+typedef std::list<SharedRuleAxiomGUI> SharedRuleAxiomListGUI;
 
 
 #endif // RULEAXIOM_H

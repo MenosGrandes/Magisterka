@@ -2,7 +2,9 @@
 #define TURTLE_H
 
 #include <Rule.h>
-
+#include <random>
+#include <map>
+#include <chrono>
 class Turtle
 {
 
@@ -24,6 +26,7 @@ private:
     std::string m_result;
     unsigned char m_iterations;
     std::list<SharedRule> m_rules;
+
 
 
 };

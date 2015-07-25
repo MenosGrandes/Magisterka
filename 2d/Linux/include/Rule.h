@@ -12,39 +12,45 @@
 #include <iostream>
 #include <thread>
 #include <SFML/System.hpp>
+#include <ProbabilityAxiom.h>
+/*ProbabilityAxiom*/
+
+
+/*END ProbabilityAxiom*/
+/* RULE */
 class Rule
 {
 public:
-    Rule(std::string from,std::string to);
+    Rule(std::string from,SharedProbabilityAxiomSet axiomSet);
     virtual ~Rule();
     std::string getFrom();
-    std::string getTo();
-protected:
+    SharedProbabilityAxiomSet getAxiomSet();
+    void setAxiomSet(SharedProbabilityAxiomSet axiom);
 private:
     std::string m_from;
-    std::string m_to;
+    SharedProbabilityAxiomSet axiomSet;
 };
 typedef std::shared_ptr<Rule> SharedRule;
 typedef std::list<SharedRule> SharedRuleList;
-
+/*END RULE*/
 
 /*Struct that contains the values readed from JSON*/
 class SystemData2D
 {
 public :
     SystemData2D(
-   std::string name,
+        std::string name,
         std::string start,
         int iterations,
         float angle,
         SharedRuleList ruleList
     )
     {
-    this->name=name;
-    this->start=start;
-    this->iterations=iterations;
-    this->angle=angle;
-    this->ruleList=ruleList;
+        this->name=name;
+        this->start=start;
+        this->iterations=iterations;
+        this->angle=angle;
+        this->ruleList=ruleList;
     }
     SystemData2D(const SystemData2D& data) : name(data.name),start(data.start),iterations(data.iterations),angle(data.angle),ruleList(data.ruleList)
     { }
@@ -59,7 +65,20 @@ public :
 };
 typedef std::shared_ptr<SystemData2D>SharedSystemData2D;
 typedef std::list<SharedSystemData2D> SharedSystemData2DList;
+/*Struct witch contain the preferences to sliders (SFGUI)*/
+struct SliderPreferences
+{
+    float lower=0.0f;
+    float upper=10.0f;
+    float minor_step=0.1f;
+    float major_step=1.0f;
+    float pageSize=0.0f;
+    sf::Vector2f requistion =sf::Vector2f( 80.f, 20.f );
+    std::string label="";
+};
+
 
 
 #endif // RULE_H
+
 
