@@ -86,7 +86,7 @@ void GUI::RunAddListFractals()
           */
         auto btn = sfg::Button::Create( (*it)->name);
         btn->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::DrawFractalFromList, this,(*it) ) );
-        m_boxAddListFractals->Pack(btn);
+        m_boxAddListFractalsViewport->Pack(btn);
     }
 
 
@@ -94,6 +94,19 @@ void GUI::RunAddListFractals()
 /*Create GUI correspondent to manual creator of l-system.*/
 void GUI::RunAddFractals()
 {
+	/* Create the ScrolledWindow.*/
+	auto scrolledwindow = sfg::ScrolledWindow::Create();
+
+/* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
+	scrolledwindow->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
+/*Box for viewport*/
+    m_boxAddListFractalsViewport = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+
+/*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
+	scrolledwindow->AddWithViewport( m_boxAddListFractalsViewport );
+/* Always remember to set the minimum size of a ScrolledWindow.*/
+	scrolledwindow->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
+
     auto fixed = sfg::Fixed::Create();
     /*Create button to START the calculations*/
     auto m_button = sfg::Button::Create( "START" );
@@ -130,6 +143,8 @@ void GUI::RunAddFractals()
     /* Create a window and add the box layouter to it. Also set the window's title.*/
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );
+    /**/
+    m_boxAddListFractals->Pack(scrolledwindow,false,true);
     /*Add notebook pages*/
     AddNotebook();
     /* Create a desktop and add the window to it.*/
@@ -225,6 +240,9 @@ void GUI::CreateEntry()
 }
 void GUI::AddNotebook()
 {
+
+
+
     m_notebook=sfg::Notebook::Create();
     m_notebook->AppendPage( m_boxAddFractals, sfg::Label::Create( "Add new Fractal" ) );
     m_notebook->AppendPage( m_boxAddListFractals, sfg::Label::Create( "L-system List" ) );

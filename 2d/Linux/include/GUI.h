@@ -27,7 +27,7 @@ private:
     sfg::Adjustment::Ptr m_scaleIterations;
     sfg::Entry::Ptr m_entryStart,m_entryAngle;
     sfg::Notebook::Ptr m_notebook;
-    sfg::Box::Ptr m_boxAddFractals,m_boxAddListFractals;
+    sfg::Box::Ptr m_boxAddFractals,m_boxAddListFractals,m_boxAddListFractalsViewport;
     SharedTurtle m_t;
     SharedTurtleDrawer m_td;
     void OnButtonClick();

@@ -109,7 +109,6 @@ void Turtle::compute()
                         */
 
                         SharedContextAxiomSet2L contextSet=it->get()->getAxiomSet()->contextSet;
-                        std::cout<<contextSet.size()<<" size\n";
 
                         if(contextSet.size()>0)
                         {

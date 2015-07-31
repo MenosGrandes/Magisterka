@@ -92,8 +92,17 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
             m_vertices.append(sf::Vertex(current.first,randomColor()));
             posRotStack.pop();
             break;
-        case 'G' :
+        case 'G':
         case 'X':
+        case 'Y':
+        case 'T':
+                case 'S':
+                case 'H':
+                                case 'Z':
+
+
+        case 'L':
+        case 'R':
         case 'F':
             /*
             Translate current point by length
