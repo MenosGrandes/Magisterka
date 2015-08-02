@@ -737,7 +737,7 @@
 1437326160 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1438359409 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1438516281 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
@@ -770,14 +770,14 @@
 	<ProbabilityAxiom.h>
 	<ContextAxiom.h>
 
-1438364600 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
+1438435072 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<SFML/Graphics.hpp>
 	<TurtleDrawer.h>
 	<JSONReader.h>
 	<RuleAxiomGUI.h>
 	<mutex>
 
-1438363748 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1438435322 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
 1437858364 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp

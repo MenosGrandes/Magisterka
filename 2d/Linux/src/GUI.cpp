@@ -40,14 +40,7 @@ void GUI::DrawFractalFromList(SharedSystemData2D data)
     SharedRuleList::iterator it;
     for (it= data->ruleList.begin(); it != data->ruleList.end(); it++)
     {
-//        SharedProbabilityAxiomSet axiomSet=(*it)->getAxioms().probabilitySet;
-//        SharedContextProbabilityAxiomSet axiomSet;
-//        axiomSet.context=
-//        SharedProbabilityAxiomSet::iterator iter;
-//        for(iter=axiomSet.begin();iter!=axiomSet.end();iter++)
-//        {
-//        std::cout<<(*iter)->get_m_to()<<"\n";
-//        }
+
         SharedRule rule(new Rule((*it)->getFrom(),(*it)->getAxiomSet()));
 
         /*Add SharedRule to the SharedTurtle rule list.*/
@@ -107,6 +100,24 @@ void GUI::RunAddFractals()
 /* Always remember to set the minimum size of a ScrolledWindow.*/
 	scrolledwindow->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
 
+	/* Create the ScrolledWindow.*/
+	auto scrolledwindow2 = sfg::ScrolledWindow::Create();
+
+/* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
+	scrolledwindow2->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
+/*Box for viewport*/
+    m_boxAddFractalsViewport = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
+
+/*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
+	scrolledwindow2->AddWithViewport( m_boxAddFractalsViewport );
+/* Always remember to set the minimum size of a ScrolledWindow.*/
+	scrolledwindow2->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
+	/*Add RUle Button*/
+    auto m_button_addRule = sfg::Button::Create( "Add rule" );
+    /*Click event for button is ReRun methos*/
+    m_button_addRule->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::AddRule, this ) );
+
+
     auto fixed = sfg::Fixed::Create();
     /*Create button to START the calculations*/
     auto m_button = sfg::Button::Create( "START" );
@@ -127,28 +138,39 @@ void GUI::RunAddFractals()
 
     CreateSliders(spIterations);
     /*RuleAxiom*/
-    SharedRuleAxiomGUI ra(new RuleAxiomGUI());
-    ra->Add("Axiom","Rule",1,m_boxAddFractals);
-    ruleList.push_back(ra);
-    SharedRuleAxiomGUI ra2(new RuleAxiomGUI());
-    ra2->Add("Axiom2","Rule2",2,m_boxAddFractals);
-    ruleList.push_back(ra2);
-    SharedRuleAxiomGUI ra3(new RuleAxiomGUI());
-    ra3->Add("Axiom2","Rule2",3,m_boxAddFractals);
-    ruleList.push_back(ra3);
+
     /*Add START button.*/
-    m_boxAddFractals->Pack(m_button,false);
+    m_boxAddFractalsViewport->Pack(m_button,false);
+    m_boxAddFractalsViewport->Pack(m_button_addRule,false);
     /* Add List*/
     RunAddListFractals();
+
+for(int i=0;i<0;i++){
+     SharedRuleAxiomGUI ra(new RuleAxiomGUI());
+    ra->Add("Axiom","Rule",i,m_boxAddFractalsViewport);
+}
+
+
+
+
     /* Create a window and add the box layouter to it. Also set the window's title.*/
     window= sfg::Window::Create();
     window->SetTitle( "GUI" );
     /**/
     m_boxAddListFractals->Pack(scrolledwindow,false,true);
+    m_boxAddFractals->Pack(scrolledwindow2,false,true);
     /*Add notebook pages*/
     AddNotebook();
     /* Create a desktop and add the window to it.*/
     desktop.Add( window );
+}
+void GUI::AddRule()
+{
+static int counter=0;
+counter++;
+ SharedRuleAxiomGUI ra(new RuleAxiomGUI());
+    ra->Add("Axiom","Rule",counter,m_boxAddFractalsViewport);
+//    ruleList.push_back(ra);
 }
 /*
 Rerun the calculations of Turtle and TurtleDrawer
@@ -210,8 +232,8 @@ void GUI::CreateSliders(SliderPreferences sp)
     m_labelIterations = sfg::Label::Create();
     m_labelIterations->SetText( sp.label );
 
-    m_boxAddFractals->Pack( m_labelIterations );
-    m_boxAddFractals->Pack( scaleIterations, false, false );
+    m_boxAddFractalsViewport->Pack( m_labelIterations );
+    m_boxAddFractalsViewport->Pack( scaleIterations, false, false );
 
 
 }
@@ -230,13 +252,13 @@ void GUI::CreateEntry()
     sfg::Label::Ptr labelAngle = sfg::Label::Create();
     labelAngle->SetText("Angle");
 
-    m_boxAddFractals->Pack( labelEntryStart );
-    m_boxAddFractals->Pack(m_entryStart);
+    m_boxAddFractalsViewport->Pack( labelEntryStart );
+    m_boxAddFractalsViewport->Pack(m_entryStart);
 
-    m_boxAddFractals->Pack( labelAngle );
+    m_boxAddFractalsViewport->Pack( labelAngle );
 
 
-    m_boxAddFractals->Pack(m_entryAngle);
+    m_boxAddFractalsViewport->Pack(m_entryAngle);
 }
 void GUI::AddNotebook()
 {
