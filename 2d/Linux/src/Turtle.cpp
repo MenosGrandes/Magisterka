@@ -112,14 +112,14 @@ void Turtle::compute()
 
                         if(contextSet.size()>0)
                         {
-                        #ifdef DEBUG
-                        std::cout<<"\n\n\nCONTEXT AXIOMS\n\n\n";
-                        #endif // DEBUG
+#ifdef DEBUG
+                            std::cout<<"\n\n\nCONTEXT AXIOMS\n\n\n";
+#endif // DEBUG
                             if(compareStringPrevious.compare((*contextSet.begin())->get_m_preceded()) && compareStringNext.compare((*contextSet.begin())->get_m_fallowed()))
                             {
-                            #ifdef DEBUG
-                            std::cout<<(*contextSet.begin())->get_m_preceded()<<" <"<<compareString<<"<"<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
-                            #endif // DEBUG
+#ifdef DEBUG
+                                std::cout<<(*contextSet.begin())->get_m_preceded()<<" <"<<compareString<<"<"<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
+#endif // DEBUG
                                 temp+=(*contextSet.begin())->get_m_to();
                                 found = true;
                             }

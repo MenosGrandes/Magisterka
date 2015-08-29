@@ -96,9 +96,9 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
         case 'X':
         case 'Y':
         case 'T':
-                case 'S':
-                case 'H':
-                                case 'Z':
+        case 'S':
+        case 'H':
+        case 'Z':
 
 
         case 'L':

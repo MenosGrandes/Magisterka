@@ -88,8 +88,20 @@ SharedSystemData2DList JSONReader::readJSON()
                 const Value& axiom = axiomsContext[i];
 
                 SharedContextAxiom2L contextAxiom(new ContextAxiom2L (axiom["preceded"].GetString(),axiom["fallowed"].GetString(),axiom["to"].GetString()));
+
+                const Value& ignore_list = axiom["ignore"];
+                for (rapidjson::SizeType i = 0; i < ignore_list.Size(); i++)
+                {
+                                contextAxiom->add_ignore(ignore_list[i].GetString());
+                                #ifdef DEBUG
+                                std::cout<<"ignore :"<<ignore_list[i].GetString()<<"\n";
+                                #endif // DEBUG
+
+                }
+
+
                 contextAxiomSet.insert(contextAxiom);
-                #ifdef DEBUG
+#ifdef DEBUG
                 std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
                 std::cout<<"CONTEXT: "<<axiom["preceded"].GetString()<<" "<<axiom["fallowed"].GetString()<<"\n";
 #endif // DEBUG

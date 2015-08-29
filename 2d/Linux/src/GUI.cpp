@@ -87,32 +87,32 @@ void GUI::RunAddListFractals()
 /*Create GUI correspondent to manual creator of l-system.*/
 void GUI::RunAddFractals()
 {
-	/* Create the ScrolledWindow.*/
-	auto scrolledwindow = sfg::ScrolledWindow::Create();
+    /* Create the ScrolledWindow.*/
+    auto scrolledwindow = sfg::ScrolledWindow::Create();
 
-/* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
-	scrolledwindow->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
-/*Box for viewport*/
+    /* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
+    scrolledwindow->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
+    /*Box for viewport*/
     m_boxAddListFractalsViewport = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
 
-/*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
-	scrolledwindow->AddWithViewport( m_boxAddListFractalsViewport );
-/* Always remember to set the minimum size of a ScrolledWindow.*/
-	scrolledwindow->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
+    /*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
+    scrolledwindow->AddWithViewport( m_boxAddListFractalsViewport );
+    /* Always remember to set the minimum size of a ScrolledWindow.*/
+    scrolledwindow->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
 
-	/* Create the ScrolledWindow.*/
-	auto scrolledwindow2 = sfg::ScrolledWindow::Create();
+    /* Create the ScrolledWindow.*/
+    auto scrolledwindow2 = sfg::ScrolledWindow::Create();
 
-/* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
-	scrolledwindow2->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
-/*Box for viewport*/
+    /* Set the ScrolledWindow to always show the horizontal scrollbar and only show the vertical scrollbar when needed.*/
+    scrolledwindow2->SetScrollbarPolicy(  sfg::ScrolledWindow::VERTICAL_AUTOMATIC );
+    /*Box for viewport*/
     m_boxAddFractalsViewport = sfg::Box::Create( sfg::Box::Orientation::VERTICAL, 5.0f );
 
-/*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
-	scrolledwindow2->AddWithViewport( m_boxAddFractalsViewport );
-/* Always remember to set the minimum size of a ScrolledWindow.*/
-	scrolledwindow2->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
-	/*Add RUle Button*/
+    /*Add the ScrolledWindow box to the ScrolledWindow and create a new viewport automatically.*/
+    scrolledwindow2->AddWithViewport( m_boxAddFractalsViewport );
+    /* Always remember to set the minimum size of a ScrolledWindow.*/
+    scrolledwindow2->SetRequisition( sf::Vector2f( 200.f, 600.f ) );
+    /*Add RUle Button*/
     auto m_button_addRule = sfg::Button::Create( "Add rule" );
     /*Click event for button is ReRun methos*/
     m_button_addRule->GetSignal( sfg::Widget::OnLeftClick ).Connect( std::bind( &GUI::AddRule, this ) );
@@ -145,10 +145,11 @@ void GUI::RunAddFractals()
     /* Add List*/
     RunAddListFractals();
 
-for(int i=0;i<0;i++){
-     SharedRuleAxiomGUI ra(new RuleAxiomGUI());
-    ra->Add("Axiom","Rule",i,m_boxAddFractalsViewport);
-}
+    for(int i=0; i<0; i++)
+    {
+        SharedRuleAxiomGUI ra(new RuleAxiomGUI());
+        ra->Add("Axiom","Rule",i,m_boxAddFractalsViewport);
+    }
 
 
 
@@ -166,9 +167,9 @@ for(int i=0;i<0;i++){
 }
 void GUI::AddRule()
 {
-static int counter=0;
-counter++;
- SharedRuleAxiomGUI ra(new RuleAxiomGUI());
+    static int counter=0;
+    counter++;
+    SharedRuleAxiomGUI ra(new RuleAxiomGUI());
     ra->Add("Axiom","Rule",counter,m_boxAddFractalsViewport);
 //    ruleList.push_back(ra);
 }

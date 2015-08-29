@@ -29,23 +29,29 @@ public :
     {
         this->m_to=to;
     };
+    void add_ignore(std::string ignore)
+    {
+        this->m_ignore.push_back(ignore);
+    };
     std::string get_m_preceded()
     {
         return m_preceded;
-    }
+    };
     std::string get_m_fallowed()
     {
         return m_fallowed;
-    }
+    };
     std::string get_m_to()
     {
         return m_to;
-    }
+    };
+
 
 private :
     std::string m_preceded;
     std::string m_fallowed;
     std::string m_to;
+    std::vector<std::string> m_ignore;
 };
 class ContextAxiom1L
 {
