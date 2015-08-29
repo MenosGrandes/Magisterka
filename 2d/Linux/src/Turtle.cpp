@@ -118,7 +118,8 @@ void Turtle::compute()
                             if(compareStringPrevious.compare((*contextSet.begin())->get_m_preceded()) && compareStringNext.compare((*contextSet.begin())->get_m_fallowed()))
                             {
 #ifdef DEBUG
-                                std::cout<<(*contextSet.begin())->get_m_preceded()<<" <"<<compareString<<"<"<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
+std::cout<<"CHECKING :\t"<<compareStringPrevious<<"\n";
+                                std::cout<<(*contextSet.begin())->get_m_preceded()<<" < "<<compareString<<" < "<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
 #endif // DEBUG
                                 temp+=(*contextSet.begin())->get_m_to();
                                 found = true;

@@ -54,7 +54,8 @@ public :
         std::string start,
         int iterations,
         float angle,
-        SharedRuleList ruleList
+        SharedRuleList ruleList,
+        std::vector<std::string> ignore_list
     )
     {
         this->name=name;
@@ -62,8 +63,9 @@ public :
         this->iterations=iterations;
         this->angle=angle;
         this->ruleList=ruleList;
+        this->ignore_list=ignore_list;
     }
-    SystemData2D(const SystemData2D& data) : name(data.name),start(data.start),iterations(data.iterations),angle(data.angle),ruleList(data.ruleList)
+    SystemData2D(const SystemData2D& data) : name(data.name),start(data.start),iterations(data.iterations),angle(data.angle),ruleList(data.ruleList),ignore_list(data.ignore_list)
     { }
     SystemData2D()
     {}
@@ -72,7 +74,7 @@ public :
     int iterations;
     float angle;
     SharedRuleList ruleList;
-
+    std::vector<std::string> ignore_list;
 };
 typedef std::shared_ptr<SystemData2D>SharedSystemData2D;
 typedef std::list<SharedSystemData2D> SharedSystemData2DList;

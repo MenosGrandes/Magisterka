@@ -50,6 +50,19 @@ SharedSystemData2DList JSONReader::readJSON()
 
         /*Get another array inside the main array.*/
         const Value& listOfAxioms=l_system["rules"];
+        /*Get ignore signs for ContextAxioms*/
+        #ifdef DEBUG
+        std::cout<<"IGNORE LIST:\n";
+        #endif
+
+                const Value& ignore_list = l_system["ignore"];
+                for (rapidjson::SizeType i = 0; i < ignore_list.Size(); i++)
+                {
+                data.ignore_list.push_back(ignore_list[i].GetString());
+                #ifdef DEBUG
+                std::cout<<data.ignore_list[i]<<"\n";
+                #endif // DEBUG
+                }
 
         /*List of rules*/
         SharedRuleList ruleList;
@@ -88,17 +101,6 @@ SharedSystemData2DList JSONReader::readJSON()
                 const Value& axiom = axiomsContext[i];
 
                 SharedContextAxiom2L contextAxiom(new ContextAxiom2L (axiom["preceded"].GetString(),axiom["fallowed"].GetString(),axiom["to"].GetString()));
-
-                const Value& ignore_list = axiom["ignore"];
-                for (rapidjson::SizeType i = 0; i < ignore_list.Size(); i++)
-                {
-                                contextAxiom->add_ignore(ignore_list[i].GetString());
-                                #ifdef DEBUG
-                                std::cout<<"ignore :"<<ignore_list[i].GetString()<<"\n";
-                                #endif // DEBUG
-
-                }
-
 
                 contextAxiomSet.insert(contextAxiom);
 #ifdef DEBUG

@@ -754,7 +754,7 @@
 	<map>
 	<chrono>
 
-1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1440877896 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -780,7 +780,7 @@
 1440842021 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
-1440842543 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
+1440878102 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
 	"JSONReader.h"
 
 1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
@@ -886,7 +886,7 @@
 1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1440842021 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1440878717 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
 1440842021 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
@@ -958,7 +958,7 @@
 	<string>
 	<memory>
 
-1440842021 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
+1440877889 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
 	<memory>
 	<string>
 
