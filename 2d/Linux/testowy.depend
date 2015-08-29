@@ -737,24 +737,24 @@
 1437326160 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1438516281 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
 	<GUI.h>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
 	<mutex>
 
-1437770560 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
 	<random>
 	<map>
 	<chrono>
 
-1437855950 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -770,20 +770,20 @@
 	<ProbabilityAxiom.h>
 	<ContextAxiom.h>
 
-1438435072 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<SFML/Graphics.hpp>
 	<TurtleDrawer.h>
 	<JSONReader.h>
 	<RuleAxiomGUI.h>
 	<mutex>
 
-1438435322 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
-1437858364 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
 	"JSONReader.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
 	<string>
 	<memory>
 	<iostream>
@@ -793,11 +793,11 @@
 	<fstream>
 	<GUI.h>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/filereadstream.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/filereadstream.h
 	"rapidjson.h"
 	<cstdio>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/rapidjson.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/rapidjson.h
 	<cstdlib>
 	<cstring>
 	"rapidjson/..."
@@ -811,22 +811,22 @@
 	"allocators.h"
 	"encodings.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/msinttypes/stdint.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/msinttypes/stdint.h
 	<stdint.h>
 	<limits.h>
 	<wchar.h>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/msinttypes/inttypes.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/msinttypes/inttypes.h
 	"stdint.h"
 	<inttypes.h>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/allocators.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/allocators.h
 	"rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/encodings.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/encodings.h
 	"rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/document.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/document.h
 	"reader.h"
 	"internal/meta.h"
 	"internal/strfunc.h"
@@ -835,7 +835,7 @@
 	<iterator>
 	<utility>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/reader.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/reader.h
 	"rapidjson.h"
 	"encodings.h"
 	"internal/meta.h"
@@ -849,47 +849,47 @@
 	"rapidjson/reader.h"
 	"error/error.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/meta.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/meta.h
 	"../rapidjson.h"
 	<type_traits>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/stack.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/stack.h
 	"../rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strtod.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strtod.h
 	"../rapidjson.h"
 	"ieee754.h"
 	"biginteger.h"
 	"diyfp.h"
 	"pow10.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/ieee754.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/ieee754.h
 	"../rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/biginteger.h
-	"../rapidjson.h"
-	<intrin.h>
-
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/diyfp.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/biginteger.h
 	"../rapidjson.h"
 	<intrin.h>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/pow10.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/diyfp.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/pow10.h
 	"../rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/error/error.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/error/error.h
 	"../rapidjson.h"
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strfunc.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strfunc.h
 	"../rapidjson.h"
 
-1437834324 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1437900576 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
-1438287355 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
 1437759654 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiom.h
@@ -937,7 +937,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1437842914 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
 	<memory>
 	<set>
 	<string>
@@ -948,17 +948,17 @@
 1437819937 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextSensitiveLSystem.h
 	<string>
 
-1437819943 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/RuleAxiomGUI.cpp
+1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/RuleAxiomGUI.cpp
 	<RuleAxiomGUI.h>
 
-1437759654 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiomGUI.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiomGUI.h
 	<SFGUI/SFGUI.hpp>
 	<SFGUI/Widgets.hpp>
 	<sstream>
 	<string>
 	<memory>
 
-1437857353 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
+1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
 	<memory>
 	<string>
 
