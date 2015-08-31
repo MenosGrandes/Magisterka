@@ -24,13 +24,17 @@ Turtle& Turtle::operator=(const Turtle& rhs)
 }
 void Turtle::compute()
 {
-    /*Calculate the rules numbers, so how many rules->from are the same, but they have different rule->to*/
 
-    /*asd*/
 
     std::string temp;
     temp="";
 #ifdef DEBUG
+
+    std::cout<<"IGNORED :\n";
+    for(const std::string &i : m_ignoreList) // access by const reference
+        std::cout << i << ' ';
+    std::cout << '\n';
+
     sf::Clock clock; // starts the clock
     sf::Time elapsed1 = clock.getElapsedTime();
     std::cout << elapsed1.asMilliseconds() << std::endl;
@@ -48,7 +52,6 @@ void Turtle::compute()
             bool found=false;
             std::stringstream ss;
             std::string compareString,compareStringNext,compareStringPrevious;
-
             char a = m_result[i];
             char b = m_result[i+1];
             char c = m_result[i-1];
@@ -61,6 +64,7 @@ void Turtle::compute()
             ss << c;
             ss >> compareStringPrevious;
             ss.clear();
+
             std::list<SharedRule>::iterator it;
             for (it= m_rules.begin(); it != m_rules.end(); it++)
             {
@@ -78,6 +82,12 @@ void Turtle::compute()
                 if(it->get()->getAxiomSet()->probabilitySet.size()==1)
                 {
 
+                    char a = m_result[i];
+                    ss << a;
+                    ss >> compareString;
+                    ss.clear();
+
+
                     if(it->get()->getFrom().compare(compareString) == 0)
                     {
 
@@ -85,9 +95,6 @@ void Turtle::compute()
                         Check the L1System, because there is only one possibility the
                         "a > a_r --> x"
                         */
-
-
-
                         SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet()->probabilitySet;
                         temp+=(*axiomSet.begin())->get_m_to();
 #ifdef DEBUG
@@ -102,23 +109,46 @@ void Turtle::compute()
                 /*If there is more than 1, then you have to calculate the probability of change*/
                 else
                 {
+                    /*It must be checked if the strings aren't the same as the ignored strings*/
+
+                    char a = m_result[i];
+                    char b = m_result[i+1];
+                    char c = m_result[i-1];
+                    ss << a;
+                    ss >> compareString;
+                    ss.clear();
+                    ss << b;
+                    ss >> compareStringNext;
+                    ss.clear();
+                    ss << c;
+                    ss >> compareStringPrevious;
+                    ss.clear();
+
+                    if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareString) != m_ignoreList.end())
+                    {
+                        std::cout<<compareString<<" is in IGNORE\n";
+
+                    }
+
+
+                    /*
+
+                    */
+
+                    SharedContextAxiomSet2L contextSet=it->get()->getAxiomSet()->contextSet;
                     if(it->get()->getFrom().compare(compareString) == 0)
                     {
-                        /*
-
-                        */
-
-                        SharedContextAxiomSet2L contextSet=it->get()->getAxiomSet()->contextSet;
-
                         if(contextSet.size()>0)
                         {
+
+
 #ifdef DEBUG
                             std::cout<<"\n\n\nCONTEXT AXIOMS\n\n\n";
 #endif // DEBUG
                             if(compareStringPrevious.compare((*contextSet.begin())->get_m_preceded()) && compareStringNext.compare((*contextSet.begin())->get_m_fallowed()))
                             {
 #ifdef DEBUG
-std::cout<<"CHECKING :\t"<<compareStringPrevious<<"\n";
+                                std::cout<<"CHECKING :\t"<<compareStringPrevious<<"\n";
                                 std::cout<<(*contextSet.begin())->get_m_preceded()<<" < "<<compareString<<" < "<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
 #endif // DEBUG
                                 temp+=(*contextSet.begin())->get_m_to();
@@ -194,7 +224,7 @@ std::cout<<"CHECKING :\t"<<compareStringPrevious<<"\n";
 #endif // DEBUG
                             /*Go to the object correspondent to range*/
                             SharedProbabilityAxiomSet::iterator itProb = axiomSet.begin();
-                            std::advance(itProb, iteratorForSet); // now it is advanced by five
+                            std::advance(itProb, iteratorForSet);
                             /*Change*/
                             temp+=(*itProb)->get_m_to();
                             found = true;
@@ -261,4 +291,13 @@ unsigned int Turtle::GetIterations()
 void Turtle::Reset()
 {
     this->m_rules.clear();
+}
+void Turtle::SetIgnoredList(std::vector<std::string> list)
+{
+    this->m_ignoreList=list;
+}
+
+void Turtle::AddIgnoreListEntry(std::string ignore)
+{
+    this->m_ignoreList.push_back(ignore);
 }

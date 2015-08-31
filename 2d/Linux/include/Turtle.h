@@ -20,12 +20,15 @@ public:
     void AddIterations(unsigned int iterations);
     unsigned int GetIterations();
     void Reset();
+    void SetIgnoredList(std::vector<std::string> list);
+    void AddIgnoreListEntry(std::string ignore);
 
 protected:
 private:
     std::string m_result;
     unsigned char m_iterations;
     std::list<SharedRule> m_rules;
+    std::vector<std::string>m_ignoreList;
 
 
 

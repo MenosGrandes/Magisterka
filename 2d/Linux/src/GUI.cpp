@@ -46,6 +46,7 @@ void GUI::DrawFractalFromList(SharedSystemData2D data)
         /*Add SharedRule to the SharedTurtle rule list.*/
         m_t->AddRule(rule);
     }
+    m_t->SetIgnoredList(data->ignore_list);
     /*Set the start string for calculate the l-system.*/
     m_t->SetResult(data->start);
     /*Compute the l-system*/

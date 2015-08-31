@@ -1,335 +1,524 @@
 {
-  list: [
+  "list": [
     {
-      name: [32m"Fractal plant 1"[39m,
-      iterations: [33m5[39m,
-      angle: [33m25.7[39m,
-      start: [32m"F"[39m,
-      rules: [
+      "name": "Fractal plant 1",
+      "iterations": 5,
+      "angle": 25.7,
+      "start": "F",
+      "ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [
-            { to: [32m"F[+F]F[-F]F"[39m, probability: [33m33[39m },
-            { to: [32m"F[+F]F"[39m, probability: [33m34[39m },
-            { to: [32m"F[-F]F"[39m, probability: [33m33[39m }
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F[+F]F[-F]F",
+              "probability": 33
+            },
+            {
+              "to": "F[+F]F",
+              "probability": 34
+            },
+            {
+              "to": "F[-F]F",
+              "probability": 33
+            }
           ],
-          listContext: [ ]
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Fractal plant 2"[39m,
-      iterations: [33m5[39m,
-      angle: [33m20[39m,
-      start: [32m"F"[39m,
-      rules: [
+      "name": "Fractal plant 2",
+      "iterations": 5,
+      "angle": 20,
+      "start": "F","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F[+F]F[-F][F]"[39m, probability: [33m100[39m }],
-          listContext: [{ preceded: [32m"[+F]"[39m, fallowed: [32m"[-F]"[39m, to: [32m"F[+F]F[-F][F]"[39m }]
-        }
-      ]
-    },
-    {
-      name: [32m"Fractal plant 3"[39m,
-      iterations: [33m4[39m,
-      angle: [33m22.5[39m,
-      start: [32m"F"[39m,
-      rules: [
-        {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"FF-[-F+F+F]+[+F-F-F]"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        }
-      ]
-    },
-    {
-      name: [32m"Fractal plant 4"[39m,
-      iterations: [33m7[39m,
-      angle: [33m20[39m,
-      start: [32m"X"[39m,
-      rules: [
-        {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"FF"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"X"[39m,
-          listProbability: [
-            { to: [32m"F[+X]F[-X]+X"[39m, probability: [33m33[39m },
-            { to: [32m"F[-X]F[+X]+X"[39m, probability: [33m33[39m },
-            { to: [32m"F[-X]F[-X]-X"[39m, probability: [33m34[39m }
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F[+F]F[-F][F]",
+              "probability": 100
+            }
           ],
-          listContext: [ ]
+          "listContext": [
+            {
+              "preceded": "[+F]",
+              "fallowed": "[-F]",
+              "to": "F[+F]F[-F][F]"
+            }
+          ]
         }
       ]
     },
     {
-      name: [32m"Fractal plant 5"[39m,
-      iterations: [33m7[39m,
-      angle: [33m25.7[39m,
-      start: [32m"X"[39m,
-      rules: [
+      "name": "Fractal plant 3",
+      "iterations": 4,
+      "angle": 22.5,
+      "start": "F","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [
-            { to: [32m"FF"[39m, probability: [33m99[39m },
-            { to: [32m"-F+F+"[39m, probability: [33m1[39m }
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "FF-[-F+F+F]+[+F-F-F]",
+              "probability": 100
+            }
           ],
-          listContext: [ ]
-        },
+          "listContext": []
+        }
+      ]
+    },
+    {
+      "name": "Fractal plant 4",
+      "iterations": 7,
+      "angle": 20,
+      "start": "X","ignore": [],
+      "rules": [
         {
-          from: [32m"X"[39m,
-          listProbability: [
-            { to: [32m"F[+X][-X]FX"[39m, probability: [33m75[39m },
-            { to: [32m"F[-X][+X]FX"[39m, probability: [33m25[39m }
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
           ],
-          listContext: [ ]
-        }
-      ]
-    },
-    {
-      name: [32m"Fractal plant 6"[39m,
-      iterations: [33m5[39m,
-      angle: [33m22.5[39m,
-      start: [32m"X"[39m,
-      rules: [
-        {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"FF"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "listContext": []
         },
         {
-          from: [32m"X"[39m,
-          listProbability: [
-            { to: [32m"F-[[X]+X]+F[+FX]-X"[39m, probability: [33m50[39m },
-            { to: [32m"F+[[X]-X]-F[-FX]+X"[39m, probability: [33m50[39m }
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "F[+X]F[-X]+X",
+              "probability": 33
+            },
+            {
+              "to": "F[-X]F[+X]+X",
+              "probability": 33
+            },
+            {
+              "to": "F[-X]F[-X]-X",
+              "probability": 34
+            }
           ],
-          listContext: [ ]
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Fractal plant 7"[39m,
-      iterations: [33m6[39m,
-      angle: [33m25.7[39m,
-      start: [32m"G"[39m,
-      rules: [
+      "name": "Fractal plant 5",
+      "iterations": 7,
+      "angle": 25.7,
+      "start": "X","ignore": [],
+      "rules": [
         {
-          from: [32m"G"[39m,
-          listProbability: [{ to: [32m"GFX[+G][-G]"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "FF",
+              "probability": 99
+            },
+            {
+              "to": "-F+F+",
+              "probability": 1
+            }
+          ],
+          "listContext": []
         },
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"X[-FFF][+FFF]FX"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "F[+X][-X]FX",
+              "probability": 75
+            },
+            {
+              "to": "F[-X][+X]FX",
+              "probability": 25
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Hexagonal Gosper curve"[39m,
-      iterations: [33m4[39m,
-      angle: [33m60[39m,
-      start: [32m"F"[39m,
-      rules: [
+      "name": "Fractal plant 6",
+      "iterations": 5,
+      "angle": 22.5,
+      "start": "X","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F-X--X+F++FF+X-"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         },
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"+F-XX--X-F++F+X"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "F-[[X]+X]+F[+FX]-X",
+              "probability": 50
+            },
+            {
+              "to": "F+[[X]-X]-F[-FX]+X",
+              "probability": 50
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Koch snowflake"[39m,
-      iterations: [33m4[39m,
-      angle: [33m60[39m,
-      start: [32m"F++F++F"[39m,
-      rules: [
+      "name": "Fractal plant 7",
+      "iterations": 6,
+      "angle": 25.7,
+      "start": "G","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F-F++F-F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "G",
+          "listProbability": [
+            {
+              "to": "GFX[+G][-G]",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         },
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"FF"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "X[-FFF][+FFF]FX",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Quadratic Koch island"[39m,
-      iterations: [33m2[39m,
-      angle: [33m90[39m,
-      start: [32m"F-F-F-F"[39m,
-      rules: [
+      "name": "Hexagonal Gosper curve",
+      "iterations": 4,
+      "angle": 60,
+      "start": "F","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F-X--X+F++FF+X-",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "+F-XX--X-F++F+X",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"DragonCurve"[39m,
-      iterations: [33m10[39m,
-      angle: [33m90[39m,
-      start: [32m"FX"[39m,
-      rules: [
+      "name": "Koch snowflake",
+      "iterations": 4,
+      "angle": 60,
+      "start": "F++F++F","ignore": [],
+      "rules": [
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"X+YF+"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F-F++F-F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         },
         {
-          from: [32m"Y"[39m,
-          listProbability: [{ to: [32m"-FX-Y"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "FF",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Flower1"[39m,
-      iterations: [33m4[39m,
-      angle: [33m30[39m,
-      start: [32m"T"[39m,
-      rules: [
+      "name": "Quadratic Koch island",
+      "iterations": 2,
+      "angle": 90,
+      "start": "F-F-F-F","ignore": [],
+      "rules": [
         {
-          from: [32m"T"[39m,
-          listProbability: [{ to: [32m"R+[T]--[--L]R[++L]-[T]++T"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"R"[39m,
-          listProbability: [{ to: [32m"F[--L][++L]F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"L"[39m,
-          listProbability: [{ to: [32m"F[--L][++L]F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Plant11"[39m,
-      iterations: [33m3[39m,
-      angle: [33m12[39m,
-      start: [32m"F"[39m,
-      rules: [
+      "name": "DragonCurve",
+      "iterations": 10,
+      "angle": 90,
+      "start": "FX","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F[+F[+F][-F]F][-F[+F][-F]F]F[+F][-F]F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "X+YF+",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "Y",
+          "listProbability": [
+            {
+              "to": "-FX-Y",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Tree1"[39m,
-      iterations: [33m5[39m,
-      angle: [33m12[39m,
-      start: [32m"+++FX"[39m,
-      rules: [
+      "name": "Flower1",
+      "iterations": 4,
+      "angle": 30,
+      "start": "T","ignore": [],
+      "rules": [
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"[-FX]+FX"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "T",
+          "listProbability": [
+            {
+              "to": "R+[T]--[--L]R[++L]-[T]++T",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "R",
+          "listProbability": [
+            {
+              "to": "F[--L][++L]F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "L",
+          "listProbability": [
+            {
+              "to": "F[--L][++L]F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Plant09"[39m,
-      iterations: [33m5[39m,
-      angle: [33m14[39m,
-      start: [32m"Y"[39m,
-      rules: [
+      "name": "Plant11",
+      "iterations": 3,
+      "angle": 12,
+      "start": "F","ignore": [],
+      "rules": [
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"X[-FFF][+FFF]FX"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"Y"[39m,
-          listProbability: [{ to: [32m"YFX[+Y][-Y]"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F[+F[+F][-F]F][-F[+F][-F]F]F[+F][-F]F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Plant08"[39m,
-      iterations: [33m5[39m,
-      angle: [33m20[39m,
-      start: [32m"SLFFF"[39m,
-      rules: [
+      "name": "Tree1",
+      "iterations": 5,
+      "angle": 12,
+      "start": "+++FX","ignore": [],
+      "rules": [
         {
-          from: [32m"S"[39m,
-          listProbability: [{ to: [32m"[+++Z][---Z]TS"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"Z"[39m,
-          listProbability: [{ to: [32m"+H[-Z]L"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"H"[39m,
-          listProbability: [{ to: [32m"-Z[+H]L"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"T"[39m,
-          listProbability: [{ to: [32m"TL"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"L"[39m,
-          listProbability: [{ to: [32m"[-FFF][+FFF]F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "[-FX]+FX",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"MyTree"[39m,
-      iterations: [33m5[39m,
-      angle: [33m16[39m,
-      start: [32m"++++F"[39m,
-      rules: [
+      "name": "Plant09",
+      "iterations": 5,
+      "angle": 14,
+      "start": "Y","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"FF-[XY]+[XY]"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "X[-FFF][+FFF]FX",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         },
         {
-          from: [32m"X"[39m,
-          listProbability: [{ to: [32m"+FY"[39m, probability: [33m100[39m }],
-          listContext: [ ]
-        },
-        {
-          from: [32m"Y"[39m,
-          listProbability: [{ to: [32m"-FX"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "Y",
+          "listProbability": [
+            {
+              "to": "YFX[+Y][-Y]",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     },
     {
-      name: [32m"Hexagonal Gasket"[39m,
-      iterations: [33m4[39m,
-      angle: [33m60[39m,
-      start: [32m"F+F+F+F+F+F--"[39m,
-      rules: [
+      "name": "Plant08",
+      "iterations": 5,
+      "angle": 20,
+      "start": "SLFFF","ignore": [],
+      "rules": [
         {
-          from: [32m"F"[39m,
-          listProbability: [{ to: [32m"F+F+F--F--F+F+F"[39m, probability: [33m100[39m }],
-          listContext: [ ]
+          "from": "S",
+          "listProbability": [
+            {
+              "to": "[+++Z][---Z]TS",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "Z",
+          "listProbability": [
+            {
+              "to": "+H[-Z]L",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "H",
+          "listProbability": [
+            {
+              "to": "-Z[+H]L",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "T",
+          "listProbability": [
+            {
+              "to": "TL",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "L",
+          "listProbability": [
+            {
+              "to": "[-FFF][+FFF]F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        }
+      ]
+    },
+    {
+      "name": "MyTree",
+      "iterations": 5,
+      "angle": 16,
+      "start": "++++F","ignore": [],
+      "rules": [
+        {
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "FF-[XY]+[XY]",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "X",
+          "listProbability": [
+            {
+              "to": "+FY",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "Y",
+          "listProbability": [
+            {
+              "to": "-FX",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        }
+      ]
+    },
+    {
+      "name": "Hexagonal Gasket",
+      "iterations": 4,
+      "angle": 60,
+      "start": "F+F+F+F+F+F--","ignore": [],
+      "rules": [
+        {
+          "from": "F",
+          "listProbability": [
+            {
+              "to": "F+F+F--F--F+F+F",
+              "probability": 100
+            }
+          ],
+          "listContext": []
         }
       ]
     }
   ]
 }
+

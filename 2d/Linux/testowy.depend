@@ -748,13 +748,13 @@
 	<Turtle.h>
 	<mutex>
 
-1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1440996642 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
 	<random>
 	<map>
 	<chrono>
 
-1440877896 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1440996918 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -777,7 +777,7 @@
 	<RuleAxiomGUI.h>
 	<mutex>
 
-1440842021 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
+1440996894 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
 1440878102 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
@@ -883,10 +883,10 @@
 1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strfunc.h
 	"../rapidjson.h"
 
-1440431606 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
+1440996912 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1440878717 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1440998398 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 
 1440842021 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
