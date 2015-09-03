@@ -2,9 +2,9 @@
   "list": [
     {
       "name": "ContextT",
-      "iterations": 5,
+      "iterations": 1,
       "angle": 22.5,
-      "start": "F",
+      "start": "F1F1F1",
       "ignore": [
         "+",
         "-",

@@ -53,17 +53,10 @@ void Turtle::compute()
             std::stringstream ss;
             std::string compareString,compareStringNext,compareStringPrevious;
             char a = m_result[i];
-            char b = m_result[i+1];
-            char c = m_result[i-1];
             ss << a;
             ss >> compareString;
             ss.clear();
-            ss << b;
-            ss >> compareStringNext;
-            ss.clear();
-            ss << c;
-            ss >> compareStringPrevious;
-            ss.clear();
+
 
             std::list<SharedRule>::iterator it;
             for (it= m_rules.begin(); it != m_rules.end(); it++)
@@ -109,26 +102,84 @@ void Turtle::compute()
                 /*If there is more than 1, then you have to calculate the probability of change*/
                 else
                 {
-                    /*It must be checked if the strings aren't the same as the ignored strings*/
 
+
+                    /*It must be checked if the strings aren't the same as the ignored strings*/
+                    bool compareNB=false,comparePB=false;
+
+                    /*Check if the compareString is on the ignoreList*/
                     char a = m_result[i];
-                    char b = m_result[i+1];
-                    char c = m_result[i-1];
                     ss << a;
                     ss >> compareString;
                     ss.clear();
-                    ss << b;
-                    ss >> compareStringNext;
-                    ss.clear();
-                    ss << c;
-                    ss >> compareStringPrevious;
-                    ss.clear();
-
                     if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareString) != m_ignoreList.end())
                     {
-                        std::cout<<compareString<<" is in IGNORE\n";
+                        /*if it's then you can go to another sign because it's should not be evaluated*/
+#ifdef DEBUG
+                        std::cout<<compareString<<" is in IGNORE IN COMPARE\n";
+#endif // DEBUG
+                        break;
+                    }
+                    /*Check next sign*/
+
+                    for(int g=i; g<m_result.size(); ++g)
+                    {
+                        char b = m_result[g];
+                        ss << b;
+                        ss >> compareStringNext;
+                        ss.clear();
+                        if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringNext) != m_ignoreList.end())
+                        {
+                            /*if it's then you can go to another sign because it's should not be evaluated*/
+#ifdef DEBUG
+                            std::cout<<compareStringNext<<" is in IGNORE IN NEXT\n";
+#endif // DEBUG
+                            compareNB=true;
+                        }
+                        else
+                        {
+                            compareNB=false;
+                            break;
+                        }
 
                     }
+                    if(compareNB)
+                    {
+                    break;
+                    }
+
+
+                    for(int g=i; g>0; --g)
+                    {
+                        char c = m_result[g];
+                        ss << c;
+                        ss >> compareStringPrevious;
+                        ss.clear();
+                        if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringPrevious) != m_ignoreList.end())
+                        {
+                            /*if it's then you can go to another sign because it's should not be evaluated*/
+#ifdef DEBUG
+                            std::cout<<compareStringPrevious<<" is in IGNORE IN PREVIUS\n";
+#endif // DEBUG
+                            comparePB=true;
+                        }
+                        else
+                        {
+                            comparePB=false;
+                            break;
+                        }
+
+
+                    }
+                   if(comparePB)
+                    {
+                    break;
+                    }
+
+
+
+
+
 
 
                     /*
@@ -143,12 +194,12 @@ void Turtle::compute()
 
 
 #ifdef DEBUG
-                            std::cout<<"\n\n\nCONTEXT AXIOMS\n\n\n";
+                            std::cout<<"\nCONTEXT AXIOMS\n";
 #endif // DEBUG
                             if(compareStringPrevious.compare((*contextSet.begin())->get_m_preceded()) && compareStringNext.compare((*contextSet.begin())->get_m_fallowed()))
                             {
 #ifdef DEBUG
-                                std::cout<<"CHECKING :\t"<<compareStringPrevious<<"\n";
+                                std::cout<<"CHANGING :\t"<<compareString<<" -----> ";
                                 std::cout<<(*contextSet.begin())->get_m_preceded()<<" < "<<compareString<<" < "<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
 #endif // DEBUG
                                 temp+=(*contextSet.begin())->get_m_to();
