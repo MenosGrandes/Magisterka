@@ -175,10 +175,10 @@ void Turtle::compute()
                         else
                         {
                             comparePB=false;
-                            #ifdef DEBUG
+#ifdef DEBUG
 
                             std::cout<<g<<" : "<<compareStringPrevious<<" previous \n";
-                            #endif // DEBUG
+#endif // DEBUG
                             break;
                         }
 
@@ -204,26 +204,53 @@ void Turtle::compute()
                     */
 
                     SharedContextAxiomVector2L contextSet=it->get()->getAxiomSet()->contextSet;
+
+
+
+
+
+
+
+
+
                     if(it->get()->getFrom().compare(compareString) == 0)
                     {
                         if(contextSet.size()>0)
                         {
 
-/*Now the algorithm must find the specifix axiom. So it must find out which one of axioms are the same as the founded "proceed" and "succed"*/
+                        std::cout<<compareStringPrevious<<" < "<<compareString<<" > "<<compareStringNext<<" ||||\n";
 
 
-#ifdef DEBUG
                             std::cout<<"\nCONTEXT AXIOMS\n";
-#endif // DEBUG
-                            if(compareStringPrevious.compare((*contextSet.begin())->get_m_preceded()) && compareStringNext.compare((*contextSet.begin())->get_m_fallowed()))
+
+                            /*Now the algorithm must find the specifix axiom. So it must find out which one of axioms are the same as the founded "proceed" and "succed"*/
+                            SharedContextAxiomVector2L::iterator itContext;
+                            itContext = std::find_if(contextSet.begin(), contextSet.end(),
+                                                     [&compareStringPrevious,&compareStringNext](SharedContextAxiom2L const &obj)
+
+                            {
+                                return (obj->get_m_preceded() == compareStringPrevious && obj->get_m_fallowed() == compareStringNext);
+
+                            }
+
+                                                    );
+                            if(itContext != contextSet.end())
                             {
 #ifdef DEBUG
                                 std::cout<<"CHANGING :\t"<<compareString<<" -----> ";
-                                std::cout<<(*contextSet.begin())->get_m_preceded()<<" < "<<compareString<<" < "<<(*contextSet.begin())->get_m_fallowed()<<" TO: "<<(*contextSet.begin())->get_m_to()<<"\n";
+                                std::cout<<(*itContext)->get_m_preceded()<<" < "<<compareString<<" < "<<(*itContext)->get_m_fallowed()<<" TO: "<<(*itContext)->get_m_to()<<"\n";
 #endif // DEBUG
-                                temp+=(*contextSet.begin())->get_m_to();
+                                temp+=(*itContext)->get_m_to();
                                 found = true;
                             }
+                            else
+                            {
+                                std::cout<<"Item not Found"<<std::endl;
+                            }
+
+#ifdef DEBUG
+#endif // DEBUG
+
 
                         }
                         else

@@ -71,4 +71,6 @@ private :
 typedef std::shared_ptr<ContextAxiom2L> SharedContextAxiom2L;
 typedef std::vector<SharedContextAxiom2L>SharedContextAxiomVector2L;
 
+
+
 #endif // CONTEXT_H
