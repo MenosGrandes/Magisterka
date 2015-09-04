@@ -203,7 +203,7 @@ void Turtle::compute()
 
                     */
 
-                    SharedContextAxiomSet2L contextSet=it->get()->getAxiomSet()->contextSet;
+                    SharedContextAxiomVector2L contextSet=it->get()->getAxiomSet()->contextSet;
                     if(it->get()->getFrom().compare(compareString) == 0)
                     {
                         if(contextSet.size()>0)

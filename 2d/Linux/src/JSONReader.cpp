@@ -72,7 +72,7 @@ SharedSystemData2DList JSONReader::readJSON()
         {
 
             SharedProbabilityAxiomVector probabilityAxiomSet;
-            SharedContextAxiomSet2L contextAxiomSet;
+            SharedContextAxiomVector2L contextAxiomSet;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
 #ifdef DEBUG
@@ -89,7 +89,7 @@ SharedSystemData2DList JSONReader::readJSON()
                 std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
                 std::cout<<"PROBABILITY: "<<axiom["probability"].GetDouble()<<"\n";
 #endif // DEBUG
-                probabilityAxiomSet.insert(probabilityAxiom);
+                probabilityAxiomSet.push_back(probabilityAxiom);
             }
 #ifdef DEBUG
             std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
@@ -102,7 +102,7 @@ SharedSystemData2DList JSONReader::readJSON()
 
                 SharedContextAxiom2L contextAxiom(new ContextAxiom2L (axiom["preceded"].GetString(),axiom["fallowed"].GetString(),axiom["to"].GetString()));
 
-                contextAxiomSet.insert(contextAxiom);
+                contextAxiomSet.push_back(contextAxiom);
 #ifdef DEBUG
                 std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
                 std::cout<<"CONTEXT: "<<axiom["preceded"].GetString()<<" "<<axiom["fallowed"].GetString()<<"\n";

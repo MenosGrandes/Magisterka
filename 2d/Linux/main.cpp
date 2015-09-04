@@ -9,7 +9,7 @@ int main()
     sf::Vector2f prev;
 
     sf::View view2(sf::Vector2f(350, 300), sf::Vector2f(300, 200));
-    sf::RenderWindow window(sf::VideoMode(1366, 768), "SFML works!",sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(1366, 768), "MastersSystem!",sf::Style::Default);
     /*
     SharedTurtle, aka std::shared_ptr<Turtle>, is used to calculate the string of the L-System.
     Turtle calculates the string from SharedRule, aka std::shared_ptr<Rule>. SharedRule contains 2 strings, from and to.
@@ -112,94 +112,3 @@ int main()
 
     return 0;
 }
-//#include <SFML/Graphics.hpp>
-//#include "AnimatedSprite.h"
-//#include <iostream>
-//
-//int main()
-//{
-//    // setup window
-//    sf::Vector2i screenDimensions(800,600);
-//    sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Animations!");
-//    window.setFramerateLimit(60);
-//
-//    // load texture (spritesheet)
-//    sf::Texture texture;
-//    if (!texture.loadFromFile("img/loading.png"))
-//    {
-//        std::cout << "Failed to load player spritesheet!" << std::endl;
-//        return 1;
-//    }
-//
-//    // set up the animations for all four directions (set spritesheet and push frames)
-//    Animation walkingAnimationDown;
-//for(int i=0;i<6;i++)
-//{
-//
-//for(int j=0;j<5;j++)
-//{
-//int x,y;
-//x=i*300;
-//y=j*400;
-//   walkingAnimationDown.addFrame(sf::IntRect(y, x, 400, 300));
-//    std::cout<<y<<" "<<x<<"\n";
-//
-//
-//}
-//}
-//    walkingAnimationDown.setSpriteSheet(texture);
-//
-//    Animation* currentAnimation = &walkingAnimationDown;
-//
-//    // set up AnimatedSprite
-//    AnimatedSprite animatedSprite(sf::seconds(0.2), true, false);
-//    animatedSprite.setPosition(sf::Vector2f(screenDimensions / 2));
-//
-//    sf::Clock frameClock;
-//
-//    float speed = 80.f;
-//    bool noKeyWasPressed = true;
-//
-//    while (window.isOpen())
-//    {
-//        sf::Event event;
-//        while (window.pollEvent(event))
-//        {
-//            if (event.type == sf::Event::Closed)
-//                window.close();
-//            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-//                window.close();
-//        }
-//
-//        sf::Time frameTime = frameClock.restart();
-//
-//        // if a key was pressed set the correct animation and move correctly
-//        sf::Vector2f movement(0.f, 0.f);
-//
-//        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-//        {
-//            currentAnimation = &walkingAnimationDown;
-//            noKeyWasPressed = false;
-//        }
-//
-//        animatedSprite.play(*currentAnimation);
-//        animatedSprite.move(movement * frameTime.asSeconds());
-//
-//        // if no key was pressed stop the animation
-////        if (noKeyWasPressed)
-////        {
-////            animatedSprite.stop();
-////        }
-////        noKeyWasPressed = true;
-//
-//        // update AnimatedSprite
-//        animatedSprite.update(frameTime);
-//
-//        // draw
-//        window.clear();
-//        window.draw(animatedSprite);
-//        window.display();
-//    }
-//
-//    return 0;
-//}

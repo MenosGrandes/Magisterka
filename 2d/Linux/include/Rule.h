@@ -19,13 +19,13 @@
 class ContextProbabilityAxiomSet
 {
 public :
-    ContextProbabilityAxiomSet(SharedContextAxiomSet2L context,SharedProbabilityAxiomSet probabilitySet)
+    ContextProbabilityAxiomSet(SharedContextAxiomVector2L context,SharedProbabilityAxiomVector probabilitySet)
     {
         this->contextSet=context;
         this->probabilitySet=probabilitySet;
     }
-    SharedContextAxiomSet2L contextSet;
-    SharedProbabilityAxiomSet probabilitySet;
+    SharedContextAxiomVector2L contextSet;
+    SharedProbabilityAxiomVector probabilitySet;
 };
 typedef std::shared_ptr<ContextProbabilityAxiomSet>SharedContextProbabilityAxiomSet;
 /* RULE */
