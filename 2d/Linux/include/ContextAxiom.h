@@ -69,6 +69,6 @@ private :
     BIGGERLOWER m_sign;
 };
 typedef std::shared_ptr<ContextAxiom2L> SharedContextAxiom2L;
-typedef std::set<SharedContextAxiom2L>SharedContextAxiomSet2L;
+typedef std::vector<SharedContextAxiom2L>SharedContextAxiomVector2L;
 
 #endif // CONTEXT_H

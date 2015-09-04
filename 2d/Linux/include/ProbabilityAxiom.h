@@ -35,7 +35,7 @@ private:
     float m_probability;
 };
 typedef std::shared_ptr<ProbabilityAxiom>SharedProbabilityAxiom;
-typedef std::set<SharedProbabilityAxiom>SharedProbabilityAxiomSet;
+typedef std::vector<SharedProbabilityAxiom>SharedProbabilityAxiomVector;
 
 
 #endif // PROBABILITYAXIOM_H

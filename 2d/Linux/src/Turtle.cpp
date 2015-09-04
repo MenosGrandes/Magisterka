@@ -88,7 +88,7 @@ void Turtle::compute()
                         Check the L1System, because there is only one possibility the
                         "a > a_r --> x"
                         */
-                        SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet()->probabilitySet;
+                        SharedProbabilityAxiomVector axiomSet=it->get()->getAxiomSet()->probabilitySet;
                         temp+=(*axiomSet.begin())->get_m_to();
 #ifdef DEBUG
                         std::cout<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_m_to()<<std::endl;
@@ -103,7 +103,6 @@ void Turtle::compute()
                 else
                 {
 
-
                     /*It must be checked if the strings aren't the same as the ignored strings*/
                     bool compareNB=false,comparePB=false;
 
@@ -117,12 +116,13 @@ void Turtle::compute()
                         /*if it's then you can go to another sign because it's should not be evaluated*/
 #ifdef DEBUG
                         std::cout<<compareString<<" is in IGNORE IN COMPARE\n";
+
 #endif // DEBUG
                         break;
                     }
                     /*Check next sign*/
 
-                    for(int g=i; g<m_result.size(); ++g)
+                    for(int g=i+1; g<=m_result.size(); g++)
                     {
                         char b = m_result[g];
                         ss << b;
@@ -139,17 +139,26 @@ void Turtle::compute()
                         else
                         {
                             compareNB=false;
+#ifdef DEBUG
+
+                            std::cout<<g<<" : "<<compareStringNext<<" next\n";
+#endif // DEBUG
+
                             break;
                         }
 
                     }
                     if(compareNB)
                     {
-                    break;
+#ifdef DEBUG
+                        std::cout<<"Not found next\n";
+
+#endif // DEBUG
+                        break;
                     }
 
 
-                    for(int g=i; g>0; --g)
+                    for(int g=i-1; g>=0; g--)
                     {
                         char c = m_result[g];
                         ss << c;
@@ -166,14 +175,22 @@ void Turtle::compute()
                         else
                         {
                             comparePB=false;
+                            #ifdef DEBUG
+
+                            std::cout<<g<<" : "<<compareStringPrevious<<" previous \n";
+                            #endif // DEBUG
                             break;
                         }
 
 
                     }
-                   if(comparePB)
+                    if(comparePB)
                     {
-                    break;
+#ifdef DEBUG
+                        std::cout<<"Not found previous\n";
+
+#endif // DEBUG
+                        break;
                     }
 
 
@@ -192,6 +209,8 @@ void Turtle::compute()
                         if(contextSet.size()>0)
                         {
 
+/*Now the algorithm must find the specifix axiom. So it must find out which one of axioms are the same as the founded "proceed" and "succed"*/
+
 
 #ifdef DEBUG
                             std::cout<<"\nCONTEXT AXIOMS\n";
@@ -205,6 +224,7 @@ void Turtle::compute()
                                 temp+=(*contextSet.begin())->get_m_to();
                                 found = true;
                             }
+
                         }
                         else
                         {
@@ -218,9 +238,9 @@ void Turtle::compute()
                             auto rando = std::bind(std::uniform_int_distribution<int>(0,100),
                                                    std::mt19937(seed));
                             /*Get AxiomSET*/
-                            SharedProbabilityAxiomSet axiomSet=it->get()->getAxiomSet()->probabilitySet;
+                            SharedProbabilityAxiomVector axiomSet=it->get()->getAxiomSet()->probabilitySet;
                             /*Create iterator for axiomSet*/
-                            SharedProbabilityAxiomSet::iterator iterat;
+                            SharedProbabilityAxiomVector::iterator iterat;
                             /*Get random number*/
                             int rand=rando();
                             Range range;
@@ -274,7 +294,7 @@ void Turtle::compute()
                             std::cout<<rand<<" random generated\n";
 #endif // DEBUG
                             /*Go to the object correspondent to range*/
-                            SharedProbabilityAxiomSet::iterator itProb = axiomSet.begin();
+                            SharedProbabilityAxiomVector::iterator itProb = axiomSet.begin();
                             std::advance(itProb, iteratorForSet);
                             /*Change*/
                             temp+=(*itProb)->get_m_to();
@@ -291,6 +311,7 @@ void Turtle::compute()
             {
 #ifdef DEBUG
                 std::cout<<compareString<<" WAS NOT FOUND\n"<<std::endl;
+
 #endif // DEBUG
                 temp+=compareString;
             }

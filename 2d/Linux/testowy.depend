@@ -754,7 +754,7 @@
 	<map>
 	<chrono>
 
-1440996918 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1441365386 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -937,7 +937,7 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1440431606 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
+1441365366 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
 	<memory>
 	<set>
 	<string>
@@ -958,7 +958,7 @@
 	<string>
 	<memory>
 
-1440877889 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
+1441365366 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
 	<memory>
 	<string>
 

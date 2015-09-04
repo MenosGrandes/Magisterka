@@ -71,7 +71,7 @@ SharedSystemData2DList JSONReader::readJSON()
         for (rapidjson::SizeType i = 0; i < listOfAxioms.Size(); i++)
         {
 
-            SharedProbabilityAxiomSet probabilityAxiomSet;
+            SharedProbabilityAxiomVector probabilityAxiomSet;
             SharedContextAxiomSet2L contextAxiomSet;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
