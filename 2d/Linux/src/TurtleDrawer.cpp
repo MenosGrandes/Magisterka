@@ -99,8 +99,6 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
         case 'S':
         case 'H':
         case 'Z':
-
-
         case 'L':
         case 'R':
         case 'F':

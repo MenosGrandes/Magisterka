@@ -42,10 +42,10 @@ void Turtle::compute()
 #endif // DEBUG
     for(int i1=0; i1<m_iterations; i1++)
     {
-#ifdef DEBUG
+
         std::cout<<"ITERATION :"<<i1<<std::endl;
-        std::cout<<"AXIOM :"<<m_result<<std::endl;
-#endif // DEBUG
+        std::cout<<"AXIOM :"<<m_result<<"\n\n"<<std::endl;
+
         int resultSize=m_result.length();
         for(int i=0; i<resultSize; i++)
         {
@@ -218,11 +218,12 @@ void Turtle::compute()
                         if(contextSet.size()>0)
                         {
 
-                        std::cout<<compareStringPrevious<<" < "<<compareString<<" > "<<compareStringNext<<" ||||\n";
+#ifdef DEBUG
 
+std::cout<<compareStringPrevious <<" < "<<compareString<<" < "<<compareStringNext<<" cout<!\n";
 
                             std::cout<<"\nCONTEXT AXIOMS\n";
-
+#endif // DEBUG
                             /*Now the algorithm must find the specifix axiom. So it must find out which one of axioms are the same as the founded "proceed" and "succed"*/
                             SharedContextAxiomVector2L::iterator itContext;
                             itContext = std::find_if(contextSet.begin(), contextSet.end(),
@@ -236,16 +237,19 @@ void Turtle::compute()
                                                     );
                             if(itContext != contextSet.end())
                             {
-#ifdef DEBUG
+
                                 std::cout<<"CHANGING :\t"<<compareString<<" -----> ";
                                 std::cout<<(*itContext)->get_m_preceded()<<" < "<<compareString<<" < "<<(*itContext)->get_m_fallowed()<<" TO: "<<(*itContext)->get_m_to()<<"\n";
-#endif // DEBUG
+
                                 temp+=(*itContext)->get_m_to();
                                 found = true;
                             }
                             else
                             {
+                            #ifdef DEBUG
                                 std::cout<<"Item not Found"<<std::endl;
+                                #endif //DEBUG
+                                found=false;
                             }
 
 #ifdef DEBUG
@@ -326,10 +330,10 @@ void Turtle::compute()
                             /*Change*/
                             temp+=(*itProb)->get_m_to();
                             found = true;
-#ifdef DEBUG
+
                             std::cout<<"CHANGED FROM "<<compareString<<" TO "<<(*itProb)->get_m_to()<<std::endl;
 
-#endif // DEBUG
+
                         }
                     }
                 }

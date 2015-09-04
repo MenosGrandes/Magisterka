@@ -538,7 +538,7 @@
     },
     {
       "name": "ContextT",
-      "iterations": 3,
+      "iterations": 30,
       "angle": 22.5,
       "start": "F1F1F1",
       "ignore": [
