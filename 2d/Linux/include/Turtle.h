@@ -5,6 +5,8 @@
 #include <random>
 #include <map>
 #include <chrono>
+
+
 class Turtle
 {
 
@@ -29,7 +31,8 @@ private:
     unsigned char m_iterations;
     std::list<SharedRule> m_rules;
     std::vector<std::string>m_ignoreList;
-
+    void ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it,int i,std::string &temp,std::string &compareString,bool &found);
+    void ChangeNonContextSensitiveSystem(std::list<SharedRule>::iterator it,int i,std::string &temp,std::string &compareString,bool &found);
 
 
 };

@@ -737,7 +737,7 @@
 1437326160 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1441385083 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1441959074 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
@@ -748,13 +748,13 @@
 	<Turtle.h>
 	<mutex>
 
-1441385633 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1441957464 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
 	<random>
 	<map>
 	<chrono>
 
-1441385083 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1441957369 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -886,10 +886,11 @@
 1441385083 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1441389383 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1441960503 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
+	"easylogging++.h"
 
-1441389692 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
+1441653875 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
 1437759654 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/RuleAxiom.h
@@ -961,4 +962,73 @@
 1441385550 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
 	<memory>
 	<string>
+
+1420667454 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/easylogging++.h
+	<syslog.h>
+	<ctime>
+	<cstring>
+	<cstdlib>
+	<cctype>
+	<cwchar>
+	<csignal>
+	<cerrno>
+	<cstdarg>
+	<locale>
+	<codecvt>
+	<cxxabi.h>
+	<execinfo.h>
+	<sys/system_properties.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<direct.h>
+	<windows.h>
+	<winsock2.h>
+	<winsock.h>
+	<string>
+	<vector>
+	<map>
+	<utility>
+	<functional>
+	<algorithm>
+	<fstream>
+	<iostream>
+	<sstream>
+	<memory>
+	<type_traits>
+	<mutex>
+	<thread>
+	<pthread.h>
+	<thread>
+	<queue>
+	<condition_variable>
+	<list>
+	<queue>
+	<deque>
+	<set>
+	<bitset>
+	<stack>
+	<array>
+	<unordered_map>
+	<unordered_set>
+	<QString>
+	<QByteArray>
+	<QVector>
+	<QList>
+	<QPair>
+	<QMap>
+	<QQueue>
+	<QSet>
+	<QLinkedList>
+	<QHash>
+	<QMultiHash>
+	<QStack>
+	<boost/container/vector.hpp>
+	<boost/container/stable_vector.hpp>
+	<boost/container/list.hpp>
+	<boost/container/deque.hpp>
+	<boost/container/map.hpp>
+	<boost/container/flat_map.hpp>
+	<boost/container/set.hpp>
+	<boost/container/flat_set.hpp>
+	<wx/vector.h>
 

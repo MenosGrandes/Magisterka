@@ -5,7 +5,7 @@
 		<Option title="testowy" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="GUI/;JSON/;Turtle/;Rules/;" />
+		<Option virtualFolders="GUI/;JSON/;Turtle/;Rules/;logger/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/testowy" prefix_auto="1" extension_auto="1" />
@@ -13,6 +13,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="-DDEBUG" />
 					<Add directory="include" />
@@ -41,14 +42,12 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wshadow" />
-			<Add option="-Winit-self" />
-			<Add option="-Wunreachable-code" />
 			<Add option="-std=c++11" />
 			<Add option="-w" />
 		</Compiler>
 		<Linker>
 			<Add library="libsfgui" />
+			<Add library="pthread" />
 		</Linker>
 		<Unit filename="db.json">
 			<Option virtualFolder="JSON/" />
@@ -76,6 +75,9 @@
 		</Unit>
 		<Unit filename="include/TurtleDrawer.h">
 			<Option virtualFolder="Turtle/" />
+		</Unit>
+		<Unit filename="include/easylogging++.h">
+			<Option virtualFolder="logger/" />
 		</Unit>
 		<Unit filename="include/rapidjson/allocators.h" />
 		<Unit filename="include/rapidjson/document.h" />
