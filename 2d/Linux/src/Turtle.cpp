@@ -51,10 +51,8 @@ void Turtle::compute()
 
     for(int i1=0; i1<m_iterations; i1++)
     {
-
-        LOG(DEBUG)<<"ITERATION :"<<i1;
-        LOG(DEBUG)<<"AXIOM :"<<m_result;
-
+        LOG(INFO)<<"ITERATION :"<<i1;
+        LOG(INFO)<<"AXIOM :"<<m_result;
         int resultSize=m_result.length();
         for(int i=0; i<resultSize; i++)
         {
@@ -72,8 +70,8 @@ void Turtle::compute()
             {
 
 
-
                 ChangeNonContextSensitiveSystem(it,i,temp,compareString,found);
+
                 ChangeContextSensitiveSystem(it,i,temp,compareString,found);
 
             }
@@ -93,7 +91,7 @@ void Turtle::compute()
         temp="";
 
 
-        LOG(DEBUG)<<"ENDED :"<<m_result;
+        LOG(INFO)<<"ENDED :"<<m_result;
 
 
     }
@@ -103,100 +101,152 @@ void Turtle::compute()
 
 
 }
+
+/*If there is situation when the '[' or ']' occurs those symbols must be ignored so if there is A[ABABABABCA]ABB and A<A>B it can change because the [..] is ignored  */
 void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, int i, std::string& temp, std::string& compareString, bool& found)
 {
-    LOG(DEBUG)<<"ChangeContextSensitiveSystem";
     SharedContextAxiomVector2L contextSet=it->get()->getAxiomSet()->contextSet;
     if(contextSet.size()>0)
     {
         std::string compareStringNext,compareStringPrevious;
         std::stringstream ss;
         bool compareNB=false,comparePB=false;
-        char a = m_result[i];
-
-        ss << a;
-        ss >> compareString;
-        ss.clear();
-
-        /*Check next sign*/
-        for(int g=i+1; g<=m_result.size(); g++)
-        {
-            char b = m_result[g];
-            ss << b;
-            ss >> compareStringNext;
-            ss.clear();
-            if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringNext) != m_ignoreList.end())
-            {
-                /*if it's then you can go to another sign because it's should not be evaluated*/
-
-                LOG(DEBUG)<<compareStringNext<<" is in IGNORE IN NEXT";
-
-                compareNB=true;
-            }
-            else
-            {
-                compareNB=false;
-
-                LOG(DEBUG)<<g<<" : "<<compareStringNext<<" becoming compareStringNext";
-
-
-                break;
-            }
-
-        }
-        if(compareNB)
-        {
-
-            LOG(DEBUG)<<"compareStringNext not found. Going to next iteration";
-
-
-            return;
-        }
-
-
-
-
-        for(int g=i-1; g>=0; g--)
-        {
-            char c = m_result[g];
-            ss << c;
-            ss >> compareStringPrevious;
-            ss.clear();
-            if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringPrevious) != m_ignoreList.end())
-            {
-                /*if it's then you can go to another sign because it's should not be evaluated*/
-
-                LOG(DEBUG)<<compareStringPrevious<<" is in IGNORE IN PREVIUS";
-
-                comparePB=true;
-            }
-            else
-            {
-                comparePB=false;
-
-
-                LOG(DEBUG)<<g<<" : "<<compareStringPrevious<<" becoming compareStringPrevious ";
-
-                break;
-            }
-
-
-        }
-        if(comparePB)
-        {
-
-            LOG(DEBUG)<<"compareStringPrevious not found. Going to next iteration";
-
-            return;
-        }
-
-
-
-
-
 
         if(it->get()->getFrom().compare(compareString) == 0)
         {
+            /*Check next sign*/
+            for(int g=i+1; g<m_result.size(); g++)
+            {
+                char b = m_result[g];
+                ss << b;
+                ss >> compareStringNext;
+                ss.clear();
+
+//                if(compareStringNext=="[" )
+//                {
+//                    LOG(TRACE)<<compareStringNext;
+//                    LOG(TRACE)<<g;
+//
+//                    do
+//                    {
+//                        b = m_result[++g];
+//                        ss << b;
+//                        ss >> compareStringNext;
+//                        ss.clear();
+//                        LOG(TRACE)<<"changed to :"<<compareStringNext;
+//
+//                    }
+//                    while(compareStringNext!="]");
+//
+//                    b = m_result[++g];
+//                    ss << b;
+//                    ss >> compareStringNext;
+//                    ss.clear();
+//
+//                        LOG(TRACE)<<"changed2 to :"<<compareStringNext;
+//
+//
+//
+//                }
+
+
+                if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringNext) != m_ignoreList.end())
+                {
+                    /*if it's then you can go to another sign because it's should not be evaluated*/
+
+                    LOG(DEBUG)<<compareStringNext<<" is in IGNORE IN NEXT";
+
+                    compareNB=true;
+                }
+                else
+                {
+                    compareNB=false;
+
+                    LOG(DEBUG)<<g<<" : "<<compareStringNext<<" becoming compareStringNext";
+
+
+                    break;
+                }
+
+            }
+            if(compareNB || compareStringNext.empty())
+            {
+
+                LOG(DEBUG)<<"compareStringNext not found or empty. Going to next iteration";
+
+                return;
+            }
+
+
+
+
+            for(int g=i-1; g>=0; g--)
+            {
+                char c = m_result[g];
+                ss << c;
+                ss >> compareStringPrevious;
+                ss.clear();
+
+//if(compareStringPrevious=="]" )
+//                {
+//                    LOG(TRACE)<<compareStringPrevious;
+//                    LOG(TRACE)<<g;
+//
+//                    do
+//                    {
+//                        c = m_result[--g];
+//                        ss << c;
+//                        ss >> compareStringPrevious;
+//                        ss.clear();
+//                        LOG(TRACE)<<"changed to :"<<compareStringPrevious;
+//
+//                    }
+//                    while(compareStringPrevious!="[");
+//
+//                    c = m_result[--g];
+//                    ss << c;
+//                    ss >> compareStringPrevious;
+//                    ss.clear();
+//
+//                        LOG(TRACE)<<"changed2 to :"<<compareStringPrevious;
+//
+//
+//
+//                }
+
+                if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringPrevious) != m_ignoreList.end())
+                {
+                    /*if it's then you can go to another sign because it's should not be evaluated*/
+
+                    LOG(DEBUG)<<compareStringPrevious<<" is in IGNORE IN PREVIUS";
+
+                    comparePB=true;
+                }
+                else
+                {
+                    comparePB=false;
+
+
+                    LOG(DEBUG)<<g<<" : "<<compareStringPrevious<<" becoming compareStringPrevious ";
+
+                    break;
+                }
+
+
+            }
+            if(comparePB  || compareStringPrevious.empty())
+            {
+
+                LOG(DEBUG)<<"compareStringPrevious not found. Going to next iteration";
+
+                return;
+            }
+
+
+
+
+
+
 
 
             /*Now the algorithm must find the specifix axiom. So it must find out which one of axioms are the same as the founded "proceed" and "succed"*/
@@ -205,11 +255,6 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
                                      [&compareStringPrevious,&compareStringNext](SharedContextAxiom2L const &obj)
 
             {
-                if(obj->get_m_preceded()=="*")
-                {
-                    return true;
-                }
-
                 return (obj->get_m_preceded() == compareStringPrevious && obj->get_m_fallowed() == compareStringNext);
 
             }
@@ -218,8 +263,7 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
             if(itContext != contextSet.end())
             {
 
-                LOG(DEBUG)<<"CHANGING :\t"<<compareString<<" -----> ";
-                LOG(DEBUG)<<(*itContext)->get_m_preceded()<<" < "<<compareString<<" < "<<(*itContext)->get_m_fallowed()<<" TO: "<<(*itContext)->get_m_to()<<"\n";
+                LOG(INFO)<<"CHANGING :"<<compareString<<" -----> "<<(*itContext)->get_m_preceded()<<" < "<<compareString<<" < "<<(*itContext)->get_m_fallowed()<<" TO: "<<(*itContext)->get_m_to();
 
                 temp+=(*itContext)->get_m_to();
                 found = true;
@@ -227,9 +271,8 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
             else
             {
 
-                LOG(DEBUG)<<"Rule in contextSet not Found"<<std::endl;
+                LOG(DEBUG)<<compareStringPrevious<<" < "<<compareString<<" < "<<compareStringNext<<" \nRule in contextSet not Found";
 
-                found=false;
             }
 
         }
@@ -241,7 +284,6 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
 void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it, int i, std::string& temp, std::string& compareString, bool& found)
 {
 
-    LOG(DEBUG)<<"ChangeNonContextSensitiveSystem";
     /*Check the size of probabilityAxioms in this perticular Rule*/
 
     /*If it's 1 the Rule is DOL ( Deterministic )*/
@@ -253,7 +295,7 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
             SharedProbabilityAxiomVector axiomSet=it->get()->getAxiomSet()->probabilitySet;
             temp+=(*axiomSet.begin())->get_m_to();
 
-            LOG(DEBUG)<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_m_to()<<std::endl;
+            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_m_to();
 
             found=true;
 
@@ -271,9 +313,9 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
 
             /*Type for range values*/
             typedef std::list<std::pair<int,int>> Range;
-#ifdef DEBUG
-            std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"<<it->get()->getFrom()<<" FROM\n";
-#endif // DEBUG
+
+            LOG(DEBUG)<<it->get()->getFrom()<<" FROM";
+
             /*Random number generation*/
             auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
             auto rando = std::bind(std::uniform_int_distribution<int>(0,100),
@@ -311,7 +353,7 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
                 /*If there is more than 100% of probability so there must be something wrong*/
                 if(currentProbability>100)
                 {
-                    LOG(DEBUG)<<"TOO MUCH!!!!!!! MUST BE LOWER THEN 100%\n";
+                    LOG(DEBUG)<<"TOO MUCH!!!!!!! MUST BE LOWER THEN 100%";
                 }
 
 
@@ -324,14 +366,14 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
                 if((*rangeIterator).first<=rand &&rand<=(*rangeIterator).second)
                 {
 
-                    LOG(DEBUG)<<(*rangeIterator).first<<" < ="<<rand<<"<="<<(*rangeIterator).second<<"\n";
+                    LOG(DEBUG)<<(*rangeIterator).first<<" < ="<<rand<<"<="<<(*rangeIterator).second;
 
                     /*If it have found the range quit the loop*/
                     break;
                 }
                 iteratorForSet++;
             }
-            LOG(DEBUG)<<rand<<" random generated\n";
+            LOG(DEBUG)<<rand<<" random generated";
             /*Go to the object correspondent to range*/
             SharedProbabilityAxiomVector::iterator itProb = axiomSet.begin();
             std::advance(itProb, iteratorForSet);
@@ -339,7 +381,7 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
             temp+=(*itProb)->get_m_to();
             found = true;
 
-            LOG(DEBUG)<<"CHANGED FROM "<<compareString<<" TO "<<(*itProb)->get_m_to()<<std::endl;
+            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*itProb)->get_m_to();
 
 
         }

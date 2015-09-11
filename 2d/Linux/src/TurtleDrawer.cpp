@@ -15,14 +15,7 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
 
 
     std::lock_guard<std::mutex>lock(drawningMutex);
-#ifdef DEBUG
-    std::cout<<"\nSTART COMPUTING\n";
-    sf::Clock clock; // starts the clock
 
-    sf::Time elapsed1 = clock.getElapsedTime();
-    std::cout << elapsed1.asMilliseconds() << std::endl;
-    clock.restart();
-#endif // DEBUG
     /*
           Stack to get the PosRot values
           */
@@ -112,7 +105,7 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
             In case if the next one in initializer isn't '[', so it appends another point to createthe strait line, without gaps.
 
             */
-            if(initializer[i+1]!=']')
+            if(initializer[i+1]!=']' )
             {
                 sf::Vertex v(sf::Vector2f(current.first),randomColor());
                 m_vertices.append(v);
@@ -124,11 +117,6 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
 //        std::cout<<".";
 
     }
-#ifdef DEBUG
-    sf::Time elapsed2 = clock.getElapsedTime();
-    std::cout << elapsed2.asMilliseconds() << std::endl;
-    std::cout<<"\nEND COMPUTING\n";
-#endif // DEBUG
 
 }
 void TurtleDrawer::computeDraw(std::string initializer,unsigned int length, float angle)

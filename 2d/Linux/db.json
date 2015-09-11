@@ -620,6 +620,177 @@
           "listContext": []
         }
       ]
+    },
+    {
+      "name": "ContextT2",
+      "iterations": 30,
+      "angle": 22.5,
+      "start": "F1F1F1",
+      "ignore": [
+        "+",
+        "-",
+        "F"
+      ],
+      "rules": [
+        {
+          "from": "0",
+          "listProbability": [],
+          "listContext": [
+            {
+              "preceded": "0",
+              "fallowed": "0",
+              "to": "1"
+            },
+            {
+              "preceded": "0",
+              "fallowed": "1",
+              "to": "1[-F1F1]"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "1",
+              "to": "1F1"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "0",
+              "to": "0"
+            }
+          ]
+        },
+        {
+          "from": "1",
+          "listProbability": [],
+          "listContext": [
+            {
+              "preceded": "0",
+              "fallowed": "0",
+              "to": "1"
+            },
+            {
+              "preceded": "0",
+              "fallowed": "1",
+              "to": "1"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "0",
+              "to": "0"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "1",
+              "to": "0"
+            }
+          ]
+        },
+        {
+          "from": "+",
+          "listProbability": [
+            {
+              "to": "-",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "-",
+          "listProbability": [
+            {
+              "to": "+",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        }
+      ]
+    }
+    ,
+    {
+      "name": "ContextT3",
+      "iterations": 26,
+      "angle": 25.75,
+      "start": "F1F1F1",
+      "ignore": [
+        "+",
+        "-",
+        "F"
+      ],
+      "rules": [
+        {
+          "from": "0",
+          "listProbability": [],
+          "listContext": [
+            {
+              "preceded": "0",
+              "fallowed": "0",
+              "to": "0"
+            },
+            {
+              "preceded": "0",
+              "fallowed": "1",
+              "to": "1"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "1",
+              "to": "1F1"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "0",
+              "to": "0"
+            }
+          ]
+        },
+        {
+          "from": "1",
+          "listProbability": [],
+          "listContext": [
+            {
+              "preceded": "0",
+              "fallowed": "0",
+              "to": "1"
+            },
+            {
+              "preceded": "0",
+              "fallowed": "1",
+              "to": "1[+F1F1]"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "0",
+              "to": "0"
+            },
+            {
+              "preceded": "1",
+              "fallowed": "1",
+              "to": "0"
+            }
+          ]
+        },
+        {
+          "from": "+",
+          "listProbability": [
+            {
+              "to": "-",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        },
+        {
+          "from": "-",
+          "listProbability": [
+            {
+              "to": "+",
+              "probability": 100
+            }
+          ],
+          "listContext": []
+        }
+      ]
     }
   ]
 }

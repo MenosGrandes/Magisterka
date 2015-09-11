@@ -12,16 +12,7 @@ public:
     virtual ~TurtleDrawer();
 
     unsigned int size();
-#ifdef DEBUG
-    void show()
-    {
-        std::cout<<m_vertices.getVertexCount()<<"\n";
-        for(int i=0; i<m_vertices.getVertexCount(); i++)
-        {
-            std::cout<<m_vertices[i].position.x<<" "<<m_vertices[i].position.y<<"\n";
-        }
-    }
-#endif // DEBUG
+
     void computeDraw(std::string initializer="",unsigned int length=10, float angle=0);
 
 protected:

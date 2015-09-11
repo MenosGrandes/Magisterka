@@ -20,10 +20,6 @@ void GUI::IterationChange()
 /*Start button default click handler.*/
 void GUI::OnButtonClick()
 {
-#ifdef DEBUG
-    std::cout<<"CLICKED!\n";
-#endif // DEBUG
-    std::cout<<" DRAWING\n";
     /*If "START" button was clicked call ReRun function.*/
     ReRun();
 

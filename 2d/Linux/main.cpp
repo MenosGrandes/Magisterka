@@ -32,7 +32,11 @@ int main()
     Create gui and pass an SharedTurtleDrawer and SharedTurtle, to recalculate the whole Rules and Axioms, if they were added at GUI side.
     */
     SharedGUI gui(new GUI(t,td));
-
+    /*Compute the l-system*/
+    t->compute();
+    /*Draw the output.
+    10 -> length of the line (whatever value)*/
+    td->computeDraw(t->GetResult(),10,22.5);
     /*
     DRAWING!
     */

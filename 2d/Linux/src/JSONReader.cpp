@@ -51,17 +51,12 @@ SharedSystemData2DList JSONReader::readJSON()
         /*Get another array inside the main array.*/
         const Value& listOfAxioms=l_system["rules"];
         /*Get ignore signs for ContextAxioms*/
-        #ifdef DEBUG
-        std::cout<<"IGNORE LIST:\n";
-        #endif
+
 
                 const Value& ignore_list = l_system["ignore"];
                 for (rapidjson::SizeType i = 0; i < ignore_list.Size(); i++)
                 {
                 data.ignore_list.push_back(ignore_list[i].GetString());
-                #ifdef DEBUG
-                std::cout<<data.ignore_list[i]<<"\n";
-                #endif // DEBUG
                 }
 
         /*List of rules*/
@@ -75,26 +70,14 @@ SharedSystemData2DList JSONReader::readJSON()
             SharedContextAxiomVector2L contextAxiomSet;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
-#ifdef DEBUG
-            std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
-            std::cout<<"FROM: "<<from["from"].GetString()<<"\n";
-#endif // DEBUG
 
             const Value& axiomsProbability = from["listProbability"];
             for (rapidjson::SizeType i = 0; i < axiomsProbability.Size(); i++)
             {
                 const Value& axiom = axiomsProbability[i];
                 SharedProbabilityAxiom probabilityAxiom(new ProbabilityAxiom(axiom["to"].GetString(),axiom["probability"].GetDouble()));
-#ifdef DEBUG
-                std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
-                std::cout<<"PROBABILITY: "<<axiom["probability"].GetDouble()<<"\n";
-#endif // DEBUG
                 probabilityAxiomSet.push_back(probabilityAxiom);
             }
-#ifdef DEBUG
-            std::cout<<"~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!~~!!\n";
-#endif // DEBUG
-
             const Value& axiomsContext = from["listContext"];
             for (rapidjson::SizeType i = 0; i < axiomsContext.Size(); i++)
             {
@@ -103,10 +86,6 @@ SharedSystemData2DList JSONReader::readJSON()
                 SharedContextAxiom2L contextAxiom(new ContextAxiom2L (axiom["preceded"].GetString(),axiom["fallowed"].GetString(),axiom["to"].GetString()));
 
                 contextAxiomSet.push_back(contextAxiom);
-#ifdef DEBUG
-                std::cout<<"TO: "<<axiom["to"].GetString()<<"\n";
-                std::cout<<"CONTEXT: "<<axiom["preceded"].GetString()<<" "<<axiom["fallowed"].GetString()<<"\n";
-#endif // DEBUG
             }
             SharedContextProbabilityAxiomSet axioms(new ContextProbabilityAxiomSet(contextAxiomSet,probabilityAxiomSet));
 
@@ -117,10 +96,6 @@ SharedSystemData2DList JSONReader::readJSON()
         data.ruleList=ruleList;
         SharedSystemData2D dataShared=std::make_shared<SystemData2D>(data);
         dataList.push_back(dataShared);
-#ifdef DEBUG
-
-        std::cout<<"NAME: "<<data.name<<"\nANGLE: "<<data.angle<<"\nSTART: "<<data.start<<"\nITER: "<<data.iterations<<"\n@@@@@@@@@@@@@@@@@@\n";
-#endif // DEBUG
 
     }
 
