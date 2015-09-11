@@ -302,7 +302,7 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
         }
 
 
-
+asdasdsad
     }
     /*If there is more than one posibility of change for this sign, this must be the SOL ( Stochiastic )*/
     else if(it->get()->getAxiomSet()->probabilitySet.size()>1)
