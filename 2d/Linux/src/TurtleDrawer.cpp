@@ -94,6 +94,7 @@ void TurtleDrawer::computeInThread(std::string initializer,unsigned int length, 
         case 'Z':
         case 'L':
         case 'R':
+
         case 'F':
             /*
             Translate current point by length

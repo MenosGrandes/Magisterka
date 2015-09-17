@@ -27,6 +27,7 @@ public:
 
 protected:
 private:
+    unsigned int m_level;
     std::string m_result;
     unsigned char m_iterations;
     std::list<SharedRule> m_rules;

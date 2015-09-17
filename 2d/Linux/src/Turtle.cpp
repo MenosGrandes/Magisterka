@@ -57,6 +57,7 @@ void Turtle::compute()
         for(int i=0; i<resultSize; i++)
         {
             bool found=false;
+            m_level=0;
             std::stringstream ss;
             std::string compareString;
             char a = m_result[i];
@@ -64,12 +65,25 @@ void Turtle::compute()
             ss >> compareString;
             ss.clear();
 
+            if(compareString == "[")
+            {
+                ++m_level;
+            }
+            if(compareString == "]")
+            {
+                --m_level;
+            }
 
             std::list<SharedRule>::iterator it;
             for (it= m_rules.begin(); it != m_rules.end(); it++)
             {
 
+/*Check if the compareString sign is in the bracket, and in which one. So if
 
+F1F0F0F0[+F1F1]F1[-F1F1][+F1F1]F1 -> and compareString is '1' at 15 place you must ommit all brackets.
+
+compareString is '1' at 19 place the
+*/
                 ChangeNonContextSensitiveSystem(it,i,temp,compareString,found);
 
                 ChangeContextSensitiveSystem(it,i,temp,compareString,found);
@@ -122,32 +136,34 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
                 ss >> compareStringNext;
                 ss.clear();
 
-//                if(compareStringNext=="[" )
-//                {
-//                    LOG(TRACE)<<compareStringNext;
-//                    LOG(TRACE)<<g;
-//
+                if(compareStringNext=="[" )
+                {
+                    LOG(TRACE)<<compareStringNext;
+                    LOG(TRACE)<<g;
 //                    do
 //                    {
-//                        b = m_result[++g];
-//                        ss << b;
-//                        ss >> compareStringNext;
-//                        ss.clear();
-//                        LOG(TRACE)<<"changed to :"<<compareStringNext;
-//
+                        do
+                        {
+                            b = m_result[++g];
+                            ss << b;
+                            ss >> compareStringNext;
+                            ss.clear();
+                            LOG(TRACE)<<"changed to :"<<compareStringNext;
+
+                        }
+                        while(compareStringNext!="]");
+
+                        b = m_result[++g];
+                        ss << b;
+                        ss >> compareStringNext;
+                        ss.clear();
 //                    }
-//                    while(compareStringNext!="]");
-//
-//                    b = m_result[++g];
-//                    ss << b;
-//                    ss >> compareStringNext;
-//                    ss.clear();
-//
-//                        LOG(TRACE)<<"changed2 to :"<<compareStringNext;
-//
-//
-//
-//                }
+//                    while(compareStringNext!="[");
+                    LOG(TRACE)<<"changed2 to :"<<compareStringNext;
+
+
+
+                }
 
 
                 if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringNext) != m_ignoreList.end())
@@ -187,32 +203,34 @@ void Turtle::ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it, in
                 ss >> compareStringPrevious;
                 ss.clear();
 
-//if(compareStringPrevious=="]" )
-//                {
-//                    LOG(TRACE)<<compareStringPrevious;
-//                    LOG(TRACE)<<g;
-//
+                if(compareStringPrevious=="]" )
+                {
+                    LOG(TRACE)<<compareStringPrevious;
+                    LOG(TRACE)<<g;
 //                    do
 //                    {
-//                        c = m_result[--g];
-//                        ss << c;
-//                        ss >> compareStringPrevious;
-//                        ss.clear();
-//                        LOG(TRACE)<<"changed to :"<<compareStringPrevious;
-//
-//                    }
-//                    while(compareStringPrevious!="[");
-//
-//                    c = m_result[--g];
-//                    ss << c;
-//                    ss >> compareStringPrevious;
-//                    ss.clear();
-//
-//                        LOG(TRACE)<<"changed2 to :"<<compareStringPrevious;
-//
-//
-//
-//                }
+                        do
+                        {
+                            c = m_result[--g];
+                            ss << c;
+                            ss >> compareStringPrevious;
+                            ss.clear();
+                            LOG(TRACE)<<"changed to :"<<compareStringPrevious;
+
+                        }
+                        while(compareStringPrevious!="[");
+
+                        c = m_result[--g];
+                        ss << c;
+                        ss >> compareStringPrevious;
+                        ss.clear();
+    //                    }
+    //                    while(compareStringPrevious!="]");
+                    LOG(TRACE)<<"changed2 to :"<<compareStringPrevious;
+
+
+
+                }
 
                 if (std::find(m_ignoreList.begin(), m_ignoreList.end(), compareStringPrevious) != m_ignoreList.end())
                 {
@@ -302,7 +320,6 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
         }
 
 
-asdasdsad
     }
     /*If there is more than one posibility of change for this sign, this must be the SOL ( Stochiastic )*/
     else if(it->get()->getAxiomSet()->probabilitySet.size()>1)
