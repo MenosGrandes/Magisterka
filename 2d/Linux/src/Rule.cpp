@@ -11,17 +11,17 @@ std::string Rule::getFrom()
     return this->m_from;
 }
 
-SharedContextProbabilityAxiomSet Rule::getAxiomSet()
+SharedContextProbabilityParametricAxiomSet Rule::getAxiomSet()
 {
     return m_axioms;
 }
-Rule::Rule(std::string from, SharedContextProbabilityAxiomSet axiomSet)
+Rule::Rule(std::string from, SharedContextProbabilityParametricAxiomSet axiomSet)
 {
     this->m_from=from;
     this->m_axioms=axiomSet;
 }
 
-void Rule::setAxiomSet(SharedContextProbabilityAxiomSet axiom)
+void Rule::setAxiomSet(SharedContextProbabilityParametricAxiomSet axiom)
 {
     this->m_axioms=axiom;
 }

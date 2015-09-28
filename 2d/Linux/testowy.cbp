@@ -5,7 +5,7 @@
 		<Option title="testowy" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="GUI/;JSON/;Turtle/;Rules/;logger/;" />
+		<Option virtualFolders="GUI/;JSON/;Turtle/;Rules/;logger/;Rules/Parametric/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/testowy" prefix_auto="1" extension_auto="1" />
@@ -52,6 +52,9 @@
 		<Unit filename="db.json">
 			<Option virtualFolder="JSON/" />
 		</Unit>
+		<Unit filename="include/Axiom.h">
+			<Option virtualFolder="Rules/" />
+		</Unit>
 		<Unit filename="include/ContextAxiom.h">
 			<Option virtualFolder="Rules/" />
 		</Unit>
@@ -60,6 +63,9 @@
 		</Unit>
 		<Unit filename="include/JSONReader.h">
 			<Option virtualFolder="JSON/" />
+		</Unit>
+		<Unit filename="include/ParametricAxiom.h">
+			<Option virtualFolder="Rules/Parametric/" />
 		</Unit>
 		<Unit filename="include/ProbabilityAxiom.h">
 			<Option virtualFolder="Rules/" />
@@ -108,11 +114,17 @@
 		<Unit filename="include/rapidjson/stringbuffer.h" />
 		<Unit filename="include/rapidjson/writer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Axiom.cpp">
+			<Option virtualFolder="Rules/" />
+		</Unit>
 		<Unit filename="src/GUI.cpp">
 			<Option virtualFolder="GUI/" />
 		</Unit>
 		<Unit filename="src/JSONReader.cpp">
 			<Option virtualFolder="JSON/" />
+		</Unit>
+		<Unit filename="src/ParametricAxiom.cpp">
+			<Option virtualFolder="Rules/Parametric/" />
 		</Unit>
 		<Unit filename="src/Rule.cpp">
 			<Option virtualFolder="Rules/" />

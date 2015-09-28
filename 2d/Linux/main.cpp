@@ -2,9 +2,20 @@
 #include<cstdlib>
 #include <TurtleDrawer.h>
 #include <GUI.h>
-
+#include <ParametricAxiom.h>
 int main()
 {
+ParametricAxiom::StringToClass *s=new ParametricAxiom::StringToClass();
+
+
+SharedParametricAxiomVector v=s->toClass("A(2)B(3,3)");
+for(SharedParametricAxiom a: v)
+{
+a->show();
+}
+
+
+
 
     sf::Vector2f prev;
 

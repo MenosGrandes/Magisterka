@@ -68,6 +68,7 @@ SharedSystemData2DList JSONReader::readJSON()
 
             SharedProbabilityAxiomVector probabilityAxiomSet;
             SharedContextAxiomVector2L contextAxiomSet;
+            SharedParametricAxiomVector parametric;
             /*Get object from the array*/
             const Value& from = listOfAxioms[i];
 
@@ -87,7 +88,12 @@ SharedSystemData2DList JSONReader::readJSON()
 
                 contextAxiomSet.push_back(contextAxiom);
             }
-            SharedContextProbabilityAxiomSet axioms(new ContextProbabilityAxiomSet(contextAxiomSet,probabilityAxiomSet));
+
+            /*
+            */
+
+
+            SharedContextProbabilityParametricAxiomSet axioms(new ContextProbabilityParametricAxiomSet(contextAxiomSet,probabilityAxiomSet,parametric));
 
             SharedRule rule(new Rule(from["from"].GetString(),axioms));
             ruleList.push_back(rule);

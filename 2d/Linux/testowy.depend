@@ -737,24 +737,25 @@
 1437326160 source:/home/filip/Pulpit/Magisterka/2d/Linux/src/TurtleDrawer.cpp
 	"../include/TurtleDrawer.h"
 
-1441978984 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
+1443461286 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/main.cpp
 	<iostream>
 	<cstdlib>
 	<TurtleDrawer.h>
 	<GUI.h>
+	<ParametricAxiom.h>
 
 1441973706 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/TurtleDrawer.h
 	<SFML/Graphics.hpp>
 	<Turtle.h>
 	<mutex>
 
-1441995924 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
+1443451144 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Turtle.h
 	<Rule.h>
 	<random>
 	<map>
 	<chrono>
 
-1441957369 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
+1443452114 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Rule.h
 	<memory>
 	<string>
 	<sstream>
@@ -769,6 +770,7 @@
 	<SFML/System.hpp>
 	<ProbabilityAxiom.h>
 	<ContextAxiom.h>
+	<ParametricAxiom.h>
 
 1441385083 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/GUI.h
 	<SFML/Graphics.hpp>
@@ -780,7 +782,7 @@
 1441974146 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/GUI.cpp
 	"GUI.h"
 
-1441973815 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
+1443452222 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/JSONReader.cpp
 	"JSONReader.h"
 
 1441385083 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/JSONReader.h
@@ -883,10 +885,10 @@
 1441385083 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/rapidjson/internal/strfunc.h
 	"../rapidjson.h"
 
-1441385083 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
+1443452651 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Rule.cpp
 	"../include/Rule.h"
 
-1442166648 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
+1443451329 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Turtle.cpp
 	"../include/Turtle.h"
 	"easylogging++.h"
 
@@ -938,10 +940,11 @@
 	<SFML/Graphics/Rect.hpp>
 	<SFML/Graphics/Texture.hpp>
 
-1441385083 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
+1443037014 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ProbabilityAxiom.h
 	<memory>
 	<set>
 	<string>
+	"Axiom.h"
 
 1437819142 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/ContextSensitiveLSystem.cpp
 	"ContextSensitiveLSystem.h"
@@ -959,9 +962,10 @@
 	<string>
 	<memory>
 
-1441385550 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
+1443036850 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ContextAxiom.h
 	<memory>
 	<string>
+	"Axiom.h"
 
 1420667454 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/easylogging++.h
 	<syslog.h>
@@ -1031,4 +1035,26 @@
 	<boost/container/set.hpp>
 	<boost/container/flat_set.hpp>
 	<wx/vector.h>
+
+1443036708 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Axiom.h
+	<string>
+
+1443037047 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Axiom.cpp
+	"Axiom.h"
+
+1443461409 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/ParametricAxiom.cpp
+	"ParametricAxiom.h"
+
+1443462004 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/ParametricAxiom.h
+	"Axiom.h"
+	<unordered_map>
+	<vector>
+	<memory>
+	<iostream>
+
+1443037758 source:/home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/src/Parameter.cpp
+	"Parameter.h"
+
+1443037883 /home/filip/Pulpit/Magisterka/Magisterka/2d/Linux/include/Parameter.h
+	<memory>
 

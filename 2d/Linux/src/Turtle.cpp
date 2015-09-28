@@ -65,28 +65,14 @@ void Turtle::compute()
             ss >> compareString;
             ss.clear();
 
-            if(compareString == "[")
-            {
-                ++m_level;
-            }
-            if(compareString == "]")
-            {
-                --m_level;
-            }
 
             std::list<SharedRule>::iterator it;
             for (it= m_rules.begin(); it != m_rules.end(); it++)
             {
 
-/*Check if the compareString sign is in the bracket, and in which one. So if
-
-F1F0F0F0[+F1F1]F1[-F1F1][+F1F1]F1 -> and compareString is '1' at 15 place you must ommit all brackets.
-
-compareString is '1' at 19 place the
-*/
                 ChangeNonContextSensitiveSystem(it,i,temp,compareString,found);
 
-                ChangeContextSensitiveSystem(it,i,temp,compareString,found);
+               // ChangeContextSensitiveSystem(it,i,temp,compareString,found);
 
             }
             if(found==false)
@@ -311,9 +297,9 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
         if(it->get()->getFrom().compare(compareString) == 0)
         {
             SharedProbabilityAxiomVector axiomSet=it->get()->getAxiomSet()->probabilitySet;
-            temp+=(*axiomSet.begin())->get_m_to();
+            temp+=(*axiomSet.begin())->get_to();
 
-            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_m_to();
+            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*axiomSet.begin())->get_to();
 
             found=true;
 
@@ -395,10 +381,10 @@ void Turtle::ChangeNonContextSensitiveSystem( std::list<SharedRule>::iterator it
             SharedProbabilityAxiomVector::iterator itProb = axiomSet.begin();
             std::advance(itProb, iteratorForSet);
             /*Change*/
-            temp+=(*itProb)->get_m_to();
+            temp+=(*itProb)->get_to();
             found = true;
 
-            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*itProb)->get_m_to();
+            LOG(INFO)<<"CHANGED FROM "<<compareString<<" TO "<<(*itProb)->get_to();
 
 
         }

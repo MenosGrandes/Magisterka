@@ -34,7 +34,7 @@ private:
     std::vector<std::string>m_ignoreList;
     void ChangeContextSensitiveSystem(std::list<SharedRule>::iterator it,int i,std::string &temp,std::string &compareString,bool &found);
     void ChangeNonContextSensitiveSystem(std::list<SharedRule>::iterator it,int i,std::string &temp,std::string &compareString,bool &found);
-
+    void ChangeParametricContextFreeSystem();
 
 };
 typedef std::shared_ptr<Turtle> SharedTurtle;

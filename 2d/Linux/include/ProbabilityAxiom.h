@@ -3,23 +3,16 @@
 #include <memory>
 #include <set>
 #include <string>
-
-class ProbabilityAxiom
+#include "Axiom.h"
+class ProbabilityAxiom : public Axiom
 {
 public:
-    ProbabilityAxiom(std::string to,float prob)
+    ProbabilityAxiom(std::string to,float prob) : Axiom(to)
     {
         this->m_to=to;
         this->m_probability=prob;
     }
-    std::string get_m_to()
-    {
-        return this->m_to;
-    };
-    void set_m_to(std::string to)
-    {
-        this->m_to=to;
-    }
+
 
     float get_m_probability()
     {

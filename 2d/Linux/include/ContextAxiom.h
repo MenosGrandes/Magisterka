@@ -2,20 +2,20 @@
 #define CONTEXTTAXIOM_H
 #include <memory>
 #include <string>
-
+#include "Axiom.h"
 enum BIGGERLOWER
 {
     BIGGER,LOWER
 };
 
-class ContextAxiom2L
+class ContextAxiom2L:Axiom
 {
 public :
-    ContextAxiom2L(std::string preceded,std::string fallowed,std::string to)
+    ContextAxiom2L(std::string preceded,std::string fallowed,std::string to):Axiom(to)
     {
         this->m_preceded=preceded;
         this->m_fallowed=fallowed;
-        this->m_to=to;
+
     };
     void set_m_preceded(std::string preceded)
     {
