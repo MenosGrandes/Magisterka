@@ -10,5 +10,7 @@ https://github.com/miloyip/rapidjson<br/><br/>
 I would like to change lib from SFML to pure OpenGL(c++) and WebGL(JavaScript)
 Insted of replacing the char one by one i will use http://en.cppreference.com/w/cpp/regex/regex_replace - TODO<br/>
 Or using the 'replace_all_copy' function from boost.<br/>
-http://minhazulhaque.blogspot.com/2012/09/find-and-replace-all-occurrences-in-cpp-string.html.html
+http://minhazulhaque.blogspot.com/2012/09/find-and-replace-all-occurrences-in-cpp-string.html.html<br/><br/><br/>
+
+http://www.tantalon.com/pete/cppopt/general.htm#BadOptimizationStrategies
 
